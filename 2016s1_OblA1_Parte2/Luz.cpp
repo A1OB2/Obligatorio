@@ -9,15 +9,21 @@ ostream &operator<<(ostream& out, const Luz &l) {
 }
 
 Luz::Luz() {
-	// NO IMPLEMENTADA
+	this->nroLuz = 0;
+	this->nombre = "";
+	this->intensidad = 0;
 }
 
 Luz::Luz(unsigned int nro, Cadena nombre) {
-	// NO IMPLEMENTADA
+	this->nroLuz = nro;
+	this->nombre = nombre;
+	this->intensidad = 0;
 }
 
 Luz::Luz(const Luz &l) {
-	// NO IMPLEMENTADA
+	this->nroLuz = l.nroLuz;
+	this->nombre = l.nombre;
+	this->intensidad = l.intensidad;
 }
 
 Luz & Luz::operator=(const Luz &l) {

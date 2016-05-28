@@ -51,7 +51,9 @@ public:
 	Dispositivo* Clon() const;
 
 private:
-
+	unsigned int nroLuz;
+	Cadena nombre;
+	unsigned int intensidad;
 };
 
 
