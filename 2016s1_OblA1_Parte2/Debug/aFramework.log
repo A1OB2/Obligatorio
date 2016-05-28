@@ -29,4 +29,4 @@
   Escena.cpp
   Generating Code...
 ConductorPruebaObl2.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-  aFramework.vcxproj -> C:\Users\Matías\Desktop\2016s1_OblA1_Parte2\.\Debug\aFramework.exe
+  aFramework.vcxproj -> C:\Users\Bruno\Documents\GitHub\Obligatorio\2016s1_OblA1_Parte2\.\Debug\aFramework.exe
