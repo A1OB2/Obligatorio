@@ -3,28 +3,21 @@
 #ifndef INTERFAZ_DEL_SISTEMA_IMP_CPP
 #define INTERFAZ_DEL_SISTEMA_IMP_CPP
 
-/*tad es una lista de metodos abstractos que le tengo que dar una implementacion
-o sea que hacen esos metodos (comportamiento)
-*/
-
 // Inicialización de los atributos
 InterfazDelSistemaImp::InterfazDelSistemaImp(unsigned int CANT_SENSORES, unsigned int MAX_ESTADOS)
 {
 	//NO IMPLEMENTADO	
-	miCasa = new CasaInteligente(CANT_SENSORES);
 }
 
 // Eliminación de los objetos creados con "new"
 InterfazDelSistemaImp::~InterfazDelSistemaImp()
 {
-	delete miCasa;
 	//NO IMPLEMENTADO	
 }
 
 TipoRetorno InterfazDelSistemaImp::AgregarLuz(unsigned int nroLuz, char* nombre)
 {
-	TipoRetorno ret = miCasa->AgregarLuz(nroLuz, nombre);
-	return ret;
+	return NO_IMPLEMENTADA;
 }
 
 TipoRetorno InterfazDelSistemaImp::AgregarArtefacto(unsigned int nroArt, char* nombre)

@@ -36,8 +36,6 @@ private:
 
 		// Definir atributo/s
 
-		CasaInteligente * miCasa; //magiaaaa
-
 };
 
 #endif

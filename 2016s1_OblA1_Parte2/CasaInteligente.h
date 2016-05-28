@@ -73,7 +73,7 @@ public:
 	TipoRetorno ImprimirEscenasRaras() const;
 
 private:
-	Lista<Asociacion<int, Referencia<Luz>>> * luces;
+
 };
 
 #endif

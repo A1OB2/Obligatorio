@@ -1,32 +1,26 @@
 ﻿  ConductorPruebaObl2.cpp
-  IteradorListaOrdImp.cpp
-  ListaOrdImp.cpp
-  main.cpp
-  PruebasCorreccion.cpp
-  PruebasEjemploDeUso.cpp
-  PruebasPropias.cpp
-  EstadisticaPrueba.cpp
-  ConductorPrueba.cpp
-  Prueba.cpp
-  ManejadorImpresionPrueba.cpp
-  ManejadorSalidaPrueba.cpp
-  IteradorListaImp.cpp
-  ListaImp.cpp
-  InterfazDelSistemaImp.cpp
-  ABBImp.cpp
-  Asociacion.cpp
-  Cadena.cpp
-  Referencia.cpp
   CasaInteligente.cpp
+c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\iteradorlistaimp.cpp(13): error C2039: 'ppio': is not a member of 'ListaImp<Asociacion<int,Referencia<Luz>>>'
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(8): note: see declaration of 'ListaImp<Asociacion<int,Referencia<Luz>>>'
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\iteradorlistaimp.cpp(12): note: while compiling class template member function 'IteradorListaImp<T>::IteradorListaImp(const ListaImp<T> &)'
+          with
+          [
+              T=Asociacion<int,Referencia<Luz>>
+          ]
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\listaimp.cpp(139): note: see reference to function template instantiation 'IteradorListaImp<T>::IteradorListaImp(const ListaImp<T> &)' being compiled
+          with
+          [
+              T=Asociacion<int,Referencia<Luz>>
+          ]
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\listaimp.cpp(139): note: see reference to class template instantiation 'IteradorListaImp<T>' being compiled
+          with
+          [
+              T=Asociacion<int,Referencia<Luz>>
+          ]
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\listaimp.cpp(138): note: while compiling class template member function 'Iterador<T> ListaImp<T>::GetIterador(void) const'
+          with
+          [
+              T=Asociacion<int,Referencia<Luz>>
+          ]
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(8): note: see reference to class template instantiation 'ListaImp<Asociacion<int,Referencia<Luz>>>' being compiled
   Generating Code...
-  Compiling...
-  Condicion.cpp
-  Alarma.cpp
-  Artefacto.cpp
-  Luz.cpp
-  Sensor.cpp
-  Cambio.cpp
-  Escena.cpp
-  Generating Code...
-ConductorPruebaObl2.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-  aFramework.vcxproj -> C:\Users\Matías\Desktop\2016s1_OblA1_Parte2\.\Debug\aFramework.exe

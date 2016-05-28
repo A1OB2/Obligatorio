@@ -5,7 +5,6 @@
 
 CasaInteligente::CasaInteligente()
 {
-	luces = new ListaImp<Asociacion<int, Referencia<Luz>>>;
 	// NO IMPLEMENTADA
 }
 
