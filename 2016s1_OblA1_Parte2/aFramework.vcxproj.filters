@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Pruebas Unitarias">
+      <UniqueIdentifier>{63bc66a1-9879-4dc8-99cc-f04fc8258905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{b60362ce-e3f2-4e71-bda3-5a2397d971ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Estadistica">
+      <UniqueIdentifier>{dba5f8ed-0482-4f15-b13f-c4a584399376}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\InterfazConductor">
+      <UniqueIdentifier>{d81f34db-9a2d-4243-a813-258f38680ca7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\InterfazPrueba">
+      <UniqueIdentifier>{48033b35-2817-4d3e-85cc-938f60fa325d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Manejadores">
+      <UniqueIdentifier>{a418984a-e519-462f-b26c-47484cf383da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InterfazDelSistema">
+      <UniqueIdentifier>{5d2caf84-022e-457a-a787-ec3e7006cea8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Clases auxiliares">
+      <UniqueIdentifier>{388253a9-28b9-4744-ba53-c83ed8472429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CasaInteligente">
+      <UniqueIdentifier>{3a98d6b3-8da9-432f-96b4-22cffc932ad9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CasaInteligente\Dispositivos">
+      <UniqueIdentifier>{f895481c-652e-4ada-af98-98c54541d2ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CasaInteligente\Escenas">
+      <UniqueIdentifier>{baca48aa-0f66-40a2-9f56-253a29de9573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colecciones">
+      <UniqueIdentifier>{5c0bcf5c-0e28-4675-823b-fff071ccc163}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colecciones\Cola">
+      <UniqueIdentifier>{b89aa542-981f-4ff2-9edc-774959a9d6f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colecciones\Lista">
+      <UniqueIdentifier>{70276ed9-703b-4132-ad2d-6c3ffe4c9a0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colecciones\Pila">
+      <UniqueIdentifier>{c632c470-0361-4ea8-b5ac-3a82d27339a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colecciones\ABB">
+      <UniqueIdentifier>{53060556-e0ba-4734-a144-88a614781942}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PruebasCorreccion.cpp">
+      <Filter>Pruebas Unitarias</Filter>
+    </ClCompile>
+    <ClCompile Include="PruebasEjemploDeUso.cpp">
+      <Filter>Pruebas Unitarias</Filter>
+    </ClCompile>
+    <ClCompile Include="PruebasPropias.cpp">
+      <Filter>Pruebas Unitarias</Filter>
+    </ClCompile>
+    <ClCompile Include="EstadisticaPrueba.cpp">
+      <Filter>Framework\Estadistica</Filter>
+    </ClCompile>
+    <ClCompile Include="ConductorPrueba.cpp">
+      <Filter>Framework\InterfazConductor</Filter>
+    </ClCompile>
+    <ClCompile Include="Prueba.cpp">
+      <Filter>Framework\InterfazPrueba</Filter>
+    </ClCompile>
+    <ClCompile Include="ManejadorImpresionPrueba.cpp">
+      <Filter>Framework\Manejadores</Filter>
+    </ClCompile>
+    <ClCompile Include="ManejadorSalidaPrueba.cpp">
+      <Filter>Framework\Manejadores</Filter>
+    </ClCompile>
+    <ClCompile Include="IteradorListaImp.cpp">
+      <Filter>Colecciones\Lista</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaImp.cpp">
+      <Filter>Colecciones\Lista</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfazDelSistemaImp.cpp">
+      <Filter>InterfazDelSistema</Filter>
+    </ClCompile>
+    <ClCompile Include="ABBImp.cpp">
+      <Filter>Colecciones\ABB</Filter>
+    </ClCompile>
+    <ClCompile Include="Asociacion.cpp">
+      <Filter>Clases auxiliares</Filter>
+    </ClCompile>
+    <ClCompile Include="Cadena.cpp">
+      <Filter>Clases auxiliares</Filter>
+    </ClCompile>
+    <ClCompile Include="Referencia.cpp">
+      <Filter>Clases auxiliares</Filter>
+    </ClCompile>
+    <ClCompile Include="CasaInteligente.cpp">
+      <Filter>CasaInteligente</Filter>
+    </ClCompile>
+    <ClCompile Include="Condicion.cpp">
+      <Filter>CasaInteligente</Filter>
+    </ClCompile>
+    <ClCompile Include="Alarma.cpp">
+      <Filter>CasaInteligente\Dispositivos</Filter>
+    </ClCompile>
+    <ClCompile Include="Artefacto.cpp">
+      <Filter>CasaInteligente\Dispositivos</Filter>
+    </ClCompile>
+    <ClCompile Include="Luz.cpp">
+      <Filter>CasaInteligente\Dispositivos</Filter>
+    </ClCompile>
+    <ClCompile Include="Sensor.cpp">
+      <Filter>CasaInteligente\Dispositivos</Filter>
+    </ClCompile>
+    <ClCompile Include="Cambio.cpp">
+      <Filter>CasaInteligente\Escenas</Filter>
+    </ClCompile>
+    <ClCompile Include="Escena.cpp">
+      <Filter>CasaInteligente\Escenas</Filter>
+    </ClCompile>
+    <ClCompile Include="ConductorPruebaObl2.cpp">
+      <Filter>Pruebas Unitarias</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaOrdImp.cpp">
+      <Filter>Colecciones\Lista</Filter>
+    </ClCompile>
+    <ClCompile Include="IteradorListaOrdImp.cpp">
+      <Filter>Colecciones\Lista</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PruebasCorreccion.h">
+      <Filter>Pruebas Unitarias</Filter>
+    </ClInclude>
+    <ClInclude Include="PruebasEjemploDeUso.h">
+      <Filter>Pruebas Unitarias</Filter>
+    </ClInclude>
+    <ClInclude Include="PruebasPropias.h">
+      <Filter>Pruebas Unitarias</Filter>
+    </ClInclude>
+    <ClInclude Include="EstadisticaPrueba.h">
+      <Filter>Framework\Estadistica</Filter>
+    </ClInclude>
+    <ClInclude Include="ConductorPrueba.h">
+      <Filter>Framework\InterfazConductor</Filter>
+    </ClInclude>
+    <ClInclude Include="Prueba.h">
+      <Filter>Framework\InterfazPrueba</Filter>
+    </ClInclude>
+    <ClInclude Include="ManejadorImpresionPrueba.h">
+      <Filter>Framework\Manejadores</Filter>
+    </ClInclude>
+    <ClInclude Include="ManejadorSalidaPrueba.h">
+      <Filter>Framework\Manejadores</Filter>
+    </ClInclude>
+    <ClInclude Include="IteradorListaImp.h">
+      <Filter>Colecciones\Lista</Filter>
+    </ClInclude>
+    <ClInclude Include="Lista.h">
+      <Filter>Colecciones\Lista</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaImp.h">
+      <Filter>Colecciones\Lista</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfazDelSistema.h">
+      <Filter>InterfazDelSistema</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfazDelSistemaImp.h">
+      <Filter>InterfazDelSistema</Filter>
+    </ClInclude>
+    <ClInclude Include="ABB.h">
+      <Filter>Colecciones\ABB</Filter>
+    </ClInclude>
+    <ClInclude Include="ABBImp.h">
+      <Filter>Colecciones\ABB</Filter>
+    </ClInclude>
+    <ClInclude Include="Asociacion.h">
+      <Filter>Clases auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="Cadena.h">
+      <Filter>Clases auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="Iterable.h">
+      <Filter>Clases auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="Iterador.h">
+      <Filter>Clases auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="Referencia.h">
+      <Filter>Clases auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="CasaInteligente.h">
+      <Filter>CasaInteligente</Filter>
+    </ClInclude>
+    <ClInclude Include="Condicion.h">
+      <Filter>CasaInteligente</Filter>
+    </ClInclude>
+    <ClInclude Include="Alarma.h">
+      <Filter>CasaInteligente\Dispositivos</Filter>
+    </ClInclude>
+    <ClInclude Include="Artefacto.h">
+      <Filter>CasaInteligente\Dispositivos</Filter>
+    </ClInclude>
+    <ClInclude Include="Dispositivo.h">
+      <Filter>CasaInteligente\Dispositivos</Filter>
+    </ClInclude>
+    <ClInclude Include="Luz.h">
+      <Filter>CasaInteligente\Dispositivos</Filter>
+    </ClInclude>
+    <ClInclude Include="Sensor.h">
+      <Filter>CasaInteligente\Dispositivos</Filter>
+    </ClInclude>
+    <ClInclude Include="Cambio.h">
+      <Filter>CasaInteligente\Escenas</Filter>
+    </ClInclude>
+    <ClInclude Include="Escena.h">
+      <Filter>CasaInteligente\Escenas</Filter>
+    </ClInclude>
+    <ClInclude Include="Pila.h">
+      <Filter>Colecciones\Pila</Filter>
+    </ClInclude>
+    <ClInclude Include="ConductorPruebaObl2.h">
+      <Filter>Pruebas Unitarias</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaOrd.h">
+      <Filter>Colecciones\Lista</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaOrdImp.h">
+      <Filter>Colecciones\Lista</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoLista.h">
+      <Filter>Colecciones\Lista</Filter>
+    </ClInclude>
+    <ClInclude Include="IteradorListaOrdImp.h">
+      <Filter>Colecciones\Lista</Filter>
+    </ClInclude>
+    <ClInclude Include="Cola.h">
+      <Filter>Colecciones\Cola</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoABB.h">
+      <Filter>Colecciones\ABB</Filter>
+    </ClInclude>
+    <ClInclude Include="Constantes.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="TipoRetorno.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoAG.h">
+      <Filter>Clases auxiliares</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
