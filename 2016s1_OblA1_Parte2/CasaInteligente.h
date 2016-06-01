@@ -73,7 +73,7 @@ public:
 	TipoRetorno ImprimirEscenasRaras() const;
 
 private:
-
+	ABBImp<Luz> * luces;
 };
 
 #endif

@@ -40,7 +40,9 @@ public:
 	void PosOrder(void (*f) (const T&, void *), void *ptr) const;
 
 protected:
-
+	T dato;
+	ABBImp izq;
+	ABBImp der;
 };
 
 #include "ABBImp.cpp"
