@@ -13,7 +13,7 @@ ostream &operator<< <>(ostream& out, const ListaImp<T> &l) {
 
 template <class T>
 ListaImp<T>::ListaImp(){
-	//NO IMPLEMENTADO
+	lista = new NodoLista();
 }
 
 template <class T>
@@ -49,7 +49,10 @@ ListaImp<T>::~ListaImp(){
 
 template <class T>
 void ListaImp<T>::AgregarPpio(const T &e) {
-	//NO IMPLEMENTADO
+	NodoLista * aux = this->lista;
+	lista = new NodoLista(e);
+	lista->sig = aux;
+
 }
 
 template <class T>

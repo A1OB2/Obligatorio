@@ -18,6 +18,8 @@ class Condicion;
 #include "Asociacion.h"
 #include "ListaImp.h"
 #include "ListaOrdImp.h"
+#include "ABB.h"
+#include "ABBImp.h"
 
 #include "Alarma.h"
 #include "Artefacto.h"
@@ -73,7 +75,16 @@ public:
 	TipoRetorno ImprimirEscenasRaras() const;
 
 private:
-	ABBImp<Luz> * luces;
+	/*ABB<Referencia<Luz>> * luces;
+	ABB<Referencia<Sensor>> * sensores;
+	Lista<Referencia<Escena>> * escenas;
+	ABB<Referencia<Artefacto>> * artefactos;
+	Referencia<Alarma> * alarma;*/
+	ABB<Luz> * luces;
+	Lista<Asociacion<int, Referencia<Sensor>>> * sensores;
+	Lista<Escena> * escenas;
+	ABB<Artefacto> * artefactos;
+	Alarma * alarma;
 };
 
 #endif

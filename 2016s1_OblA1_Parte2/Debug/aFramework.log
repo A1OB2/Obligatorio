@@ -1,4 +1,35 @@
-﻿  ListaOrdImp.cpp
-  Luz.cpp
+﻿  Asociacion.cpp
+  CasaInteligente.cpp
+c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(16): warning C4018: '<=': signed/unsigned mismatch
+c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\listaimp.cpp(16): error C2955: 'NodoLista': use of class template requires template argument list
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\nodolista.h(5): note: see declaration of 'NodoLista'
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\listaimp.cpp(15): note: while compiling class template member function 'ListaImp<Asociacion<int,Referencia<Sensor>>>::ListaImp(void)'
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(15): note: see reference to function template instantiation 'ListaImp<Asociacion<int,Referencia<Sensor>>>::ListaImp(void)' being compiled
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(15): note: see reference to class template instantiation 'ListaImp<Asociacion<int,Referencia<Sensor>>>' being compiled
+c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\listaimp.cpp(16): error C2514: 'NodoLista': class has no constructors
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\nodolista.h(5): note: see declaration of 'NodoLista'
+c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\listaimp.cpp(52): error C2440: 'initializing': cannot convert from 'NodoLista<T> *' to 'NodoLista *'
+          with
+          [
+              T=Asociacion<int,Referencia<Sensor>>
+          ]
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\listaimp.cpp(52): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\listaimp.cpp(51): note: while compiling class template member function 'void ListaImp<Asociacion<int,Referencia<Sensor>>>::AgregarPpio(const T &)'
+          with
+          [
+              T=Asociacion<int,Referencia<Sensor>>
+          ]
+c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\listaimp.cpp(53): error C2514: 'NodoLista': class has no constructors
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\nodolista.h(5): note: see declaration of 'NodoLista'
+c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\listaimp.cpp(54): error C2440: '=': cannot convert from 'NodoLista *' to 'NodoLista<T> *'
+          with
+          [
+              T=Asociacion<int,Referencia<Sensor>>
+          ]
+  c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\listaimp.cpp(54): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+  Condicion.cpp
+  Escena.cpp
+  IteradorListaImp.cpp
+  ListaImp.cpp
+  Referencia.cpp
   Generating Code...
-  aFramework.vcxproj -> C:\Users\Bruno\Documents\GitHub\Obligatorio\2016s1_OblA1_Parte2\.\Debug\aFramework.exe

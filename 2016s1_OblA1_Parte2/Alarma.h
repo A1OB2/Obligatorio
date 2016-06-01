@@ -51,7 +51,9 @@ public:
 	Dispositivo* Clon() const;
 
 private:
-
+	unsigned int nro;
+	EstadoAlarma estado;
+	Cadena nombre;
 };
 
 #endif

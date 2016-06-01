@@ -21,6 +21,8 @@ public:
 
 	void Insertar(T &e);
 
+	//void insert(T *d);
+
 	bool EsVacio() const; 
 
 	const T& Maximo() const;
@@ -40,9 +42,7 @@ public:
 	void PosOrder(void (*f) (const T&, void *), void *ptr) const;
 
 protected:
-	T dato;
-	ABBImp izq;
-	ABBImp der;
+	NodoABB<T> * raiz;
 };
 
 #include "ABBImp.cpp"

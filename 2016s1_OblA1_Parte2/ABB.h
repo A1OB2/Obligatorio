@@ -19,6 +19,8 @@ class ABB abstract {
 		// POS: Agrega el elemento e en el arbol. Si existe lo sobrescribe
 		virtual void Insertar(T &e) abstract;
 
+		//virtual void insert(T *e) abstract;
+
 		/**** Predicado ****/
 		// PRE: -
 		// POS: Retorna true si el arbol esta vacio

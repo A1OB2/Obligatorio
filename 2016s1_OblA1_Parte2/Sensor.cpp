@@ -9,11 +9,13 @@ ostream &operator<<(ostream& out, const Sensor &s) {
 }
 
 Sensor::Sensor() {
-	// NO IMPLEMENTADA
+	nro = 0;
+	estado = NORMAL;
 }
 
 Sensor::Sensor(unsigned int nro) {
-	// NO IMPLEMENTADA
+	this->nro = nro;
+	estado = NORMAL;
 }
 
 Sensor::Sensor(const Sensor &s) {
@@ -36,6 +38,14 @@ bool Sensor::operator==(const Sensor &s) const {
 	return false;
 }
 
+bool Sensor::operator<(const Sensor & s) const {
+	return this->nro < s.GetNro();
+}
+
+bool Sensor::operator>(const Sensor & s) const {
+	return this->nro > s.GetNro();
+}
+
 unsigned int Sensor::GetNro() const {
 	// NO IMPLEMENTADA
 	return 0;
@@ -52,6 +62,19 @@ EstadoSensor Sensor::GetEstado() const {
 
 void Sensor::Imprimir(ostream& out) const  {
 	// NO IMPLEMENTADA
+}
+
+void Sensor::ImprimirCambio() const {
+	//Falta hacer
+}
+
+void Sensor::Ejecutar(CasaInteligente * casa) {
+	//Faltahacer
+}
+
+Dispositivo * Sensor::Clon() const {
+	//A hacer
+	return NULL;
 }
 
 
