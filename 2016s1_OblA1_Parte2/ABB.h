@@ -69,6 +69,8 @@ class ABB abstract {
 
 		virtual NodoABB<T>* getRaiz() const abstract;
 
+		virtual void imprimir() abstract;
+
 	protected:
 
 		ABB() { }

@@ -40,6 +40,8 @@ public:
 	void InOrder(void (*f)(const T&, void *), void *ptr) const;
 	
 	void PosOrder(void (*f) (const T&, void *), void *ptr) const;
+	
+	void imprimir();
 
 	NodoABB<T> * getRaiz() const;
 
@@ -51,6 +53,7 @@ private:
 	bool menorQueTodos(NodoABB<T>* a, T x);
 	bool mayorQueTodos(NodoABB<T>* a, T x);
 
+	void imprimir(NodoABB<T> *a);
 
 };
 

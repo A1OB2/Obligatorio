@@ -11,7 +11,7 @@ InterfazDelSistemaImp::InterfazDelSistemaImp(unsigned int CANT_SENSORES, unsigne
 
 // Eliminación de los objetos creados con "new"
 InterfazDelSistemaImp::~InterfazDelSistemaImp(){
-	//NO IMPLEMENTADO	
+	this->casa = new CasaInteligente();
 }
 
 TipoRetorno InterfazDelSistemaImp::AgregarLuz(unsigned int nroLuz, char* nombre){
@@ -36,6 +36,7 @@ TipoRetorno InterfazDelSistemaImp::CambiarEstadoAlarma(EstadoAlarma nuevoEstado)
 }
 
 TipoRetorno InterfazDelSistemaImp::ImprimirEstadoCasa() const{
+	casa->ImprimirEstadoCasa();
 	return NO_IMPLEMENTADA;
 }
 

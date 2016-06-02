@@ -52,6 +52,11 @@ public:
 
 	Iterador<T> GetIterador() const;
 
+	void imprimir();
+
+private:
+	void imprimir(NodoLista<T> *l);
+
 protected:
 	NodoLista<T> * lista;
 };

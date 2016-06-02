@@ -1,18 +1,22 @@
 #include "CasaInteligente.h"
 
+
+
 #ifndef CASAINTELIGENTE_CPP
 #define CASAINTELIGENTE_CPP
 
-CasaInteligente::CasaInteligente() {
+
+CasaInteligente::CasaInteligente(){
 	luces = new ABBImp<Asociacion<int, Referencia<Luz>>>();
-	artefactos = new ABBImp<Asociacion<int, Referencia<Artefacto>>>();
+	artefactos = new ABBImp<Asociacion<int,Referencia<Artefacto>>>();
 	escenas = new ListaImp<Asociacion<int, Referencia<Escena>>>();
 	alarma = new Referencia<Alarma>(Alarma());
 	sensores = new ListaImp<Asociacion<int, Referencia<Sensor>>>();
 }
 
-CasaInteligente::CasaInteligente(unsigned int CANT_SENSORES) {
-	luces = new ABBImp<Asociacion<int, Referencia<Luz>>>();
+
+CasaInteligente::CasaInteligente(unsigned int CANT_SENSORES){
+	luces = new ABBImp<Asociacion<int,Referencia<Luz>>>();
 	artefactos = new ABBImp<Asociacion<int, Referencia<Artefacto>>>();
 	escenas = new ListaImp<Asociacion<int, Referencia<Escena>>>();
 	alarma = new Referencia<Alarma>(Alarma());
@@ -20,14 +24,13 @@ CasaInteligente::CasaInteligente(unsigned int CANT_SENSORES) {
 	for (int i = 1; i <= CANT_SENSORES; i++) {
 		Sensor s(i);
 		Referencia<Sensor> r(s);
-		Asociacion<int, Referencia<Sensor>> a(i, r);
+		Asociacion<int,Referencia<Sensor>> a(i,r);
 		sensores->AgregarPpio(a);
 	}
 }
 
-CasaInteligente::CasaInteligente(const CasaInteligente &casa) 
-{
-	// NO IMPLEMENTADA
+CasaInteligente::CasaInteligente(const CasaInteligente &casa) {
+	assert(false);
 }
 
 CasaInteligente::~CasaInteligente()
@@ -108,8 +111,20 @@ TipoRetorno CasaInteligente::CambiarEstadoAlarma(EstadoAlarma nuevoEstado)
 	return NO_IMPLEMENTADA;
 }
 
-TipoRetorno CasaInteligente::ImprimirEstadoCasa() const
-{
+TipoRetorno CasaInteligente::ImprimirEstadoCasa() const{
+	//EstadoAlarma e = //alarma->GetDato().GetEstado();
+	/*auto estado = e;*/
+	cout << "-Alarma "<< DESACTIVADA << endl;
+	cout << "-Sensores:" << endl;
+	//auto h = OFF;
+	//cout << typeid(h).name() << endl;
+	//if (h == 1) {
+	//	cout << "OFF ES 1" << endl;
+	//}else if (h == 0) {
+	//	cout << "OFF ES 0" << endl;
+	//}
+	sensores->imprimir();
+	//luces->imprimir();
 	return NO_IMPLEMENTADA;
 }
 

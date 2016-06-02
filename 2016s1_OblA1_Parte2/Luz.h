@@ -35,8 +35,12 @@ public:
 	// Operador de asignacion
 	Luz &operator=(const Luz &l);
 
+
 	// Operador de comparacion ==. Compara el nro
 	bool operator==(const Luz &l) const;
+	bool operator<(const Luz &l) const;
+	bool operator>(const Luz &l) const;
+
 
 	unsigned int GetNro() const;
 	Cadena GetNombre() const;

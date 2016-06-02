@@ -145,14 +145,12 @@ bool Referencia<T>::operator<=(const Referencia<T>& ref)const
 }
 
 template <class T>
-bool Referencia<T>::operator<(const Referencia<T>& ref)const
-{
+bool Referencia<T>::operator<(const Referencia<T>& ref)const{
 	return *puntero < *(ref.puntero);
 }
 
 template <class T>
-bool Referencia<T>::operator>(const Referencia<T>& ref)const
-{
+bool Referencia<T>::operator>(const Referencia<T>& ref)const{
 	return *puntero > *(ref.puntero);
 }
 

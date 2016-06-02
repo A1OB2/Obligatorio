@@ -3,41 +3,7 @@
 #ifndef AVLIMP_CPP
 #define AVLIMP_CPP
 
-////Auxiliares
-template <class T>
-bool ABBImp<T>::mayorQueTodos(NodoABB<T>* a, T x) {
-	return a == NULL ? true : a->dato > x && mayorQueTodos(a->hIzq, x) && mayorQueTodos(a->hDer, x);
-}
 
-template <class T>
-bool ABBImp<T>::menorQueTodos(NodoABB<T>* a, T x) {
-	return a == NULL ? true : a->dato < x && menorQueTodos(a->hIzq, x) && menorQueTodos(a->hDer, x);
-}
-
-template <class T>
-void ABBImp<T>::insertar(NodoABB<T>* & a, T x) {
-	if (a == NULL) {
-		a = new NodoABB<T>(x);
-	} else {
-		if (a->dato < x) {
-			if (menorQueTodos(a->hIzq, x) && mayorQueTodos(a->hDer, x)) {
-				NodoABB<T> * aux = a;
-				a = new NodoABB<T>(x);
-				a->hDer = aux->hDer;
-				aux->hDer = NULL;
-				a->hIzq = aux;
-			} else insertar(a->hDer, x);
-		} else if (a->dato > x) {
-			if (menorQueTodos(a->hDer, x) && mayorQueTodos(a->hDer, x)) {
-				NodoABB<T> * aux = a;
-				a = new NodoABB<T>(x);
-				a->hIzq = aux->hIzq;
-				aux->hIzq = NULL;
-				a->hDer = aux;
-			} else insertar(a->hIzq, x);
-		}
-	}
-}
 
 template <class T>
 ABBImp<T>::ABBImp() {
@@ -132,11 +98,59 @@ void ABBImp<T>::PosOrder(void (*f) (const T&, void *), void *ptr) const {
 }
 //own method
 
+////Auxiliares
+template <class T>
+bool ABBImp<T>::mayorQueTodos(NodoABB<T>* a, T x) {
+	return a == NULL ? true : a->dato > x && mayorQueTodos(a->hIzq, x) && mayorQueTodos(a->hDer, x);
+}
+
+template <class T>
+bool ABBImp<T>::menorQueTodos(NodoABB<T>* a, T x) {
+	return a == NULL ? true : a->dato < x && menorQueTodos(a->hIzq, x) && menorQueTodos(a->hDer, x);
+}
+
+template <class T>
+void ABBImp<T>::insertar(NodoABB<T>* & a, T x) {
+	if (a == NULL) {
+		a = new NodoABB<T>(x);
+	} else {
+		if (a->dato < x) {
+			if (menorQueTodos(a->hIzq, x) && mayorQueTodos(a->hDer, x)) {
+				NodoABB<T> * aux = a;
+				a = new NodoABB<T>(x);
+				a->hDer = aux->hDer;
+				aux->hDer = NULL;
+				a->hIzq = aux;
+			} else insertar(a->hDer, x);
+		} else if (a->dato > x) {
+			if (menorQueTodos(a->hDer, x) && mayorQueTodos(a->hDer, x)) {
+				NodoABB<T> * aux = a;
+				a = new NodoABB<T>(x);
+				a->hIzq = aux->hIzq;
+				aux->hIzq = NULL;
+				a->hDer = aux;
+			} else insertar(a->hIzq, x);
+		}
+	}
+}
 
 template<class T>
 NodoABB<T> * ABBImp<T>::getRaiz() const{
 	return this->raiz;
 }
 
+template<class T>
+void ABBImp<T>::imprimir(){
+	imprimir(raiz);
+}
+
+template<class T>
+void ABBImp<T>::imprimir(NodoABB<T> *a){
+	if (a != NULL) {
+		int i = a->dato.GetDominio();
+		auto estado = a->dato;//.GetRangoInseguro().GetDato().GetEstado();
+		cout << i << ":" << estado << endl;
+	}
+}
 
 #endif

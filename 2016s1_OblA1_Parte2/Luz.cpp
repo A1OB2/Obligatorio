@@ -42,6 +42,14 @@ bool Luz::operator==(const Luz &l) const {
 	return false;
 }
 
+bool Luz::operator<(const Luz & l) const {
+	return nroLuz<l.GetNro();
+}
+
+bool Luz::operator>(const Luz & l) const {
+	return nroLuz>l.GetNro();
+}
+
 unsigned int Luz::GetNro() const {
 	return this->nroLuz;
 }
