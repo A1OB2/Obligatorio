@@ -9,11 +9,13 @@ ostream &operator<<(ostream& out, const Alarma &a) {
 }
 
 Alarma::Alarma() {
-	// NO IMPLEMENTADA
+	nro = 0;
+	estado = DESACTIVADA;
 }
 
 Alarma::Alarma(const Alarma &a) {
-	// NO IMPLEMENTADA
+	nro = a.GetNro();
+	estado = a.GetEstado();
 }
 
 Alarma & Alarma::operator=(const Alarma &a) {
@@ -24,11 +26,10 @@ Alarma & Alarma::operator=(const Alarma &a) {
 }
 
 Alarma::~Alarma() {
-	// NO IMPLEMENTADA
+	
 }
 
 bool Alarma::operator==(const Alarma &a) const {
-	// NO IMPLEMENTADA
 	return false;
 }
 
@@ -38,17 +39,15 @@ unsigned int Alarma::GetNro() const {
 }
 
 Cadena Alarma::GetNombre() const {
-	// NO IMPLEMENTADA
-	return "";
+	return nombre;
 }
 
 void Alarma::SetEstado(EstadoAlarma estado) {
-	// NO IMPLEMENTADA
+	this->estado = estado;
 }
 
 EstadoAlarma Alarma::GetEstado() const {
-	// NO IMPLEMENTADA
-	return DESACTIVADA;
+	return this->estado;
 }
 
 void Alarma::Imprimir() const  {
