@@ -26,7 +26,7 @@ Alarma & Alarma::operator=(const Alarma &a) {
 }
 
 Alarma::~Alarma() {
-	//Nop
+	
 }
 
 bool Alarma::operator==(const Alarma &a) const {

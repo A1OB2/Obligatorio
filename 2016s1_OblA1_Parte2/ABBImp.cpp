@@ -4,42 +4,40 @@
 #define AVLIMP_CPP
 
 ////Auxiliares
-//template <class T>
-//bool mayorQueTodos(NodoABB<T>* a, T x) {
-//	return a == NULL ? true : a->dato > x && mayorQueTodos(a->izq, x) && mayorQueTodos(a->der, x);
-//}
-//
-//template <class T>
-//bool menorQueTodos(NodoABB<T>* a, T x) {
-//	return a == NULL ? true : a->dato < x && menorQueTodos(a->izq, x) && menorQueTodos(a->der, x);
-//}
-//
-//template <class T>
-//void insertar(NodoABB<T>* & a, T x) {
-//	if (a == NULL) {
-//		a = new NodoABB(x);
-//	} else {
-//		if (a->dato < x) {
-//			if (menorQueTodos(a->izq, x) && mayorQueTodos(a->der, x)) {
-//				nodoAB * aux = a;
-//				a = new NodoABB(x);
-//				a->der = aux->der;
-//				aux->der = NULL;
-//				a->izq = aux;
-//			} else insertar(a->der, x);
-//		} else if (a->dato > x) {
-//			if (menorQueTodos(a->hDer, x) && mayorQueTodos(a->der, x)) {
-//				nodoAB * aux = a;
-//				a = new NodoABB(x);
-//				a->izq = aux->izq;
-//				aux->izq = NULL;
-//				a->der = aux;
-//			} else insertar(a->izq, x);
-//		}
-//	}
-//}
-//
+template <class T>
+bool ABBImp<T>::mayorQueTodos(NodoABB<T>* a, T x) {
+	return a == NULL ? true : a->dato > x && mayorQueTodos(a->hIzq, x) && mayorQueTodos(a->hDer, x);
+}
 
+template <class T>
+bool ABBImp<T>::menorQueTodos(NodoABB<T>* a, T x) {
+	return a == NULL ? true : a->dato < x && menorQueTodos(a->hIzq, x) && menorQueTodos(a->hDer, x);
+}
+
+template <class T>
+void ABBImp<T>::insertar(NodoABB<T>* & a, T x) {
+	if (a == NULL) {
+		a = new NodoABB<T>(x);
+	} else {
+		if (a->dato < x) {
+			if (menorQueTodos(a->hIzq, x) && mayorQueTodos(a->hDer, x)) {
+				NodoABB<T> * aux = a;
+				a = new NodoABB<T>(x);
+				a->hDer = aux->hDer;
+				aux->hDer = NULL;
+				a->hIzq = aux;
+			} else insertar(a->hDer, x);
+		} else if (a->dato > x) {
+			if (menorQueTodos(a->hDer, x) && mayorQueTodos(a->hDer, x)) {
+				NodoABB<T> * aux = a;
+				a = new NodoABB<T>(x);
+				a->hIzq = aux->hIzq;
+				aux->hIzq = NULL;
+				a->hDer = aux;
+			} else insertar(a->hIzq, x);
+		}
+	}
+}
 
 template <class T>
 ABBImp<T>::ABBImp() {
@@ -73,7 +71,7 @@ void ABBImp<T>::Vaciar() {
 
 template <class T>
 void ABBImp<T>::Insertar(T &e) {
-	//No imp
+	insertar(this->raiz, e);
 }
 
 

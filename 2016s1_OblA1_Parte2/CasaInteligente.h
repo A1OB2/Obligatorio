@@ -82,6 +82,8 @@ private:
 	Referencia<Alarma> * alarma;*/
 	ABB<Luz> * luces;
 	Lista<Asociacion<int, Referencia<Sensor>>> * sensores;
+	Lista<int> * lista;
+
 	Lista<Escena> * escenas;
 	ABB<Artefacto> * artefactos;
 	Alarma * alarma;
