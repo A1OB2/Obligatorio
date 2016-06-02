@@ -75,18 +75,13 @@ public:
 	TipoRetorno ImprimirEscenasRaras() const;
 
 private:
-	/*ABB<Referencia<Luz>> * luces;
-	ABB<Referencia<Sensor>> * sensores;
-	Lista<Referencia<Escena>> * escenas;
-	ABB<Referencia<Artefacto>> * artefactos;
-	Referencia<Alarma> * alarma;*/
-	ABB<Luz> * luces;
+	ABB<Asociacion<int,Referencia<Luz>>> * luces;
 	Lista<Asociacion<int, Referencia<Sensor>>> * sensores;
-	Lista<int> * lista;
+	Lista<Asociacion<int,Referencia<Escena>>> * escenas;
+	ABB<Asociacion<int, Referencia<Artefacto>>> * artefactos;
+	Referencia<Alarma> * alarma;
+	//Auxiliares
 
-	Lista<Escena> * escenas;
-	ABB<Artefacto> * artefactos;
-	Alarma * alarma;
 };
 
 #endif

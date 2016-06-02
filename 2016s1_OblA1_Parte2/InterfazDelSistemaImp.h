@@ -31,7 +31,6 @@ public:
 	TipoRetorno VolverAlEstadoAnterior();
 
 private:
-
 		InterfazDelSistemaImp() { assert(false); } // Constructor por defecto.
 
 		CasaInteligente * casa;

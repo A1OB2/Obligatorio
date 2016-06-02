@@ -131,6 +131,8 @@ public:
 		return *this;
 	}
 
+	virtual void imprimir() abstract;
+
 protected:
 
 	Lista() { }

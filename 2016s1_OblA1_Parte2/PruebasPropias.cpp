@@ -23,9 +23,8 @@ void noCumploCond(int nro) {
 }
 
 
-void PruebasPropias::correrPruebaConcreta()
-{
-	InterfazDelSistema *interfaz = new InterfazDelSistemaImp(10, 0);
+void PruebasPropias::correrPruebaConcreta(){
+	InterfazDelSistema *interfaz = new InterfazDelSistemaImp(10,0);
 	interfaz->AgregarLuz(1,"Luz 1");
 	interfaz->AgregarLuz(2,"Luz 2");
 	interfaz->CambiarEstadoLuz(1, 50);

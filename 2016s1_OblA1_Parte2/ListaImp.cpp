@@ -18,12 +18,12 @@ ListaImp<T>::ListaImp(){
 
 template <class T>
 ListaImp<T>::ListaImp(const Lista<T> &l) {
-	//NO IMPLEMENTADO
+	assert(false);
 }
 
 template <class T>
 ListaImp<T>::ListaImp(const ListaImp<T> &l) {
-	//NO IMPLEMENTADO
+	assert(false);
 }
 
 template <class T>
@@ -140,6 +140,20 @@ bool ListaImp<T>::EsLlena()const {
 template <class T>
 Iterador<T> ListaImp<T>::GetIterador() const {
 	return IteradorListaImp<T>(*this);
+}
+
+template<class T>
+void ListaImp<T>::imprimir() {
+	imprimir(lista);
+}
+
+template<class T>
+void ListaImp<T>::imprimir(NodoLista<T> *l) {
+	if (l != NULL) {
+		int i = l->dato.GetDominio();
+		auto estado = l->dato.GetRangoInseguro().GetDato();//.GetRangoInseguro().GetDato().GetEstado();
+		cout << i << ":" << estado << endl;
+	}
 }
 
 #endif

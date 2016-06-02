@@ -7,7 +7,8 @@ using namespace std;
  ///////////////////////////
 // ---------------------- //
 // DEFINICIONES DE TIPOS  //
-// ---------------------- //////////////////////////////
+// ---------------------- //
+////////////////////////////
 
 #include "TipoRetorno.h"
 
@@ -26,6 +27,9 @@ enum _estadoSensor {
 };
 typedef enum _estadoSensor EstadoSensor;
 
-
+//ostream& operator<<(ostream& out, const EstadoAlarma e) {
+//	char * s = e == DESACTIVADA ? "DESACTIVADA" : "ACTIVADA";
+//	return out << s;
+//}
 
 #endif
