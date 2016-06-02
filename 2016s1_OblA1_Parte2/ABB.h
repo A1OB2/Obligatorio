@@ -2,6 +2,7 @@
 #define ABB_H
 
 #include "assert.h"
+#include "NodoABB.h"
 
 template <class T>
 class ABB abstract {
@@ -66,6 +67,7 @@ class ABB abstract {
 		// Recibe un puntero que permite pasarle parametros adicionales a la funcion. Si no se usa pasar NULL.
 		virtual void PosOrder(void (*f) (const T&, void *), void *ptr) const abstract;
 
+		virtual NodoABB<T>* getRaiz() const abstract;
 
 	protected:
 

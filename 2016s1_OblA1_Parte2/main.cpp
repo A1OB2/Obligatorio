@@ -23,6 +23,7 @@ void main()
 	//}
 
 	ABB<int> * arbol = new ABBImp<int>();
+	//Referencia<ABBImp> * ref = new Referencia(arbol);
 	int dato = 1;
 	arbol->Insertar(dato);
 

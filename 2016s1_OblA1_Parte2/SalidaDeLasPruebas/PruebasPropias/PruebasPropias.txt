@@ -1,3 +1,4 @@
+ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	
 
   +------------------------------+
     RESULTADO DE LOS RETORNOS (NO CHEQUEA SI LAS SALIDAS SON CORRECTAS O NO!)
