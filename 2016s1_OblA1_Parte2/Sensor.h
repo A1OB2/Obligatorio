@@ -39,6 +39,10 @@ public:
 	// Operador de comparacion ==. Compara el nro
 	bool operator==(const Sensor &s) const;
 
+	bool operator<(const Sensor &s) const;
+
+	bool operator>(const Sensor &s) const;
+
 	unsigned int GetNro() const;
 
 	void SetEstado(EstadoSensor estado);
@@ -46,8 +50,13 @@ public:
 
 	void Imprimir(ostream& out) const;
 
-private:
+	void ImprimirCambio() const;
+	void Ejecutar(CasaInteligente *casa);
+	Dispositivo* Clon() const;
 
+private:
+	unsigned int nro;
+	EstadoSensor estado;
 };
 
 

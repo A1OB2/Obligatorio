@@ -34,7 +34,7 @@ private:
 
 		InterfazDelSistemaImp() { assert(false); } // Constructor por defecto.
 
-		// Definir atributo/s
+		CasaInteligente * casa;
 
 };
 

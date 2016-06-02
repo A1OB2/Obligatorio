@@ -3,14 +3,20 @@
 #ifndef CASAINTELIGENTE_CPP
 #define CASAINTELIGENTE_CPP
 
-CasaInteligente::CasaInteligente()
-{
+CasaInteligente::CasaInteligente(){
 	// NO IMPLEMENTADA
 }
 
-CasaInteligente::CasaInteligente(unsigned int CANT_SENSORES)
-{
-	// NO IMPLEMENTADA
+CasaInteligente::CasaInteligente(unsigned int CANT_SENSORES){
+	/*luces = NULL;
+	artefactos = NULL;
+	escenas = NULL;
+	alarma = new Alarma();*/
+	//sensores = new ListaImp<Asociacion<int, Referencia<Sensor>>>();
+	lista = new ListaImp<int>();
+	/*for (int i = 1; i <= CANT_SENSORES; i++) {
+		Sensor s(i);
+	}*/
 }
 
 CasaInteligente::CasaInteligente(const CasaInteligente &casa) 

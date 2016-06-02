@@ -10,7 +10,8 @@ class NodoLista {
 
 		NodoLista(const U &e, NodoLista<U> *a, NodoLista<U> *s) : dato(e), ant(a), sig(s) {}
 		NodoLista(const NodoLista<U> &n) : dato(n.dato), ant(n.ant), sig(n.sig)  {}
-
+		NodoLista(const U &e) : dato(e), ant(NULL), sig(NULL) {}
+		NodoLista() {}
 		NodoLista<U> &operator=(const NodoLista<U> &n) { dato = n.dato; ant = n.ant; sig = n.sig; }
 
 		virtual ~NodoLista() {}

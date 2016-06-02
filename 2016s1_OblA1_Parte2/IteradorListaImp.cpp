@@ -10,7 +10,7 @@ IteradorListaImp<T>::IteradorListaImp() {
 
 template <class T>
 IteradorListaImp<T>::IteradorListaImp(const ListaImp<T> &l) {
-	ppio = actual = l.ppio;
+	ppio = actual = l.lista;
 }
 
 template <class T>

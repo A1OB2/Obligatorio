@@ -34,7 +34,7 @@ Luz & Luz::operator=(const Luz &l) {
 }
 
 Luz::~Luz() {
-	// NO IMPLEMENTADA
+	//delete this->nombre;
 }
 
 bool Luz::operator==(const Luz &l) const {
@@ -43,22 +43,19 @@ bool Luz::operator==(const Luz &l) const {
 }
 
 unsigned int Luz::GetNro() const {
-	// NO IMPLEMENTADA
-	return 0;
+	return this->nroLuz;
 }
 
 Cadena Luz::GetNombre() const {
-	// NO IMPLEMENTADA
-	return "";
+	return this->nombre;
 }
 
 void Luz::SetIntensidad(unsigned int intensidad) {
-	// NO IMPLEMENTADA
+	this->intensidad = intensidad;
 }
 
 unsigned int Luz::GetIntensidad() const {
-	// NO IMPLEMENTADA
-	return 0;
+	return this->intensidad;
 }
 
 void Luz::Imprimir() const {

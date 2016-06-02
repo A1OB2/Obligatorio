@@ -53,7 +53,7 @@ public:
 	Iterador<T> GetIterador() const;
 
 protected:
-
+	NodoLista<T> * lista;
 };
 
 #include "ListaImp.cpp"
