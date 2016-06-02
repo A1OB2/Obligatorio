@@ -1,32 +1,5 @@
-﻿  ConductorPruebaObl2.cpp
-  IteradorListaOrdImp.cpp
-  ListaOrdImp.cpp
-  main.cpp
-  PruebasCorreccion.cpp
-  PruebasEjemploDeUso.cpp
+﻿  CasaInteligente.cpp
+c:\users\matías\onedrive\ort\a1\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(20): warning C4018: '<=': signed/unsigned mismatch
   PruebasPropias.cpp
-  EstadisticaPrueba.cpp
-  ConductorPrueba.cpp
-  Prueba.cpp
-  ManejadorImpresionPrueba.cpp
-  ManejadorSalidaPrueba.cpp
-  IteradorListaImp.cpp
-  ListaImp.cpp
-  InterfazDelSistemaImp.cpp
-  ABBImp.cpp
-  Asociacion.cpp
-  Cadena.cpp
-  Referencia.cpp
-  CasaInteligente.cpp
   Generating Code...
-  Compiling...
-  Condicion.cpp
-  Alarma.cpp
-  Artefacto.cpp
-  Luz.cpp
-  Sensor.cpp
-  Cambio.cpp
-  Escena.cpp
-  Generating Code...
-ConductorPruebaObl2.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-  aFramework.vcxproj -> C:\Users\Bruno\Documents\GitHub\Obligatorio\2016s1_OblA1_Parte2\.\Debug\aFramework.exe
+  aFramework.vcxproj -> C:\Users\Matías\OneDrive\ORT\A1\Obligatorio\2016s1_OblA1_Parte2\.\Debug\aFramework.exe

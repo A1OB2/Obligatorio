@@ -41,6 +41,8 @@ public:
 	
 	void PosOrder(void (*f) (const T&, void *), void *ptr) const;
 
+	NodoABB<T> * getRaiz() const;
+
 protected:
 	NodoABB<T> * raiz;
 
@@ -48,6 +50,8 @@ private:
 	void insertar(NodoABB<T>* & a, T x);
 	bool menorQueTodos(NodoABB<T>* a, T x);
 	bool mayorQueTodos(NodoABB<T>* a, T x);
+
+
 };
 
 #include "ABBImp.cpp"

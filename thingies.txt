@@ -1,0 +1,19 @@
+----------------------------------------------
+GUTI
+----------------------------------------------
+**********************************************
+InterfazDelSistemaImp::AgregarLuz
+**********************************************
+TOCADOS:
+CasaInteligente.h -> private: 
+	-Cambie lista de luces a lista de referencia de luces
+	-Agregue aux methods section
+CasaInteligente.cpp -> AgregarLuz(), CasaInteligente(CANT_SENSORES)
+InterfazDelSistemaImp.cpp
+TipoRetorno.h -> Agregue un enum nuevo para los diferentes errores de las luces
+++++++++++++++++++++++++++++++++++++++++++++++
+COSAS RESTANTES:
+-Error al grabar escena que pide en letra
+----------------------------------------------
+BRUNO
+----------------------------------------------

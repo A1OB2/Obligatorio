@@ -15,7 +15,8 @@ InterfazDelSistemaImp::~InterfazDelSistemaImp(){
 }
 
 TipoRetorno InterfazDelSistemaImp::AgregarLuz(unsigned int nroLuz, char* nombre){
-	return NO_IMPLEMENTADA;
+	TipoRetorno retorno = this->casa->AgregarLuz(nroLuz, nombre);
+	return retorno;
 }
 
 TipoRetorno InterfazDelSistemaImp::AgregarArtefacto(unsigned int nroArt, char* nombre){

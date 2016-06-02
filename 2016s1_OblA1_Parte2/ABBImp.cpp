@@ -130,7 +130,13 @@ template <class T>
 void ABBImp<T>::PosOrder(void (*f) (const T&, void *), void *ptr) const {
 	//NO IMPLEMENTADO
 }
+//own method
 
+
+template<class T>
+NodoABB<T> * ABBImp<T>::getRaiz() const{
+	return this->raiz;
+}
 
 
 #endif

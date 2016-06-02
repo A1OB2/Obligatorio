@@ -7,4 +7,11 @@ enum _retorno
 };
 typedef enum _retorno TipoRetorno;
 
+
+enum _errorRepetido {
+	E_NOMBRE, E_NUMERO, E_ESTADO, BIEN
+};
+typedef enum _errorRepetido ErrorRepetido;
+
+
 #endif

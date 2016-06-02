@@ -30,16 +30,14 @@ class Condicion;
 #include "Escena.h"
 #include "Condicion.h"
 
-
-class CasaInteligente 
-{
+class CasaInteligente{
 public:
-	
+
 	// Constructor por defecto
 	CasaInteligente();
 
 	CasaInteligente(unsigned int CANT_SENSORES);
-	
+
 	// Constructor copia
 	CasaInteligente(const CasaInteligente &casa);
 
@@ -63,10 +61,10 @@ public:
 	TipoRetorno CambiarEstadoArtefacto(unsigned int nroArt, EstadoArtefacto nuevoEstado);
 	TipoRetorno CambiarEstadoAlarma(EstadoAlarma nuevoEstado);
 	TipoRetorno ImprimirEstadoCasa() const;
-	TipoRetorno CrearCondicion(unsigned int nroCondicion, void (*seCumpleCondicion)(int), void (*seDejaDeCumplirCondicion)(int));
+	TipoRetorno CrearCondicion(unsigned int nroCondicion, void(*seCumpleCondicion)(int), void(*seDejaDeCumplirCondicion)(int));
 	TipoRetorno AgregarSensorACondicion(unsigned int nroCondicion, unsigned int nroSensor, EstadoSensor estado);
 	TipoRetorno CambiarEstadoSensor(unsigned int nroSensor, EstadoSensor estado);
-	
+
 	TipoRetorno InicioEscena(unsigned int nroEscena, Cadena nombre);
 	TipoRetorno FinEscena();
 	TipoRetorno EjecutarEscena(unsigned int nroEscena);
@@ -75,18 +73,20 @@ public:
 	TipoRetorno ImprimirEscenasRaras() const;
 
 private:
-	/*ABB<Referencia<Luz>> * luces;
-	ABB<Referencia<Sensor>> * sensores;
-	Lista<Referencia<Escena>> * escenas;
-	ABB<Referencia<Artefacto>> * artefactos;
-	Referencia<Alarma> * alarma;*/
-	ABB<Luz> * luces;
+	ABB<Asociacion<int, Referencia<Luz>>> * luces;
 	Lista<Asociacion<int, Referencia<Sensor>>> * sensores;
-	Lista<int> * lista;
+	Lista<Asociacion<int, Referencia<Escena>>> * escenas;
+	ABB<Asociacion<int, Referencia<Artefacto>>> * artefactos;
+	Referencia<Alarma> * alarma;
 
-	Lista<Escena> * escenas;
-	ABB<Artefacto> * artefactos;
-	Alarma * alarma;
+	//aux methods
+
+	template <class T>
+	ErrorRepetido puedoInsertar(ABB<Asociacion<int, Referencia<T>>>* & a, Asociacion<int, Referencia<T>> x);
+	template <class T>
+	bool nombreRepetido(NodoABB<Asociacion<int, Referencia<T>>>* a, Asociacion<int, Referencia<T>> x);
+	template <class T>
+	bool numeroRepetido(NodoABB<Asociacion<int, Referencia<T>>>* a, Asociacion<int, Referencia<T>> x);
 };
 
 #endif
