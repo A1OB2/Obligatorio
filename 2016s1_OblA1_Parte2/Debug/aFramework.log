@@ -1,16 +1,1 @@
-﻿  Asociacion.cpp
-  CasaInteligente.cpp
-c:\users\matías\onedrive\ort\a1\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(24): warning C4018: '<=': signed/unsigned mismatch
-  IteradorListaImp.cpp
-  IteradorListaOrdImp.cpp
-  ListaImp.cpp
-  ListaOrdImp.cpp
-  Luz.cpp
-  PruebasPropias.cpp
-  Referencia.cpp
-  Sensor.cpp
-  main.cpp
-  Generating Code...
-  LINK : .\Debug/aFramework.exe not found or not built by the last incremental link; performing full link
-ConductorPruebaObl2.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
-  aFramework.vcxproj -> C:\Users\Matías\OneDrive\ORT\A1\Obligatorio\2016s1_OblA1_Parte2\.\Debug\aFramework.exe
+﻿  aFramework.vcxproj -> C:\Users\Matías\OneDrive\ORT\A1\Obligatorio\2016s1_OblA1_Parte2\.\Debug\aFramework.exe

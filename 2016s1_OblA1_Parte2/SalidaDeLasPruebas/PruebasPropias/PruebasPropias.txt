@@ -1,8 +1,11 @@
 ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	
 ERROR: El porcentaje debe ser igual o menor a 100
--Alarma 0
+OK
+1: Pepito
+-Alarma DESACTIVADA
 -Sensores:
-10:
+-Luces:
+-Artefactos:
 
   +------------------------------+
     RESULTADO DE LOS RETORNOS (NO CHEQUEA SI LAS SALIDAS SON CORRECTAS O NO!)

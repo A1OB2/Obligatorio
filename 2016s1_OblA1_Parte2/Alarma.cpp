@@ -51,7 +51,7 @@ EstadoAlarma Alarma::GetEstado() const {
 }
 
 void Alarma::Imprimir() const  {
-	// NO IMPLEMENTADA
+	cout << "-Alarma " << (estado==ACTIVADA?"ACTIVADA":"DESACTIVADA") << endl;
 }
 
 void Alarma::ImprimirCambio() const  {
