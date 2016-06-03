@@ -11,7 +11,8 @@ InterfazDelSistemaImp::InterfazDelSistemaImp(unsigned int CANT_SENSORES, unsigne
 
 // Eliminación de los objetos creados con "new"
 InterfazDelSistemaImp::~InterfazDelSistemaImp(){
-	this->casa = new CasaInteligente();
+//	delete casa;
+//	delete this;
 }
 
 TipoRetorno InterfazDelSistemaImp::AgregarLuz(unsigned int nroLuz, char* nombre){
@@ -19,7 +20,7 @@ TipoRetorno InterfazDelSistemaImp::AgregarLuz(unsigned int nroLuz, char* nombre)
 }
 
 TipoRetorno InterfazDelSistemaImp::AgregarArtefacto(unsigned int nroArt, char* nombre){
-	return NO_IMPLEMENTADA;
+	return this->casa->AgregarArtefacto(nroArt, nombre);
 }
 
 TipoRetorno InterfazDelSistemaImp::CambiarEstadoLuz(unsigned int nroLuz, unsigned int porcentaje){

@@ -52,7 +52,9 @@ public:
 	Dispositivo* Clon() const;
 
 private:
-
+	EstadoArtefacto estado;
+	int numero;
+	Cadena nombre;
 };
 
 #endif

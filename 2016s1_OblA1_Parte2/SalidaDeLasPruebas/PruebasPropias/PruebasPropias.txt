@@ -1,4 +1,5 @@
 ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	
+ERROR: El porcentaje debe ser igual o menor a 100
 -Alarma 0
 -Sensores:
 10:

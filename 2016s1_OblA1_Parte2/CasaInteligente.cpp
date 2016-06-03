@@ -58,27 +58,46 @@ bool CasaInteligente::operator<(const CasaInteligente &casa) const {
 
 TipoRetorno CasaInteligente::AgregarLuz(unsigned int nroLuz, Cadena nombre)
 {
-	TipoRetorno retorno = OK;
-	Luz newLuz = Luz(nroLuz, nombre);
-	Asociacion<int, Referencia<Luz>> asoc = Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(newLuz));
+	TipoRetorno retorno;
+	Asociacion<int, Referencia<Luz>> asoc = Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(Luz(nroLuz, nombre)));
 	ErrorRepetido e = this->puedoInsertar(luces, asoc);
-	if (e == E_NOMBRE) {
-		cout << "ERROR: Ya	existe	una	luz	con	el	mismo	nombre.	" << endl;
-		retorno = ERROR;
+	switch (e) {
+		case E_NOMBRE:
+			cout << "ERROR: Ya	existe	una	luz	con	el	mismo	nombre.	" << endl;
+			retorno = ERROR;
+		break;
+		case E_NUMERO:
+			cout << "ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	" << endl;
+			retorno = ERROR;
+		break;
+		default:
+			luces->Insertar(asoc);
+			retorno = OK;
+		break;
 	}
-	else if (e == E_NUMERO) {
-		cout << "ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	" << endl;
-		retorno = ERROR;
-	}
-	else retorno = OK;
-
-	if(retorno == OK) luces->Insertar(asoc);
 	return retorno;
 }
 
 TipoRetorno CasaInteligente::AgregarArtefacto(unsigned int nroArt, Cadena nombre)
 {
-	return NO_IMPLEMENTADA;
+	TipoRetorno retorno;
+	Asociacion<int, Referencia<Artefacto>> asoc = Asociacion<int, Referencia<Artefacto>>(nroArt, Referencia<Artefacto>(Artefacto(nroArt, nombre)));
+	ErrorRepetido e = this->puedoInsertar(artefactos, asoc);
+	switch (e) {
+	case E_NOMBRE:
+		cout << "ERROR: Ya	existe	una	luz	con	el	mismo	nombre.	" << endl;
+		retorno = ERROR;
+	break;
+	case E_NUMERO:
+		cout << "ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	" << endl;
+		retorno = ERROR;
+	break;
+	default:
+		artefactos->Insertar(asoc);
+		retorno = OK;
+	break;
+	}
+	return retorno;
 }
 
 TipoRetorno CasaInteligente::CambiarEstadoLuz(unsigned int nroLuz, unsigned int porcentaje)
@@ -91,7 +110,7 @@ TipoRetorno CasaInteligente::CambiarEstadoLuz(unsigned int nroLuz, unsigned int 
 			return OK;
 		}
 		else {
-			cout << "ERROR: No existe una luz con ese numero" << endl;;
+			cout << "ERROR: No existe una luz con ese numero" << endl;
 			return ERROR;
 		}
 	}
