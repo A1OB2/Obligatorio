@@ -94,8 +94,6 @@ TipoRetorno CasaInteligente::AgregarArtefacto(unsigned int nroArt, Cadena nombre
 	break;
 	default:
 		artefactos->Insertar(asoc);
-		cout << "OK" << endl;
-		asoc.GetRango().GetDato().Imprimir();
 		retorno = OK;
 	break;
 	}
