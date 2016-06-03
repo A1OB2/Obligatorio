@@ -67,7 +67,7 @@ unsigned int Luz::GetIntensidad() const {
 }
 
 void Luz::Imprimir() const {
-	// NO IMPLEMENTADA
+	cout << this->GetNro() << ": " << this->GetNombre() << endl;
 }
 
 void Luz::ImprimirCambio() const {

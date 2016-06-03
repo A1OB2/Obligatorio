@@ -17,20 +17,6 @@ void main()
 	NodoLista<Luz> * li = NULL;
 	a->aNodoLista(li);*/
 
-<<<<<<< HEAD
-	//Iterador<int> it = lista->GetIterador();
-	//it.Principio();
-	////while (!it.EsFin()) {
-	////	int elementoActual = it.ElementoInseguro();
-	////	//hago lo que quiera con Elementoactual
-	////	it.Resto();
-	////}
-	//ABB<int> * arbol = new ABBImp<int>();
-	//int dato = 1;
-	//arbol->Insertar(dato);
-=======
->>>>>>> bruno
-
 	system("pause");
 
 }
