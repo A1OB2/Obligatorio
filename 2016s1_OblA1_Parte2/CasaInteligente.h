@@ -87,6 +87,8 @@ private:
 	bool nombreRepetido(NodoABB<Asociacion<int, Referencia<T>>>* a, Asociacion<int, Referencia<T>> x);
 	template <class T>
 	bool numeroRepetido(NodoABB<Asociacion<int, Referencia<T>>>* a, Asociacion<int, Referencia<T>> x);
+	template <class T>
+	NodoABB<Asociacion<int, Referencia<T>>> * getNodoConNum(NodoABB<Asociacion<int, Referencia<T>>> * a, int num);
 };
 
 #endif

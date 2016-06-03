@@ -29,6 +29,7 @@ void PruebasPropias::correrPruebaConcreta(){
 	interfaz->AgregarLuz(2,"Luz 2");
 	interfaz->AgregarLuz(1, "Luz 2");
 	interfaz->CambiarEstadoLuz(1, 50);
+	interfaz->AgregarLuz(3, "Luz 3");
 	interfaz->ImprimirEstadoCasa();
 
 	delete interfaz;

@@ -63,7 +63,7 @@ TipoRetorno CasaInteligente::AgregarLuz(unsigned int nroLuz, Cadena nombre)
 	Asociacion<int, Referencia<Luz>> asoc = Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(newLuz));
 	ErrorRepetido e = this->puedoInsertar(luces, asoc);
 	if (e == E_NOMBRE) {
-		cout << "Ya	existe	una	luz	con	el	mismo	nombre.	" << endl;
+		cout << "ERROR: Ya	existe	una	luz	con	el	mismo	nombre.	" << endl;
 		retorno = ERROR;
 	}
 	else if (e == E_NUMERO) {
@@ -83,20 +83,20 @@ TipoRetorno CasaInteligente::AgregarArtefacto(unsigned int nroArt, Cadena nombre
 
 TipoRetorno CasaInteligente::CambiarEstadoLuz(unsigned int nroLuz, unsigned int porcentaje)
 {
-	if (porcentaje < 100) {
-		Luz newLuz = Luz(nroLuz, NULL);
+	if (porcentaje <= 100) {
+		Luz newLuz = Luz(nroLuz, "");
 		Asociacion<int, Referencia<Luz>> asoc = Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(newLuz));
 		if (this->numeroRepetido(luces->getRaiz(), asoc)) {
-			luces->Recuperar(asoc).GetRangoInseguro().GetDato().SetIntensidad(porcentaje);
+			this->getNodoConNum(luces->getRaiz(), nroLuz)->dato.GetRangoInseguro().GetDato().SetIntensidad(porcentaje);
 			return OK;
 		}
 		else {
-			cout << "No existe una luz con ese numero";
+			cout << "ERROR: No existe una luz con ese numero" << endl;;
 			return ERROR;
 		}
 	}
 	else {
-		cout << "El porcentaje debe ser igual o menor a 100";
+		cout << "ERROR: El porcentaje debe ser igual o menor a 100" << endl;
 		return ERROR;
 	}
 }
@@ -184,6 +184,25 @@ template <class T>
 bool CasaInteligente::numeroRepetido(NodoABB<Asociacion<int, Referencia<T>>>* a, Asociacion<int, Referencia<T>> e) {
 	if (a == NULL) return false;
 	return a->dato.GetDominio() == e.GetDominio() || numeroRepetido(a->hIzq, e) || numeroRepetido(a->hDer, e);
+}
+
+template<class T>
+NodoABB<Asociacion<int, Referencia<T>>>* CasaInteligente::getNodoConNum(NodoABB<Asociacion<int, Referencia<T>>>* a, int num)
+{
+	if (a != NULL) {
+		if (a->dato.GetDominio() == num) return a;
+		else {
+			NodoABB<Asociacion<int, Referencia<T>>> * derecha = getNodoConNum(a->hDer, num);
+			if (derecha != NULL) return derecha;
+			else {
+				NodoABB<Asociacion<int, Referencia<T>>> * izquierda = getNodoConNum(a->hIzq, num);
+				if (izquierda != NULL) return izquierda;
+				else return NULL;
+			}
+		
+		}
+	}
+	else return a;
 }
 
 
