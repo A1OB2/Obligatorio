@@ -255,4 +255,7 @@
       <Filter>Clases auxiliares</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="SalidaDeLasPruebas\PruebasPropias\PruebasPropias.txt" />
+  </ItemGroup>
 </Project>

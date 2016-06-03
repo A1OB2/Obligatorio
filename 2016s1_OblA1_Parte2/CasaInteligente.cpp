@@ -9,23 +9,23 @@
 CasaInteligente::CasaInteligente(){
 	luces = new ABBImp<Asociacion<int, Referencia<Luz>>>();
 	artefactos = new ABBImp<Asociacion<int,Referencia<Artefacto>>>();
-	escenas = new ListaImp<Asociacion<int, Referencia<Escena>>>();
+	escenas = new ABBImp<Asociacion<int, Referencia<Escena>>>();
 	alarma = new Referencia<Alarma>(Alarma());
-	sensores = new ListaImp<Asociacion<int, Referencia<Sensor>>>();
+	sensores = new ABBImp<Asociacion<int, Referencia<Sensor>>>();
 }
 
 
 CasaInteligente::CasaInteligente(unsigned int CANT_SENSORES){
 	luces = new ABBImp<Asociacion<int,Referencia<Luz>>>();
 	artefactos = new ABBImp<Asociacion<int, Referencia<Artefacto>>>();
-	escenas = new ListaImp<Asociacion<int, Referencia<Escena>>>();
+	escenas = new ABBImp<Asociacion<int, Referencia<Escena>>>();
 	alarma = new Referencia<Alarma>(Alarma());
-	sensores = new ListaImp<Asociacion<int, Referencia<Sensor>>>();
-	for (int i = 1; i <= CANT_SENSORES; i++) {
+	sensores = new ABBImp<Asociacion<int, Referencia<Sensor>>>();
+	for (unsigned int i = 1; i <= CANT_SENSORES; i++) {
 		Sensor s(i);
 		Referencia<Sensor> r(s);
 		Asociacion<int,Referencia<Sensor>> a(i,r);
-		sensores->AgregarPpio(a);
+		sensores->Insertar(a);
 	}
 }
 
@@ -112,20 +112,33 @@ TipoRetorno CasaInteligente::CambiarEstadoAlarma(EstadoAlarma nuevoEstado)
 }
 
 TipoRetorno CasaInteligente::ImprimirEstadoCasa() const{
-	//EstadoAlarma e = //alarma->GetDato().GetEstado();
-	/*auto estado = e;*/
-	cout << "-Alarma "<< DESACTIVADA << endl;
+
+	cout << this->alarma ->GetDato();//La referencia se interponia con la alarma. No se imprimia
 	cout << "-Sensores:" << endl;
-	//auto h = OFF;
-	//cout << typeid(h).name() << endl;
-	//if (h == 1) {
-	//	cout << "OFF ES 1" << endl;
-	//}else if (h == 0) {
-	//	cout << "OFF ES 0" << endl;
-	//}
-	sensores->imprimir();
-	//luces->imprimir();
-	return NO_IMPLEMENTADA;
+	NodoLista <Asociacion<int, Referencia<Sensor>>> * lSensores = NULL;
+	sensores->aNodoLista(lSensores);
+	while (lSensores != NULL) {
+		cout << lSensores->dato;
+		lSensores = lSensores->sig;
+	}
+	cout << "-Luces:" << endl;
+	NodoLista<Asociacion<int, Referencia<Luz>>> * lLuces = NULL;
+	luces->aNodoLista(lLuces);
+	if (lLuces == NULL) cout << "--No hay luces--" << endl;
+	while (lLuces != NULL) {
+		cout << lLuces->dato;
+		lLuces = lLuces->sig;
+	}
+	cout << "-Artefactos:" << endl;
+	NodoLista<Asociacion<int, Referencia<Artefacto>>> * lArtefactos = NULL;
+	artefactos->aNodoLista(lArtefactos);
+	if (lArtefactos == NULL) cout << "--No hay artefactos--" << endl;
+	while (lLuces != NULL) {
+		cout << lArtefactos->dato;
+		lArtefactos = lArtefactos->sig;
+	}
+
+	return OK;
 }
 
 TipoRetorno CasaInteligente::CrearCondicion(unsigned int nroCondicion, void (*seCumpleCondicion)(int), void (*seDejaDeCumplirCondicion)(int))

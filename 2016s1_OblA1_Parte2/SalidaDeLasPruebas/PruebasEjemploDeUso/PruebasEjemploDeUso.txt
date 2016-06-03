@@ -1,0 +1,9 @@
+
+  +------------------------------+
+    RESULTADO DE LOS RETORNOS (NO CHEQUEA SI LAS SALIDAS SON CORRECTAS O NO!)
+    PARA CHEQUEAR LAS SALIDAS HAY QUE COMPARAR EL ARCHIVO DE RESULTADOS ESPERADOS CON EL GENERADO
+
+    Pruebas que retornan TipoRetorno incorrecto: 0
+    Pruebas que retornan NO_IMPLEMENTADA:        0
+  +------------------------------+
+

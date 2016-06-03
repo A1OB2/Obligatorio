@@ -1,0 +1,25 @@
+-Alarma DESACTIVADA
+-Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+6: NORMAL
+7: NORMAL
+8: NORMAL
+9: NORMAL
+10: NORMAL
+-Luces:
+--No hay luces--
+-Artefactos:
+--No hay artefactos--
+
+  +------------------------------+
+    RESULTADO DE LOS RETORNOS (NO CHEQUEA SI LAS SALIDAS SON CORRECTAS O NO!)
+    PARA CHEQUEAR LAS SALIDAS HAY QUE COMPARAR EL ARCHIVO DE RESULTADOS ESPERADOS CON EL GENERADO
+
+    Pruebas que retornan TipoRetorno incorrecto: 0
+    Pruebas que retornan NO_IMPLEMENTADA:        0
+  +------------------------------+
+

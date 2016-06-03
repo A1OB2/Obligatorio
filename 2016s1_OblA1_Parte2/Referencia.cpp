@@ -4,8 +4,7 @@
 #define REFERENCIA_CPP
 
 template <class T>
-ostream &operator<< <>(ostream &out, const Referencia<T> &ref)
-{
+ostream &operator<< <>(ostream &out, const Referencia<T> &ref){
 	out << *(ref.puntero);
 	return out;
 }

@@ -13,7 +13,7 @@ ostream &operator<< <>(ostream& out, const ListaOrdImp<T> &l) {
 
 template <class T>
 ListaOrdImp<T>::ListaOrdImp(){
-	//NO IMPLEMENTADO
+	lista = NULL;
 }
 
 template <class T>
@@ -49,7 +49,7 @@ ListaOrdImp<T>::~ListaOrdImp(){
 
 template <class T>
 void ListaOrdImp<T>::AgregarOrd(const T &e) {
-	//NO IMPLEMENTADO
+	agregar(lista,e);
 }
 
 template <class T>
@@ -127,6 +127,20 @@ bool ListaOrdImp<T>::EsLlena()const {
 template <class T>
 Iterador<T> ListaOrdImp<T>::GetIterador() const {
 	return IteradorListaOrdImp<T>(*this);
+}
+
+template<class T>
+void ListaOrdImp<T>::agregar(NodoLista<T> * & l,const T & e) {
+	if (l == NULL) {
+		l = new NodoLista<T>(e);
+	}else if ( e <= lista->dato) {
+		NodoLista<T> * aux = l;
+		l = new NodoLista<T>(e);
+		aux->ant = l;
+		l->sig = aux;
+	} else {
+		agregar(l->sig,e);
+	}
 }
 
 #endif

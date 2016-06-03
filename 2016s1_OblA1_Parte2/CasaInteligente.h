@@ -74,8 +74,8 @@ public:
 
 private:
 	ABB<Asociacion<int, Referencia<Luz>>> * luces;
-	Lista<Asociacion<int, Referencia<Sensor>>> * sensores;
-	Lista<Asociacion<int, Referencia<Escena>>> * escenas;
+	ABB<Asociacion<int, Referencia<Sensor>>> * sensores;
+	ABB<Asociacion<int, Referencia<Escena>>> * escenas;
 	ABB<Asociacion<int, Referencia<Artefacto>>> * artefactos;
 	Referencia<Alarma> * alarma;
 
