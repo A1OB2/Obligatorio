@@ -2,9 +2,8 @@
 
 ManejadorImpresionPrueba* ManejadorImpresionPrueba::instanciaManejador = NULL;
 
-ManejadorImpresionPrueba::ManejadorImpresionPrueba()
+ManejadorImpresionPrueba::ManejadorImpresionPrueba(bool paraParseo)
 {
-
 }
 
 ManejadorImpresionPrueba::~ManejadorImpresionPrueba()
@@ -20,16 +19,24 @@ ManejadorImpresionPrueba ManejadorImpresionPrueba::getInstancia()
 	return ManejadorImpresionPrueba();
 }
 
-void ManejadorImpresionPrueba::imprimirResultado(TipoRetorno retorno, TipoRetorno retornoEsperado, char* comentario)const
+void ManejadorImpresionPrueba::imprimirResultado(TipoRetorno retorno, TipoRetorno retornoEsperado, char* comentario, bool paraParseo) const
 {
-	cout << endl;
-	cout << "----------------------------- Testeo --------------------------------" << endl;
+	if (paraParseo)
+	{
+		cout << "" << getStringRetorno(retornoEsperado);
+		cout << "-" << getStringRetorno(retorno);
+		cout << "-" << comentario;
+		cout << endl;
+	}else{
+		cout << endl;
+		cout << "----------------------------- Testeo --------------------------------" << endl;
 
-	imprimirComentario(comentario);
+		imprimirComentario(comentario);
 
-	imprimirRetorno(retorno,retornoEsperado);
+		imprimirRetorno(retorno, retornoEsperado);
 
-	cout << "---------------------------------------------------------------------" << endl << endl;
+		cout << "---------------------------------------------------------------------" << endl << endl;
+	}
 }
 
 void ManejadorImpresionPrueba::imprimirComentario(char* comentario)const
@@ -39,6 +46,30 @@ void ManejadorImpresionPrueba::imprimirComentario(char* comentario)const
 		cout << "\n  Comentario: " << comentario << endl;
 		cout << endl;
 	}
+}
+
+void ManejadorImpresionPrueba::iniciarSeccion(char* seccion) 
+{
+	cout << "-!-Ini::" << seccion << endl;
+
+	/*
+	cout << "\n\n";
+	cout << "*********************************************************************\n\n";
+	cout << "********************** INICIO "<< seccion << "***********************\n";
+	cout << "*********************************************************************\n\n";
+	*/
+}
+
+void ManejadorImpresionPrueba::cerrarSeccion(char* seccion)
+{
+	cout << "-!-Fin::" << seccion << endl;
+
+	/*
+	cout << "\n\n";
+	cout << "*********************************************************************\n\n";
+	cout << "********************** FIN " << seccion << "***********************\n";
+	cout << "*********************************************************************\n\n";
+	*/
 }
 
 void ManejadorImpresionPrueba::imprimirRetorno(TipoRetorno retorno, TipoRetorno retornoEsperado)const
@@ -64,22 +95,28 @@ char* ManejadorImpresionPrueba::getStringRetorno(TipoRetorno retorno)const
 		case ERROR: 
 			return "ERROR";
 		case NO_IMPLEMENTADA:
-			return "NO_IMPLEMENTADA";	
+			return "NO_IMPLEMENTADA";
+		case COMENTADA:
+			return "COMENTADA";
 		default:
 			return "BASURA";
 	}
 }
 
-void ManejadorImpresionPrueba::imprimirTotalResultados(const EstadisticaPrueba& estadistica)const
+void ManejadorImpresionPrueba::imprimirTotalResultados(const EstadisticaPrueba& estadistica, bool paraParseo)const
 {
-	cout << endl;
-	cout << "  +------------------------------+" << endl;
-	cout << "    RESULTADO DE LOS RETORNOS (NO CHEQUEA SI LAS SALIDAS SON CORRECTAS O NO!)" << endl;
-	cout << "    PARA CHEQUEAR LAS SALIDAS HAY QUE COMPARAR EL ARCHIVO DE RESULTADOS ESPERADOS CON EL GENERADO" << endl;
-	cout << endl;
-	//cout << "    Pruebas que retornan TipoRetorno correcto:   " << estadistica.getCantidadCorrectas() << endl;
-	cout << "    Pruebas que retornan TipoRetorno incorrecto: " << estadistica.getCantidadIncorrectas() << endl;
-	cout << "    Pruebas que retornan NO_IMPLEMENTADA:        " << estadistica.getCantidadNoImplementadas() << endl;
-	cout << "  +------------------------------+" << endl;
-	cout << endl;
+	if (!paraParseo)
+	{
+		cout << endl;
+		cout << "  +------------------------------+" << endl;
+		cout << "    RESULTADO DE LOS RETORNOS (NO CHEQUEA SI LAS SALIDAS SON CORRECTAS O NO!)" << endl;
+		cout << "    PARA CHEQUEAR SI ES CORRECTO HAY REVISAR TODOS LOS LISTADOS Y VER SI IMPRIME LO QUE DEBERIA" << endl;
+		cout << endl;
+		//cout << "    Pruebas que retornan TipoRetorno correcto:   " << estadistica.getCantidadCorrectas() << endl;
+		cout << "    Pruebas que retornan TipoRetorno incorrecto: " << estadistica.getCantidadIncorrectas() << endl;
+		cout << "    Pruebas que retornan NO_IMPLEMENTADA:        " << estadistica.getCantidadNoImplementadas() << endl;
+		cout << "    Pruebas que retornan COMENTADA:              " << estadistica.getCantidadComentadas() << endl;
+		cout << "  +------------------------------+" << endl;
+		cout << endl;
+	}
 }

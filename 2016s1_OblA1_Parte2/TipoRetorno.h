@@ -3,15 +3,12 @@
 
 enum _retorno
 {
-	OK, ERROR, NO_IMPLEMENTADA
+	OK, ERROR, NO_IMPLEMENTADA, COMENTADA
 };
 typedef enum _retorno TipoRetorno;
 
-
-enum _errorRepetido {
-	E_NOMBRE, E_NUMERO, E_ESTADO, BIEN
+enum ErrorRepetido {
+	E_NOMBRE,E_NUMERO,BIEN
 };
-typedef enum _errorRepetido ErrorRepetido;
-
 
 #endif

@@ -2,7 +2,7 @@
 
 EstadisticaPrueba::EstadisticaPrueba()
 {
-	cantCorrectas = cantIncorrectas = cantNoImplementadas = 0;
+	cantCorrectas = cantIncorrectas = cantNoImplementadas = cantComentadas = 0;
 }
 
 EstadisticaPrueba::~EstadisticaPrueba()
@@ -24,6 +24,12 @@ int EstadisticaPrueba::getCantidadNoImplementadas()const
 	return cantNoImplementadas;
 }
 
+int EstadisticaPrueba::getCantidadComentadas()const
+{
+	return cantComentadas;
+}
+
+
 void EstadisticaPrueba::resetearResultados()
 {
 	cantCorrectas = cantIncorrectas = cantNoImplementadas = 0;
@@ -31,14 +37,13 @@ void EstadisticaPrueba::resetearResultados()
 
 void EstadisticaPrueba::actualizarEstadisticas(TipoRetorno nroRetorno, TipoRetorno nroRetornoEsperado)
 {
-	if ( nroRetorno == nroRetornoEsperado )
-	{
+	if ( nroRetorno == nroRetornoEsperado )	{
 		cantCorrectas++;
+	} else if ( nroRetorno == NO_IMPLEMENTADA ) {
+		cantNoImplementadas++;
+	} else if (nroRetorno == COMENTADA ) {
+		cantComentadas++;
 	} else {
-		if ( nroRetorno == NO_IMPLEMENTADA ) {
-			cantNoImplementadas++;
-		} else {
-			cantIncorrectas++;
-		}
+		cantIncorrectas++;
 	}
 }

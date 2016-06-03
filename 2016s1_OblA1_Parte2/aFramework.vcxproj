@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConductorPruebaObl2.cpp" />
+    <ClCompile Include="InterfazDelSistemaProxy.cpp" />
     <ClCompile Include="IteradorListaOrdImp.cpp" />
     <ClCompile Include="ListaOrdImp.cpp" />
     <ClCompile Include="main.cpp">
@@ -133,6 +134,7 @@
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MaxSpeed</Optimization>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="ManejadorArchivos.cpp" />
     <ClCompile Include="PruebasCorreccion.cpp" />
     <ClCompile Include="PruebasEjemploDeUso.cpp" />
     <ClCompile Include="PruebasPropias.cpp" />
@@ -196,9 +198,11 @@
   <ItemGroup>
     <ClInclude Include="Cola.h" />
     <ClInclude Include="ConductorPruebaObl2.h" />
+    <ClInclude Include="InterfazDelSistemaProxy.h" />
     <ClInclude Include="IteradorListaOrdImp.h" />
     <ClInclude Include="ListaOrd.h" />
     <ClInclude Include="ListaOrdImp.h" />
+    <ClInclude Include="ManejadorArchivos.h" />
     <ClInclude Include="NodoABB.h" />
     <ClInclude Include="NodoAG.h" />
     <ClInclude Include="NodoLista.h" />
@@ -234,9 +238,6 @@
     <ClInclude Include="Pila.h" />
     <ClInclude Include="Constantes.h" />
     <ClInclude Include="TipoRetorno.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="SalidaDeLasPruebas\PruebasPropias\PruebasPropias.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

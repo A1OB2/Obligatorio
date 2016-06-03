@@ -1,6 +1,2 @@
 #TargetFrameworkVersion=v4.0:PlatformToolSet=v140:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=8.1
-<<<<<<< HEAD
-Debug|Win32|C:\Users\Matías\OneDrive\ORT\A1\Obligatorio\2016s1_OblA1_Parte2\|
-=======
 Debug|Win32|C:\Users\Bruno\Documents\GitHub\Obligatorio\2016s1_OblA1_Parte2\|
->>>>>>> f5bd1745dde748024e941f3ac8ef67afe365245a

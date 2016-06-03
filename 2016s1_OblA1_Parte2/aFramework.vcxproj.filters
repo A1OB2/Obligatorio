@@ -132,6 +132,12 @@
     <ClCompile Include="main.cpp">
       <Filter>Framework</Filter>
     </ClCompile>
+    <ClCompile Include="ManejadorArchivos.cpp">
+      <Filter>Framework\Manejadores</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfazDelSistemaProxy.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PruebasCorreccion.h">
@@ -254,8 +260,11 @@
     <ClInclude Include="NodoAG.h">
       <Filter>Clases auxiliares</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="SalidaDeLasPruebas\PruebasPropias\PruebasPropias.txt" />
+    <ClInclude Include="ManejadorArchivos.h">
+      <Filter>Framework\Manejadores</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfazDelSistemaProxy.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

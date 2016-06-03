@@ -1,0 +1,456 @@
+-!-Ini::PRUEBAS TIPO 1
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+6: NORMAL
+7: NORMAL
+8: NORMAL
+9: NORMAL
+10: NORMAL
+- Luces:
+--No hay luces--
+- Artefactos:
+--No hay artefactos--
+
+-!-0::OK-OK-Imprime el estado de la casa
+
+-!-1::OK-OK-Se agrega la luz 1
+
+-!-2::OK-OK-Se agrega la luz 2
+
+-!-3::OK-OK-Se agrega la luz 3
+
+-!-4::OK-OK-Se agrega el artefacto Art1
+
+-!-5::OK-OK-Se agrega el artefacto Art2
+
+-!-6::OK-OK-Se agrega el artefacto Art3
+
+-!-7::OK-OK-Se cambia la intensidad de la luz 1 a 50%
+
+-!-8::OK-OK-Se cambia la intensidad de la luz 2 a 80%
+
+-!-9::OK-OK-Se cambia el estado del artefacto 1 a ON
+
+-!-10::OK-OK-Se cambia el estado del artefacto 1 a OFF
+
+-!-11::OK-OK-Se cambia el estado de la alarma a ACTIVADA
+
+-!-12::OK-OK-Se cambia el estado de la alarma a DESACTIVADA
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+6: NORMAL
+7: NORMAL
+8: NORMAL
+9: NORMAL
+10: NORMAL
+- Luces:
+1: Luz 1: 50%
+2: Luz 2: 80%
+3: Luz 3: 0%
+- Artefactos:
+1: Art1: OFF
+2: Art2: OFF
+3: Art3: OFF
+
+-!-13::OK-OK-Imprime el estado de la casa
+
+-!-14::OK-OK-Cambia al sensor 5 a ENALARMA
+
+-!-15::OK-OK-Cambia al sensor 3 a ENALARMA
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: NORMAL
+2: NORMAL
+3: ENALARMA
+4: NORMAL
+5: ENALARMA
+6: NORMAL
+7: NORMAL
+8: NORMAL
+9: NORMAL
+10: NORMAL
+- Luces:
+1: Luz 1: 50%
+2: Luz 2: 80%
+3: Luz 3: 0%
+- Artefactos:
+1: Art1: OFF
+2: Art2: OFF
+3: Art3: OFF
+
+-!-16::OK-OK-Imprime el estado de la casa
+-!-Fin::PRUEBAS TIPO 1
+-!-Ini::PRUEBAS Condiciones
+
+-!-17::OK-OK-Crea la condición 1
+
+-!-18::OK-OK-Crea la condición 2
+
+-!-19::OK-OK-Agrega a la condición 1 el sensor 1 con el valor NORMAL.
+
+-!-20::OK-OK-Agrega a la condición 2 el sensor 3 con el valor ENALARMA.
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+6: NORMAL
+7: NORMAL
+8: NORMAL
+9: NORMAL
+10: NORMAL
+- Luces:
+1: Luz 1: 0%
+2: Luz 2: 0%
+- Artefactos:
+1: Art1: OFF
+2: Art2: OFF
+
+-!-21::OK-OK-Imprime el estado de la casa
+
+-!-22::OK-OK-Cambia al sensor 1 a ENALARMA, como la condicion no se cumplio aun no pasa nada
+Se cumple cond: 1
+
+-!-23::OK-OK-Cambia al sensor 1 a NORMAL, dejando de cumplir la condición 1
+Se deja de cumplir cond: 1
+
+-!-24::OK-OK-Cambia al sensor 1 a ENALARMA, pasando a cumplir la condición 1
+Se cumple cond: 2
+
+-!-25::OK-OK-Cambia al sensor 3 a ENALARMA pasando a cumplir la condición 2
+Se deja de cumplir cond: 2
+
+-!-26::OK-OK-Cambia al sensor 3 a NORMAL, dejando de cumplir la condición 2
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: ENALARMA
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+6: NORMAL
+7: NORMAL
+8: NORMAL
+9: NORMAL
+10: NORMAL
+- Luces:
+1: Luz 1: 0%
+2: Luz 2: 0%
+- Artefactos:
+1: Art1: OFF
+2: Art2: OFF
+
+-!-27::OK-OK-Imprime el estado de la casa
+-!-Fin::PRUEBAS Condiciones
+-!-Ini::PRUEBAS Escenas
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+- Luces:
+1: Luz 1: 0%
+2: Luz 2: 0%
+- Artefactos:
+1: Art1: OFF
+2: Art2: OFF
+
+-!-28::OK-OK-Imprime el estado de la casa
+
+-!-29::OK-OK-Crea la escena 1
+
+-!-30::OK-OK-Guarda el cambio de estado en la escena
+
+-!-31::OK-OK-Guarda el cambio de estado en la escena
+
+-!-32::OK-OK-Finaliza la escena 1
+
+-!-33::OK-OK-Crea la escena 2
+
+-!-34::OK-OK-Guarda el cambio de estado en la escena
+
+-!-35::OK-OK-Finaliza la escena 2
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+- Luces:
+1: Luz 1: 0%
+2: Luz 2: 0%
+- Artefactos:
+1: Art1: OFF
+2: Art2: OFF
+
+-!-36::OK-OK-Imprime el estado de la casa
+
+-!-37::OK-OK-Ejecuta la escena 1
+
+-!-38::OK-OK-Ejecuta la escena 1
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+- Luces:
+1: Luz 1: 50%
+2: Luz 2: 70%
+- Artefactos:
+1: Art1: ON
+2: Art2: OFF
+
+-!-39::OK-OK-Imprime el estado de la casa
+Escenas:
+1: Escena 1
+2: Escena 2
+
+-!-40::OK-OK-Imprime las escenas 1 y 2
+Escena 1 - Escena 1:
+- Luz: 1: Luz 1: 50%
+- Luz: 2: Luz 2: 70%
+
+-!-41::OK-OK-Imprime la escena 1
+-!-Fin::PRUEBAS Escenas
+-!-Ini::PRUEBAS ImprimirEscenasRaras
+Escenas raras:
+3: Escena 3
+
+-!-42::OK-OK-Imprime las escenas raras (en este caso, la escena 3)
+-!-Fin::PRUEBAS ImprimirEscenasRaras
+-!-Ini::PRUEBAS ERROR AgregarLuz
+ERROR: Ya existe una luz con el mismo numero.
+
+-!-43::ERROR-ERROR-Ya existe una luz con ese número
+ERROR: Ya existe una luz con el mismo numero.
+
+-!-44::ERROR-ERROR-Ya existe una luz con ese número
+ERROR: Ya existe una luz con el mismo nombre.
+
+-!-45::ERROR-ERROR-Ya existe una luz con ese nombre
+ERROR: Ya existe una luz con el mismo nombre.
+
+-!-46::ERROR-ERROR-Ya existe una luz con ese nombre
+ERROR: Fue iniciada la grabacion de una escena.
+
+-!-47::ERROR-ERROR-Fue iniciada la grabación de una escena
+-!-Fin::PRUEBAS ERROR AgregarLuz
+-!-Ini::PRUEBAS ERROR AgregarArtefacto
+ERROR: Ya existe un artefacto con el mismo numero.
+
+-!-48::ERROR-ERROR-Ya existe un artefacto con ese número
+ERROR: Ya existe un artefacto con el mismo numero.
+
+-!-49::ERROR-ERROR-Ya existe un artefacto con ese número
+ERROR: Ya existe un artefacto con el mismo nombre.
+
+-!-50::ERROR-ERROR-Ya existe una artefacto con ese nombre
+ERROR: Ya existe un artefacto con el mismo nombre.
+
+-!-51::ERROR-ERROR-Ya existe una artefacto con ese nombre
+ERROR: Fue iniciada la grabacion de una escena.
+
+-!-52::ERROR-ERROR-Fue iniciada la grabación de una escena
+-!-Fin::PRUEBAS ERROR AgregarArtefacto
+-!-Ini::PRUEBAS ERROR CambiarEstadoLuz
+ERROR: No existe una luz con ese numero.
+
+-!-53::ERROR-ERROR-No existe una luz con ese número
+ERROR: El porcentaje debe ser menor o igual a 100.
+
+-!-54::ERROR-ERROR-El porcentaje ingresado supera al 100%
+-!-Fin::PRUEBAS ERROR CambiarEstadoLuz
+-!-Ini::PRUEBAS ERROR CambiarEstadoArtefacto
+ERROR: No existe un artefacto con ese numero.
+
+-!-55::ERROR-ERROR-No existe un artefacto con ese número
+-!-Fin::PRUEBAS ERROR CambiarEstadoArtefacto
+-!-Ini::PRUEBAS ERROR ImprimirEstadoCasa
+ERROR: Fue iniciada la grabacion de una escena.
+
+-!-56::ERROR-ERROR-Fue iniciada la grabación de una escena
+-!-Fin::PRUEBAS ERROR ImprimirEstadoCasa
+-!-Ini::PRUEBAS ERROR CrearCondicion
+ERROR: Ya existe una condicion con el mismo numero.
+
+-!-57::ERROR-ERROR-Ya hay una condición con ese número
+ERROR: Fue iniciada la grabacion de una escena.
+
+-!-58::ERROR-ERROR-Fue iniciada la grabación de una escena
+-!-Fin::PRUEBAS ERROR CrearCondicion
+-!-Ini::PRUEBAS ERROR AgregarSensorACondicion
+ERROR: No existe una condicion con ese numero.
+
+-!-59::ERROR-ERROR-No existe la condición 2
+ERROR: No existe un sensor con ese numero.
+
+-!-60::ERROR-ERROR-El nroSensor debe ser menor o igual a CANT_SENSORES
+ERROR: Fue iniciada la grabacion de una escena.
+
+-!-61::ERROR-ERROR-Fue iniciada la grabación de una escena
+-!-Fin::PRUEBAS ERROR AgregarSensorACondicion
+-!-Ini::PRUEBAS ERROR CambiarEstadoSensor
+ERROR: No existe un sensor con ese numero.
+
+-!-62::ERROR-ERROR-El nroSensor debe ser menor o igual a CANT_SENSORES
+ERROR: Fue iniciada la grabacion de una escena.
+
+-!-63::ERROR-ERROR-Fue iniciada la grabación de una escena
+-!-Fin::PRUEBAS ERROR CambiarEstadoSensor
+-!-Ini::PRUEBAS ERROR InicioEscena
+ERROR: Ya existe una escena con el mismo numero.
+
+-!-64::ERROR-ERROR-Ya hay una escena con el número 1
+ERROR: Ya existe una escena con el mismo nombre.
+
+-!-65::ERROR-ERROR-Ya hay una escena con el nombre "Escena 1"
+ERROR: Fue iniciada la grabacion de una escena.
+
+-!-66::ERROR-ERROR-Ya se está grabando una escena en este momento
+-!-Fin::PRUEBAS ERROR InicioEscena
+-!-Ini::PRUEBAS ERROR FinEscena
+ERROR: No fue iniciada la grabacion de una escena.
+
+-!-67::ERROR-ERROR-No está grabando una escena en este momento
+-!-Fin::PRUEBAS ERROR FinEscena
+-!-Ini::PRUEBAS ERROR EjecutarEscena
+ERROR: Fue iniciada la grabacion de una escena.
+
+-!-68::ERROR-ERROR-No se puede ejecutar la escena 1 ya que hay una escena grabándose en este momento
+-!-Fin::PRUEBAS ERROR EjecutarEscena
+-!-Ini::PRUEBAS ERROR ImprimirEscenas
+ERROR: Fue iniciada la grabacion de una escena.
+
+-!-69::ERROR-ERROR-No se puede imprimir las escenas ya que hay una escena grabándose en este momento
+-!-Fin::PRUEBAS ERROR ImprimirEscenas
+-!-Ini::PRUEBAS ERROR ImprimirEscena
+ERROR: Fue iniciada la grabacion de una escena.
+
+-!-70::ERROR-ERROR-No se puede imprimir la escena 1 ya que hay una escena grabándose en este momento
+-!-Fin::PRUEBAS ERROR ImprimirEscena
+-!-Ini::PRUEBAS ERROR ImprimirEscenasRaras
+ERROR: Fue iniciada la grabacion de una escena.
+
+-!-71::ERROR-ERROR-No se puede imprimir las escenas raras ya que hay una escena grabándose en este momento
+-!-Fin::PRUEBAS ERROR ImprimirEscenasRaras
+-!-Ini::PRUEBAS OK OPCIONAL
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+- Luces:
+1: Luz 1: 0%
+2: Luz 2: 0%
+- Artefactos:
+1: Art 1: OFF
+2: Art 2: OFF
+
+-!-72::OK-OK-Se guarda el estado actual de la casa.
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+- Luces:
+1: Luz 1: 100%
+2: Luz 2: 0%
+- Artefactos:
+1: Art 1: OFF
+2: Art 2: OFF
+
+-!-73::OK-OK-Imprime el estado de la casa
+
+-!-74::OK-OK-Se guarda el estado actual de la casa.
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+- Luces:
+1: Luz 1: 50%
+2: Luz 2: 0%
+- Artefactos:
+1: Art 1: OFF
+2: Art 2: OFF
+
+-!-75::OK-OK-Imprime el estado de la casa
+
+-!-76::OK-OK-Vuelve atrás la modificación de la intensidad de la luz 1
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+- Luces:
+1: Luz 1: 100%
+2: Luz 2: 0%
+- Artefactos:
+1: Art 1: OFF
+2: Art 2: OFF
+
+-!-77::OK-OK-Imprime el estado de la casa
+
+-!-78::OK-OK-Vuelve atrás la modificación de la intensidad de la luz 1
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+- Luces:
+1: Luz 1: 0%
+2: Luz 2: 0%
+- Artefactos:
+1: Art 1: OFF
+2: Art 2: OFF
+
+-!-79::OK-OK-Imprime el estado de la casa
+-!-Fin::PRUEBAS OK OPCIONAL
+-!-Ini::PRUEBAS ERROR OPCIONAL
+ERROR: No quedan estados guardados.
+
+-!-80::ERROR-ERROR-No quedan estados guardados.
+ERROR: No quedan estados guardados.
+
+-!-81::ERROR-ERROR-No quedan mas estados guardados.
+-!-Fin::PRUEBAS ERROR OPCIONAL

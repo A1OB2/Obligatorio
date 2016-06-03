@@ -12,9 +12,16 @@ Prueba::~Prueba()
 
 void Prueba::ver(TipoRetorno retorno, TipoRetorno retornoEsperado, char* comentario)
 {
-	getEstadisticaPrueba().actualizarEstadisticas(retorno,retornoEsperado);
+	getEstadisticaPrueba().actualizarEstadisticas(retorno, retornoEsperado);
 	
 	conductorPrueba->ver(retorno,retornoEsperado,comentario);
+}
+
+void Prueba::ver2(TipoRetorno retorno, TipoRetorno retornoEsperado, char* comentario)
+{
+	getEstadisticaPrueba().actualizarEstadisticas(retorno, retornoEsperado);
+	
+	conductorPrueba->ver2(retorno,retornoEsperado,comentario);
 }
 
 EstadisticaPrueba& Prueba::getEstadisticaPrueba()
@@ -32,7 +39,7 @@ ManejadorSalidaPrueba Prueba::getManejadorSalida()
 	return ManejadorSalidaPrueba::getInstancia();
 }
 
-void Prueba::correrPrueba()
+void Prueba::correrPrueba(bool paraParseo)
 {
 	char* nombrePrueba = getNombre();
 	unsigned int largo = strlen(nombrePrueba) + 5;
@@ -49,7 +56,7 @@ void Prueba::correrPrueba()
 	correrPruebaConcreta();
 	
 	ManejadorImpresionPrueba mip = getManejadorImpresion();
-	mip.imprimirTotalResultados(getEstadisticaPrueba());
+	mip.imprimirTotalResultados(getEstadisticaPrueba(), paraParseo);
 
 	msp.cambiarDirectorio("..");
 }

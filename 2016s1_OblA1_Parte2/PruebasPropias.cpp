@@ -32,6 +32,12 @@ void PruebasPropias::correrPruebaConcreta(){
 	interfaz->AgregarLuz(3, "Luz 3");
 	interfaz->AgregarArtefacto(1, "Pepito");
 	interfaz->ImprimirEstadoCasa();
+	interfaz->CambiarEstadoArtefacto(1, ON);
+	interfaz->CambiarEstadoArtefacto(5, ON);
+	interfaz->CambiarEstadoAlarma(ACTIVADA);
+	interfaz->CambiarEstadoSensor(2, ENALARMA);
+	interfaz->CambiarEstadoSensor(12, ENALARMA);
+	interfaz->ImprimirEstadoCasa();
 
 	delete interfaz;
 }

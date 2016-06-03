@@ -11,15 +11,19 @@ ostream &operator<<(ostream& out, const Artefacto &a) {
 Artefacto::Artefacto() {
 	this->nombre = "";
 	this->numero = 0;
+	estado = OFF;
 }
 
 Artefacto::Artefacto(unsigned int nro, Cadena nombre) {
 	this->numero = nro;
 	this->nombre = nombre;
+	estado = OFF;
 }
 
 Artefacto::Artefacto(const Artefacto &a) {
-	// NO IMPLEMENTADA
+	this->estado = a.estado;
+	this->nombre = a.nombre;
+	this->numero = a.numero;
 }
 
 Artefacto & Artefacto::operator=(const Artefacto &a) {
@@ -56,7 +60,7 @@ EstadoArtefacto Artefacto::GetEstado() const {
 }
 
 void Artefacto::Imprimir() const  {
-	// NO IMPLEMENTADA
+	cout << numero << ": " << nombre << (estado == OFF ? ": OFF" : ": ON") << endl;
 }
 
 void Artefacto::ImprimirCambio() const  {

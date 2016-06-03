@@ -41,11 +41,20 @@ void ABBImp<T>::Insertar(T &e) {
 }
 
 
-//template <class T>
-//void ABBImp<T>::insert(T * d) {
-//	insertar(raiz, d);
-//}
-
+template<class T>
+T ABBImp<T>::traer(T e) {
+	return traer(raiz, e);
+}
+template<class T>
+T ABBImp<T>::traer(NodoABB<T>* a, T e) {
+	if (a == NULL) return T();
+	if (a->dato == e) return a->dato;
+	if (a->dato > e) {
+		return traer(a->hIzq, e);
+	} else {
+		return traer(a->hDer, e);
+	}
+}
 
 template <class T>
 bool ABBImp<T>::EsVacio() const {
@@ -73,7 +82,6 @@ bool ABBImp<T>::Existe(const T &e) const {
 
 template <class T>
 const T& ABBImp<T>::Recuperar(const T &e) const {
-	//NO IMPLEMENTADO
 	return *(new T()); 
 }
 

@@ -28,16 +28,19 @@ TipoRetorno InterfazDelSistemaImp::CambiarEstadoLuz(unsigned int nroLuz, unsigne
 }
 
 TipoRetorno InterfazDelSistemaImp::CambiarEstadoArtefacto(unsigned int nroArt, EstadoArtefacto nuevoEstado){
-	return NO_IMPLEMENTADA;
+	casa->CambiarEstadoArtefacto(nroArt, nuevoEstado);
+	return OK;
 }
 
 TipoRetorno InterfazDelSistemaImp::CambiarEstadoAlarma(EstadoAlarma nuevoEstado){
-	return NO_IMPLEMENTADA;
+	casa->CambiarEstadoAlarma(nuevoEstado);
+	return OK;
 }
 
 TipoRetorno InterfazDelSistemaImp::ImprimirEstadoCasa() const{
+	cout << "Estado de la casa:" << endl;
 	casa->ImprimirEstadoCasa();
-	return NO_IMPLEMENTADA;
+	return OK;
 }
 
 TipoRetorno InterfazDelSistemaImp::CrearCondicion(unsigned int nroCondicion, void (*seCumpleCondicion)(int), void (*seDejaDeCumplirCondicion)(int)){
@@ -49,7 +52,8 @@ TipoRetorno InterfazDelSistemaImp::AgregarSensorACondicion(unsigned int nroCondi
 }
 
 TipoRetorno InterfazDelSistemaImp::CambiarEstadoSensor(unsigned int nroSensor, EstadoSensor estado){
-	return NO_IMPLEMENTADA;
+	casa->CambiarEstadoSensor(nroSensor, estado);
+	return OK;
 }
 
 TipoRetorno InterfazDelSistemaImp::InicioEscena(unsigned int nroEscena, char* nombre){

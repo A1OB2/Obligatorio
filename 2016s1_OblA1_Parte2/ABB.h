@@ -74,6 +74,7 @@ class ABB abstract {
 		virtual void imprimir() abstract;
 
 		virtual void aNodoLista(NodoLista<T> * & l) abstract;
+		virtual T traer(T e) abstract;
 
 	protected:
 

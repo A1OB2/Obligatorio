@@ -33,9 +33,8 @@ CasaInteligente::CasaInteligente(const CasaInteligente &casa) {
 	assert(false);
 }
 
-CasaInteligente::~CasaInteligente()
-{
-	// NO IMPLEMENTADA
+CasaInteligente::~CasaInteligente(){
+	// NO IMPLEMENTADA->>>HACER
 }
 
 CasaInteligente &CasaInteligente::operator=(const CasaInteligente &casa) 
@@ -56,8 +55,7 @@ bool CasaInteligente::operator<(const CasaInteligente &casa) const {
 	return false;
 }
 
-TipoRetorno CasaInteligente::AgregarLuz(unsigned int nroLuz, Cadena nombre)
-{
+TipoRetorno CasaInteligente::AgregarLuz(unsigned int nroLuz, Cadena nombre){
 	TipoRetorno retorno;
 	Asociacion<int, Referencia<Luz>> asoc = Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(Luz(nroLuz, nombre)));
 	ErrorRepetido e = this->puedoInsertar(luces, asoc);
@@ -78,8 +76,7 @@ TipoRetorno CasaInteligente::AgregarLuz(unsigned int nroLuz, Cadena nombre)
 	return retorno;
 }
 
-TipoRetorno CasaInteligente::AgregarArtefacto(unsigned int nroArt, Cadena nombre)
-{
+TipoRetorno CasaInteligente::AgregarArtefacto(unsigned int nroArt, Cadena nombre){
 	TipoRetorno retorno;
 	Asociacion<int, Referencia<Artefacto>> asoc = Asociacion<int, Referencia<Artefacto>>(nroArt, Referencia<Artefacto>(Artefacto(nroArt, nombre)));
 	ErrorRepetido e = this->puedoInsertar(artefactos, asoc);
@@ -100,47 +97,49 @@ TipoRetorno CasaInteligente::AgregarArtefacto(unsigned int nroArt, Cadena nombre
 	return retorno;
 }
 
-TipoRetorno CasaInteligente::CambiarEstadoLuz(unsigned int nroLuz, unsigned int porcentaje)
-{
+TipoRetorno CasaInteligente::CambiarEstadoLuz(unsigned int nroLuz, unsigned int porcentaje){
 	if (porcentaje <= 100) {
 		Luz newLuz = Luz(nroLuz, "");
 		Asociacion<int, Referencia<Luz>> asoc = Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(newLuz));
 		if (this->numeroRepetido(luces->getRaiz(), asoc)) {
 			this->getNodoConNum(luces->getRaiz(), nroLuz)->dato.GetRangoInseguro().GetDato().SetIntensidad(porcentaje);
 			return OK;
-		}
-		else {
+		}else {
 			cout << "ERROR: No existe una luz con ese numero" << endl;
 			return ERROR;
 		}
-	}
-	else {
+	}else {
 		cout << "ERROR: El porcentaje debe ser igual o menor a 100" << endl;
 		return ERROR;
 	}
 }
 
-TipoRetorno CasaInteligente::CambiarEstadoArtefacto(unsigned int nroArt, EstadoArtefacto nuevoEstado)
-{
-	return NO_IMPLEMENTADA;
+TipoRetorno CasaInteligente::CambiarEstadoArtefacto(unsigned int nroArt, EstadoArtefacto nuevoEstado){
+	Asociacion<int, Referencia<Artefacto>> e = artefactos->traer(Asociacion<int, Referencia<Artefacto>>(nroArt, Referencia<Artefacto>(Artefacto())));
+	if (e == Asociacion<int, Referencia<Artefacto>>()) {
+		cout << "ERROR: No existe un artefacto con ese numero." <<endl;
+		return ERROR;
+	}
+	e.GetRango().GetDato().SetEstado(nuevoEstado);
+	return OK;
 }
 
-TipoRetorno CasaInteligente::CambiarEstadoAlarma(EstadoAlarma nuevoEstado)
-{
-	return NO_IMPLEMENTADA;
+TipoRetorno CasaInteligente::CambiarEstadoAlarma(EstadoAlarma nuevoEstado){
+	this->alarma->GetDato().SetEstado(nuevoEstado);
+	return OK;
 }
 
-TipoRetorno CasaInteligente::ImprimirEstadoCasa() const{
+TipoRetorno CasaInteligente::ImprimirEstadoCasa() const {
 
 	cout << this->alarma ->GetDato();//La referencia se interponia con la alarma. No se imprimia
-	cout << "-Sensores:" << endl;
+	cout << "- Sensores:" << endl;
 	NodoLista <Asociacion<int, Referencia<Sensor>>> * lSensores = NULL;
 	sensores->aNodoLista(lSensores);
 	while (lSensores != NULL) {
 		cout << lSensores->dato;
 		lSensores = lSensores->sig;
 	}
-	cout << "-Luces:" << endl;
+	cout << "- Luces:" << endl;
 	NodoLista<Asociacion<int, Referencia<Luz>>> * lLuces = NULL;
 	luces->aNodoLista(lLuces);
 	if (lLuces == NULL) cout << "--No hay luces--" << endl;
@@ -148,11 +147,11 @@ TipoRetorno CasaInteligente::ImprimirEstadoCasa() const{
 		cout << lLuces->dato;
 		lLuces = lLuces->sig;
 	}
-	cout << "-Artefactos:" << endl;
+	cout << "- Artefactos:" << endl;
 	NodoLista<Asociacion<int, Referencia<Artefacto>>> * lArtefactos = NULL;
 	artefactos->aNodoLista(lArtefactos);
 	if (lArtefactos == NULL) cout << "--No hay artefactos--" << endl;
-	while (lLuces != NULL) {
+	while (lArtefactos != NULL) {
 		cout << lArtefactos->dato;
 		lArtefactos = lArtefactos->sig;
 	}
@@ -170,9 +169,14 @@ TipoRetorno CasaInteligente::AgregarSensorACondicion(unsigned int nroCondicion, 
 	return NO_IMPLEMENTADA;
 }
 
-TipoRetorno CasaInteligente::CambiarEstadoSensor(unsigned int nroSensor, EstadoSensor estado)
-{
-	return NO_IMPLEMENTADA;
+TipoRetorno CasaInteligente::CambiarEstadoSensor(unsigned int nroSensor, EstadoSensor estado){
+	Asociacion<int, Referencia<Sensor>> e = sensores->traer(Asociacion<int, Referencia<Sensor>>(nroSensor, Referencia<Sensor>(Sensor())));
+	if (e == Asociacion<int, Referencia<Sensor>>()) {
+		cout << "ERROR: No existe un sensor con ese numero." << endl;
+		return ERROR;
+	}
+	e.GetRango().GetDato().SetEstado(estado);
+	return OK;
 }
 
 TipoRetorno CasaInteligente::InicioEscena(unsigned int nroEscena, Cadena nombre)
@@ -236,7 +240,6 @@ NodoABB<Asociacion<int, Referencia<T>>>* CasaInteligente::getNodoConNum(NodoABB<
 	}
 	else return a;
 }
-
 
 template <class T>
 ErrorRepetido CasaInteligente::puedoInsertar(ABB<Asociacion<int, Referencia<T>>>* & a, Asociacion<int, Referencia<T>> x) {

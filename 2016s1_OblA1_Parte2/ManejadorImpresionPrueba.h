@@ -9,11 +9,14 @@ using namespace std;
 class ManejadorImpresionPrueba  
 {
 public:
-	ManejadorImpresionPrueba();
+	ManejadorImpresionPrueba(bool paraParseo = true);
 	virtual ~ManejadorImpresionPrueba();
 
-	void imprimirResultado(TipoRetorno retorno, TipoRetorno retornoEsperado, char* comentario)const;
-	void imprimirTotalResultados(const EstadisticaPrueba& estadistica)const;
+	void imprimirResultado(TipoRetorno retorno, TipoRetorno retornoEsperado, char* comentario, bool paraParseo)const;
+	void imprimirTotalResultados(const EstadisticaPrueba& estadistica, bool paraParseo)const;
+
+	void iniciarSeccion(char* seccion);
+	void cerrarSeccion(char* seccion);
 
 	static ManejadorImpresionPrueba getInstancia();
 protected:
@@ -23,7 +26,6 @@ protected:
 private:
 	static ManejadorImpresionPrueba* instanciaManejador;
 	char* getStringRetorno(TipoRetorno retorno)const;
-
 };
 
 #endif

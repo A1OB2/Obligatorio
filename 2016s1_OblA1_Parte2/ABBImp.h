@@ -47,6 +47,8 @@ public:
 
 	void aNodoLista(NodoLista<T> * & l);
 
+	T traer(T e);
+
 protected:
 	NodoABB<T> * raiz;
 
@@ -57,6 +59,7 @@ private:
 	void imprimir(NodoABB<T> *a);
 	void toNodoLista(NodoABB<T> * a,NodoLista<T> * & l);
 	void insertarOrdenado(NodoLista<T> * & l, T & e);
+	T traer(NodoABB<T> * a,T e);
 };
 
 #include "ABBImp.cpp"

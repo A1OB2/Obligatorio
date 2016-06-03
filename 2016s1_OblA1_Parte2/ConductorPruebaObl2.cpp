@@ -44,7 +44,7 @@ void ConductorPruebaObl2::correrPruebaConcreta()
 {
 	// Empezar aqui a llamar los metodos de prueba
 
-	pruebasEjemploDeUso->correrPrueba();
+	pruebasEjemploDeUso->correrPrueba(true);
 
 	pruebasPropias->correrPrueba();
 

@@ -19,7 +19,7 @@ public:
 	Prueba(ConductorPrueba* conductor);
 	virtual ~Prueba();
 
-	virtual void correrPrueba();
+	virtual void correrPrueba(bool paraParseo = false);
 protected:
 	virtual void correrPruebaConcreta()=0;
 	virtual char* getNombre()const=0;
@@ -27,6 +27,7 @@ protected:
 	ManejadorSalidaPrueba		getManejadorSalida();
 
 	void ver(TipoRetorno retorno, TipoRetorno retornoEsperado, char* comentario = "");
+	void ver2(TipoRetorno retorno, TipoRetorno retornoEsperado, char* comentario = "");
 
 	EstadisticaPrueba& getEstadisticaPrueba();
 private:

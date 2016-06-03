@@ -38,8 +38,9 @@ Luz::~Luz() {
 }
 
 bool Luz::operator==(const Luz &l) const {
-	// NO IMPLEMENTADA
-	return false;
+	return this->nombre == l.nombre 
+		&& this->nroLuz == l.nroLuz 
+		&& this->intensidad == l.intensidad;
 }
 
 bool Luz::operator<(const Luz & l) const {
@@ -67,7 +68,7 @@ unsigned int Luz::GetIntensidad() const {
 }
 
 void Luz::Imprimir() const {
-	// NO IMPLEMENTADA
+	cout << nroLuz << ": " << nombre <<": "<< intensidad << "%" << endl;
 }
 
 void Luz::ImprimirCambio() const {
