@@ -85,11 +85,11 @@ TipoRetorno CasaInteligente::AgregarArtefacto(unsigned int nroArt, Cadena nombre
 	ErrorRepetido e = this->puedoInsertar(artefactos, asoc);
 	switch (e) {
 	case E_NOMBRE:
-		cout << "ERROR: Ya	existe	una	luz	con	el	mismo	nombre.	" << endl;
+		cout << "ERROR: Ya	existe	un Artefacto	con	el	mismo	nombre.	" << endl;
 		retorno = ERROR;
 	break;
 	case E_NUMERO:
-		cout << "ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	" << endl;
+		cout << "ERROR:	Ya	existe	un Artefacto	con	el	mismo	numero.	" << endl;
 		retorno = ERROR;
 	break;
 	default:
