@@ -141,10 +141,37 @@ void ABBImp<T>::imprimir(){
 template<class T>
 void ABBImp<T>::imprimir(NodoABB<T> *a){
 	if (a != NULL) {
-		int i = a->dato.GetDominio();
-		auto estado = a->dato;//.GetRangoInseguro().GetDato().GetEstado();
-		cout << i << ":" << estado << endl;
+		cout << a->dato << endl;
+		imprimir(a->hIzq);
+		imprimir(a->hDer);
 	}
 }
 
+template <class T>
+void ABBImp<T>::aNodoLista(NodoLista<T> * & l) {
+	toNodoLista(raiz, l);
+}
+
+template<class T>
+void ABBImp<T>::toNodoLista(NodoABB<T>* a, NodoLista<T>*& l) {
+	if (a != NULL) {
+		insertarOrdenado(l, a->dato);
+		toNodoLista(a->hDer, l);
+		toNodoLista(a->hIzq, l);
+	}
+}
+
+template<class T>
+void ABBImp<T>::insertarOrdenado(NodoLista<T>*& l, T & e) {
+	if (l == NULL) {
+		l = new NodoLista<T>(e);
+	} else if (e < l->dato) {
+		NodoLista<T> * aux = l;
+		l = new NodoLista<T>(e);
+		aux->ant = l;
+		l->sig = aux;
+	} else {
+		insertarOrdenado(l->sig, e);
+	}
+}
 #endif

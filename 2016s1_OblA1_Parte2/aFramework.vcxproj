@@ -235,6 +235,9 @@
     <ClInclude Include="Constantes.h" />
     <ClInclude Include="TipoRetorno.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="SalidaDeLasPruebas\PruebasPropias\PruebasPropias.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

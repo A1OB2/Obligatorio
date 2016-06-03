@@ -19,7 +19,8 @@ Sensor::Sensor(unsigned int nro) {
 }
 
 Sensor::Sensor(const Sensor &s) {
-	// NO IMPLEMENTADA
+	nro = s.nro;
+	estado = s.estado;
 }
 
 Sensor & Sensor::operator=(const Sensor &s) {
@@ -47,21 +48,19 @@ bool Sensor::operator>(const Sensor & s) const {
 }
 
 unsigned int Sensor::GetNro() const {
-	// NO IMPLEMENTADA
-	return 0;
+	return nro;
 }
 
 void Sensor::SetEstado(EstadoSensor estado) {
-	// NO IMPLEMENTADA
+	this->estado = estado;
 }
 
 EstadoSensor Sensor::GetEstado() const {
-	// NO IMPLEMENTADA
-	return NORMAL;
+	return estado;
 }
 
 void Sensor::Imprimir(ostream& out) const  {
-	// NO IMPLEMENTADA
+	out << nro << ": " << (estado==NORMAL?"NORMAL":"ENALARMA") << endl;
 }
 
 void Sensor::ImprimirCambio() const {
