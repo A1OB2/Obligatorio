@@ -154,7 +154,7 @@ TipoRetorno CasaInteligente::ImprimirEstadoCasa() const{
 	NodoLista<Asociacion<int, Referencia<Artefacto>>> * lArtefactos = NULL;
 	artefactos->aNodoLista(lArtefactos);
 	if (lArtefactos == NULL) cout << "--No hay artefactos--" << endl;
-	while (lLuces != NULL) {
+	while (lArtefactos != NULL) {
 		cout << lArtefactos->dato;
 		lArtefactos = lArtefactos->sig;
 	}
