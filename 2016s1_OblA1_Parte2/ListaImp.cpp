@@ -144,15 +144,22 @@ Iterador<T> ListaImp<T>::GetIterador() const {
 
 template<class T>
 void ListaImp<T>::imprimir() {
-	imprimir(lista);
+	Iterador<T> it = this->GetIterador();
+	//it.Principio();
+	while (!it.EsFin()) {
+		T e = it.ElementoInseguro();
+		cout << e << endl;
+		it.Resto();
+	}
+	//imprimir(lista);
 }
 
 template<class T>
 void ListaImp<T>::imprimir(NodoLista<T> *l) {
+	Iterable<T> it = l
 	if (l != NULL) {
-		int i = l->dato.GetDominio();
-		auto estado = l->dato.GetRangoInseguro().GetDato();//.GetRangoInseguro().GetDato().GetEstado();
-		cout << i << ":" << estado << endl;
+		cout << l->dato << endl;
+		if(l->sig!=NULL) imprimir(l->sig);
 	}
 }
 

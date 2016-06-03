@@ -1,8 +1,27 @@
+<<<<<<< HEAD
 ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	
 ERROR: El porcentaje debe ser igual o menor a 100
 -Alarma 0
 -Sensores:
 10:
+=======
+-Alarma DESACTIVADA
+-Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+6: NORMAL
+7: NORMAL
+8: NORMAL
+9: NORMAL
+10: NORMAL
+-Luces:
+--No hay luces--
+-Artefactos:
+--No hay artefactos--
+>>>>>>> f5bd1745dde748024e941f3ac8ef67afe365245a
 
   +------------------------------+
     RESULTADO DE LOS RETORNOS (NO CHEQUEA SI LAS SALIDAS SON CORRECTAS O NO!)

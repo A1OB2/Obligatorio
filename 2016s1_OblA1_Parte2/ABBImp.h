@@ -45,6 +45,8 @@ public:
 
 	NodoABB<T> * getRaiz() const;
 
+	void aNodoLista(NodoLista<T> * & l);
+
 protected:
 	NodoABB<T> * raiz;
 
@@ -53,7 +55,8 @@ private:
 	bool menorQueTodos(NodoABB<T>* a, T x);
 	bool mayorQueTodos(NodoABB<T>* a, T x);
 	void imprimir(NodoABB<T> *a);
-
+	void toNodoLista(NodoABB<T> * a,NodoLista<T> * & l);
+	void insertarOrdenado(NodoLista<T> * & l, T & e);
 };
 
 #include "ABBImp.cpp"

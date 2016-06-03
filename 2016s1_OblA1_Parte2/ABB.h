@@ -3,6 +3,8 @@
 
 #include "assert.h"
 #include "NodoABB.h"
+#include "NodoLista.h"
+
 
 template <class T>
 class ABB abstract {
@@ -70,6 +72,8 @@ class ABB abstract {
 		virtual NodoABB<T>* getRaiz() const abstract;
 
 		virtual void imprimir() abstract;
+
+		virtual void aNodoLista(NodoLista<T> * & l) abstract;
 
 	protected:
 

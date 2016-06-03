@@ -50,9 +50,10 @@ public:
 	Iterador<T> GetIterador() const;
 
 protected:
+	NodoLista<T> * lista;
 
-	// Atributos
 
+	void agregar(NodoLista<T> * &l, const T &e);
 };
 
 #include "ListaOrdImp.cpp"
