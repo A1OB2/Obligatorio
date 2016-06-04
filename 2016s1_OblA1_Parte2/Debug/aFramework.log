@@ -1,2 +1,8 @@
-﻿  Artefacto.cpp
+﻿  CasaInteligente.cpp
+c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\abbimp.cpp(153): warning C4715: 'ABBImp<Asociacion<int,Referencia<Luz> > >::insertar': not all control paths return a value
+c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\abbimp.cpp(153): warning C4715: 'ABBImp<Asociacion<Cadena,Referencia<Luz> > >::insertar': not all control paths return a value
+c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\abbimp.cpp(153): warning C4715: 'ABBImp<Asociacion<int,Referencia<Artefacto> > >::insertar': not all control paths return a value
+c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\abbimp.cpp(153): warning C4715: 'ABBImp<Asociacion<Cadena,Referencia<Artefacto> > >::insertar': not all control paths return a value
+c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\abbimp.cpp(153): warning C4715: 'ABBImp<Asociacion<int,Referencia<Escena> > >::insertar': not all control paths return a value
+c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\abbimp.cpp(153): warning C4715: 'ABBImp<Asociacion<int,Referencia<Sensor> > >::insertar': not all control paths return a value
   aFramework.vcxproj -> C:\Users\Bruno\Documents\GitHub\Obligatorio\2016s1_OblA1_Parte2\.\Debug\aFramework.exe

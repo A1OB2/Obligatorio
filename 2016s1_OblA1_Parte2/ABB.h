@@ -20,7 +20,7 @@ class ABB abstract {
 
 		// PRE: -
 		// POS: Agrega el elemento e en el arbol. Si existe lo sobrescribe
-		virtual void Insertar(T &e) abstract;
+		virtual bool Insertar(T &e) abstract;
 
 		//virtual void insert(T *e) abstract;
 

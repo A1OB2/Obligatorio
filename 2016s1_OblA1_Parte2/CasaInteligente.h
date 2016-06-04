@@ -72,12 +72,16 @@ public:
 	TipoRetorno ImprimirEscena(unsigned int nroEscena) const;
 	TipoRetorno ImprimirEscenasRaras() const;
 
+	bool enEscena() { return this->enEscena };-
 private:
-	ABB<Asociacion<int, Referencia<Luz>>> * luces;
+	ABB<Asociacion<int, Referencia<Luz>>> * lucesNumero;
+	ABB<Asociacion<Cadena, Referencia<Luz>>> * lucesNombre;
+	ABB<Asociacion<int, Referencia<Artefacto>>> * artefactosNumero;
+	ABB<Asociacion<Cadena, Referencia<Artefacto>>> * artefactosNombre;
 	ABB<Asociacion<int, Referencia<Sensor>>> * sensores;
 	ABB<Asociacion<int, Referencia<Escena>>> * escenas;
-	ABB<Asociacion<int, Referencia<Artefacto>>> * artefactos;
 	Referencia<Alarma> * alarma;
+	bool enEscena = false;
 
 	//aux methods
 
