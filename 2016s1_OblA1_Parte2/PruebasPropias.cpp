@@ -30,7 +30,8 @@ void PruebasPropias::correrPruebaConcreta(){
 	interfaz->AgregarLuz(1, "Luz 2");
 	interfaz->CambiarEstadoLuz(1, 101);
 	interfaz->AgregarLuz(3, "Luz 3");
-	interfaz->AgregarArtefacto(1, "Pepito");
+	interfaz->AgregarArtefacto(1, "Artefacto 1");
+	interfaz->AgregarArtefacto(2, "Artefacto 2");
 	interfaz->ImprimirEstadoCasa();
 	interfaz->CambiarEstadoArtefacto(1, ON);
 	interfaz->CambiarEstadoArtefacto(5, ON);

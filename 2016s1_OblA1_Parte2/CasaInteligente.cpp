@@ -91,6 +91,8 @@ TipoRetorno CasaInteligente::AgregarArtefacto(unsigned int nroArt, Cadena nombre
 	break;
 	default:
 		artefactos->Insertar(asoc);
+		cout << "OK" << endl;
+		asoc.GetRango().GetDato().Imprimir();
 		retorno = OK;
 	break;
 	}
@@ -242,7 +244,7 @@ NodoABB<Asociacion<int, Referencia<T>>>* CasaInteligente::getNodoConNum(NodoABB<
 }
 
 template <class T>
-ErrorRepetido CasaInteligente::puedoInsertar(ABB<Asociacion<int, Referencia<T>>>* & a, Asociacion<int, Referencia<T>> x) {
+ErrorRepetido CasaInteligente::puedoInsertar(ABB<Asociacion<int, Referencia<T>>>* a, Asociacion<int, Referencia<T>> x) {
 	if (nombreRepetido(a->getRaiz(), x)) {
 		return E_NOMBRE;
 	}

@@ -82,7 +82,7 @@ private:
 	//aux methods
 
 	template <class T>
-	ErrorRepetido puedoInsertar(ABB<Asociacion<int, Referencia<T>>>* & a, Asociacion<int, Referencia<T>> x);
+	ErrorRepetido puedoInsertar(ABB<Asociacion<int, Referencia<T>>>* a, Asociacion<int, Referencia<T>> x);
 	template <class T>
 	bool nombreRepetido(NodoABB<Asociacion<int, Referencia<T>>>* a, Asociacion<int, Referencia<T>> x);
 	template <class T>

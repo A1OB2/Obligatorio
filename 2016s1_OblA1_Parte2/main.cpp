@@ -23,6 +23,7 @@ void main()
 	m->Comparar(false, false); 
 
 	//system("pause");
+	system("pause");
 
 }
 
