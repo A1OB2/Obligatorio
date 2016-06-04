@@ -238,31 +238,35 @@ ERROR:	Ya	existe	una	luz	con	el	mismo	numero.
 ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	
 
 -!-44::ERROR-ERROR-Ya existe una luz con ese número
+ERROR: Ya	existe	una	luz	con	el	mismo	nombre.	
 
--!-45::ERROR-OK-Ya existe una luz con ese nombre
+-!-45::ERROR-ERROR-Ya existe una luz con ese nombre
+ERROR: Ya	existe	una	luz	con	el	mismo	nombre.	
 
--!-46::ERROR-OK-Ya existe una luz con ese nombre
+-!-46::ERROR-ERROR-Ya existe una luz con ese nombre
 ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	
 
 -!-47::ERROR-ERROR-Fue iniciada la grabación de una escena
 -!-Fin::PRUEBAS ERROR AgregarLuz
 -!-Ini::PRUEBAS ERROR AgregarArtefacto
-ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	
+ERROR:	Ya	existe	un artefacto	con	el	mismo	numero.	
 
 -!-48::ERROR-ERROR-Ya existe un artefacto con ese número
-ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	
+ERROR:	Ya	existe	un artefacto	con	el	mismo	numero.	
 
 -!-49::ERROR-ERROR-Ya existe un artefacto con ese número
+ERROR: Ya	existe	un artefacto	con	el	mismo	nombre.	
 
--!-50::ERROR-OK-Ya existe una artefacto con ese nombre
+-!-50::ERROR-ERROR-Ya existe una artefacto con ese nombre
+ERROR: Ya	existe	un artefacto	con	el	mismo	nombre.	
 
--!-51::ERROR-OK-Ya existe una artefacto con ese nombre
-ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	
+-!-51::ERROR-ERROR-Ya existe una artefacto con ese nombre
+ERROR:	Ya	existe	un artefacto	con	el	mismo	numero.	
 
 -!-52::ERROR-ERROR-Fue iniciada la grabación de una escena
 -!-Fin::PRUEBAS ERROR AgregarArtefacto
 -!-Ini::PRUEBAS ERROR CambiarEstadoLuz
-ERROR: No existe una luz con ese numero
+ERROR: No existe una luz con ese numero.
 
 -!-53::ERROR-ERROR-No existe una luz con ese número
 ERROR: El porcentaje debe ser igual o menor a 100

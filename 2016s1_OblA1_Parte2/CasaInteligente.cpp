@@ -7,17 +7,20 @@
 
 
 CasaInteligente::CasaInteligente(){
-	luces = new ABBImp<Asociacion<int, Referencia<Luz>>>();
-	artefactos = new ABBImp<Asociacion<int,Referencia<Artefacto>>>();
+	lucesNumero = new ABBImp<Asociacion<int, Referencia<Luz>>>();
+	lucesNombre = new ABBImp<Asociacion<Cadena, Referencia<Luz>>>();
+	artefactosNumero = new ABBImp<Asociacion<int,Referencia<Artefacto>>>();
+	artefactosNombre = new ABBImp<Asociacion<Cadena, Referencia<Artefacto>>>();
 	escenas = new ABBImp<Asociacion<int, Referencia<Escena>>>();
 	alarma = new Referencia<Alarma>(Alarma());
 	sensores = new ABBImp<Asociacion<int, Referencia<Sensor>>>();
 }
 
-
 CasaInteligente::CasaInteligente(unsigned int CANT_SENSORES){
-	luces = new ABBImp<Asociacion<int,Referencia<Luz>>>();
-	artefactos = new ABBImp<Asociacion<int, Referencia<Artefacto>>>();
+	lucesNumero = new ABBImp<Asociacion<int, Referencia<Luz>>>();
+	lucesNombre = new ABBImp<Asociacion<Cadena, Referencia<Luz>>>();
+	artefactosNumero = new ABBImp<Asociacion<int, Referencia<Artefacto>>>();
+	artefactosNombre = new ABBImp<Asociacion<Cadena, Referencia<Artefacto>>>();
 	escenas = new ABBImp<Asociacion<int, Referencia<Escena>>>();
 	alarma = new Referencia<Alarma>(Alarma());
 	sensores = new ABBImp<Asociacion<int, Referencia<Sensor>>>();
@@ -56,7 +59,18 @@ bool CasaInteligente::operator<(const CasaInteligente &casa) const {
 }
 
 TipoRetorno CasaInteligente::AgregarLuz(unsigned int nroLuz, Cadena nombre){
-	TipoRetorno retorno;
+	Asociacion<int, Referencia<Luz>> asocNro = Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(Luz(nroLuz, nombre)));
+	Asociacion<Cadena, Referencia<Luz>> asocNombre = Asociacion<Cadena, Referencia<Luz>>(nombre, Referencia<Luz>(Luz(nroLuz, nombre)));
+	if (!lucesNumero->Insertar(asocNro)) {
+		cout << "ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	" << endl;
+		return ERROR;
+	} else if (!lucesNombre->Insertar(asocNombre)) {
+		cout << "ERROR: Ya	existe	una	luz	con	el	mismo	nombre.	" << endl;
+		return ERROR;
+	}else{
+		return OK;
+	}
+	/*TipoRetorno retorno;
 	Asociacion<int, Referencia<Luz>> asoc = Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(Luz(nroLuz, nombre)));
 	ErrorRepetido e = this->puedoInsertar(luces, asoc);
 	switch (e) {
@@ -73,11 +87,22 @@ TipoRetorno CasaInteligente::AgregarLuz(unsigned int nroLuz, Cadena nombre){
 			retorno = OK;
 		break;
 	}
-	return retorno;
+	return retorno;*/
 }
 
 TipoRetorno CasaInteligente::AgregarArtefacto(unsigned int nroArt, Cadena nombre){
-	TipoRetorno retorno;
+	Asociacion<int, Referencia<Artefacto>> asocNro = Asociacion<int, Referencia<Artefacto>>(nroArt, Referencia<Artefacto>(Artefacto(nroArt, nombre)));
+	Asociacion<Cadena, Referencia<Artefacto>> asocNombre = Asociacion<Cadena, Referencia<Artefacto>>(nombre, Referencia<Artefacto>(Artefacto(nroArt, nombre)));
+	if (!artefactosNumero->Insertar(asocNro)) {
+		cout << "ERROR:	Ya	existe	un artefacto	con	el	mismo	numero.	" << endl;
+		return ERROR;
+	} else if (!artefactosNombre->Insertar(asocNombre)) {
+		cout << "ERROR: Ya	existe	un artefacto	con	el	mismo	nombre.	" << endl;
+		return ERROR;
+	} else {
+		return OK;
+	}
+	/*TipoRetorno retorno;
 	Asociacion<int, Referencia<Artefacto>> asoc = Asociacion<int, Referencia<Artefacto>>(nroArt, Referencia<Artefacto>(Artefacto(nroArt, nombre)));
 	ErrorRepetido e = this->puedoInsertar(artefactos, asoc);
 	switch (e) {
@@ -96,20 +121,27 @@ TipoRetorno CasaInteligente::AgregarArtefacto(unsigned int nroArt, Cadena nombre
 		retorno = OK;
 	break;
 	}
-	return retorno;
+	return retorno;*/
 }
 
 TipoRetorno CasaInteligente::CambiarEstadoLuz(unsigned int nroLuz, unsigned int porcentaje){
 	if (porcentaje <= 100) {
-		Luz newLuz = Luz(nroLuz, "");
+		Asociacion<int, Referencia<Luz>> e = lucesNumero->traer(Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(Luz())));
+		if (e == Asociacion<int, Referencia<Luz>>()) {
+			cout << "ERROR: No existe una luz con ese numero." << endl;
+			return ERROR;
+		}
+		e.GetRango().GetDato().SetIntensidad(porcentaje);
+		return OK;
+		/*Luz newLuz = Luz(nroLuz, "");
 		Asociacion<int, Referencia<Luz>> asoc = Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(newLuz));
-		if (this->numeroRepetido(luces->getRaiz(), asoc)) {
-			this->getNodoConNum(luces->getRaiz(), nroLuz)->dato.GetRangoInseguro().GetDato().SetIntensidad(porcentaje);
+		if (this->numeroRepetido(lucesNumero->getRaiz(), asoc)) {
+			this->getNodoConNum(lucesNumero->getRaiz(), nroLuz)->dato.GetRangoInseguro().GetDato().SetIntensidad(porcentaje);
 			return OK;
 		}else {
 			cout << "ERROR: No existe una luz con ese numero" << endl;
 			return ERROR;
-		}
+		}*/
 	}else {
 		cout << "ERROR: El porcentaje debe ser igual o menor a 100" << endl;
 		return ERROR;
@@ -117,7 +149,7 @@ TipoRetorno CasaInteligente::CambiarEstadoLuz(unsigned int nroLuz, unsigned int 
 }
 
 TipoRetorno CasaInteligente::CambiarEstadoArtefacto(unsigned int nroArt, EstadoArtefacto nuevoEstado){
-	Asociacion<int, Referencia<Artefacto>> e = artefactos->traer(Asociacion<int, Referencia<Artefacto>>(nroArt, Referencia<Artefacto>(Artefacto())));
+	Asociacion<int, Referencia<Artefacto>> e = artefactosNumero->traer(Asociacion<int, Referencia<Artefacto>>(nroArt, Referencia<Artefacto>(Artefacto())));
 	if (e == Asociacion<int, Referencia<Artefacto>>()) {
 		cout << "ERROR: No existe un artefacto con ese numero." <<endl;
 		return ERROR;
@@ -143,7 +175,7 @@ TipoRetorno CasaInteligente::ImprimirEstadoCasa() const {
 	}
 	cout << "- Luces:" << endl;
 	NodoLista<Asociacion<int, Referencia<Luz>>> * lLuces = NULL;
-	luces->aNodoLista(lLuces);
+	lucesNumero->aNodoLista(lLuces);
 	if (lLuces == NULL) cout << "--No hay luces--" << endl;
 	while (lLuces != NULL) {
 		cout << lLuces->dato;
@@ -151,7 +183,7 @@ TipoRetorno CasaInteligente::ImprimirEstadoCasa() const {
 	}
 	cout << "- Artefactos:" << endl;
 	NodoLista<Asociacion<int, Referencia<Artefacto>>> * lArtefactos = NULL;
-	artefactos->aNodoLista(lArtefactos);
+	artefactosNumero->aNodoLista(lArtefactos);
 	if (lArtefactos == NULL) cout << "--No hay artefactos--" << endl;
 	while (lArtefactos != NULL) {
 		cout << lArtefactos->dato;

@@ -172,29 +172,9 @@ Prueba 43: Ya existe una luz con ese número -> OK
 -----------------------------------
 Prueba 44: Ya existe una luz con ese número -> OK
 -----------------------------------
-Prueba 45: Ya existe una luz con ese nombre
- -> ERROR retorno incorrecto
-	 Se esperaba: ERROR
-	 Se obtuvo: OK
-
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
- 1: ERROR: Ya existe una luz con el mismo nombre
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
+Prueba 45: Ya existe una luz con ese nombre -> OK
 -----------------------------------
-Prueba 46: Ya existe una luz con ese nombre
- -> ERROR retorno incorrecto
-	 Se esperaba: ERROR
-	 Se obtuvo: OK
-
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
- 1: ERROR: Ya existe una luz con el mismo nombre
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
+Prueba 46: Ya existe una luz con ese nombre -> OK
 -----------------------------------
 Prueba 47: Fue iniciada la grabación de una escena
  -> ERROR impresión incorrecta
@@ -208,47 +188,13 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 
 ********* INICIO PRUEBAS ERROR AgregarArtefacto*******
 -----------------------------------
-Prueba 48: Ya existe un artefacto con ese número
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
- 1: ERROR: Ya existe un artefacto con el mismo numero
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
- 1! ERROR: Ya existe una luz con el mismo numero
+Prueba 48: Ya existe un artefacto con ese número -> OK
 -----------------------------------
-Prueba 49: Ya existe un artefacto con ese número
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
- 1: ERROR: Ya existe un artefacto con el mismo numero
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
- 1! ERROR: Ya existe una luz con el mismo numero
+Prueba 49: Ya existe un artefacto con ese número -> OK
 -----------------------------------
-Prueba 50: Ya existe una artefacto con ese nombre
- -> ERROR retorno incorrecto
-	 Se esperaba: ERROR
-	 Se obtuvo: OK
-
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
- 1: ERROR: Ya existe un artefacto con el mismo nombre
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
+Prueba 50: Ya existe una artefacto con ese nombre -> OK
 -----------------------------------
-Prueba 51: Ya existe una artefacto con ese nombre
- -> ERROR retorno incorrecto
-	 Se esperaba: ERROR
-	 Se obtuvo: OK
-
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
- 1: ERROR: Ya existe un artefacto con el mismo nombre
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
+Prueba 51: Ya existe una artefacto con ese nombre -> OK
 -----------------------------------
 Prueba 52: Fue iniciada la grabación de una escena
  -> ERROR impresión incorrecta
@@ -257,7 +203,7 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
- 1! ERROR: Ya existe una luz con el mismo numero
+ 1! ERROR: Ya existe un artefacto con el mismo numero
 ********* FIN PRUEBAS ERROR AgregarArtefacto*******
 
 ********* INICIO PRUEBAS ERROR CambiarEstadoLuz*******
@@ -500,7 +446,7 @@ Prueba 81: No quedan mas estados guardados.
 
 
 ----------------
-PRUEBAS CORRECTAS: 30
-PRUEBAS INCORRECTAS: 20
+PRUEBAS CORRECTAS: 36
+PRUEBAS INCORRECTAS: 14
 PRUEBAS NO IMPLEMENTADAS: 32
 PRUEBAS COMENTADAS: 0

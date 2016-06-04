@@ -36,8 +36,8 @@ void ABBImp<T>::Vaciar() {
 }
 
 template <class T>
-void ABBImp<T>::Insertar(T &e) {
-	insertar(this->raiz, e);
+bool ABBImp<T>::Insertar(T &e) {
+	return insertar(this->raiz, e);
 }
 
 
@@ -118,8 +118,18 @@ bool ABBImp<T>::menorQueTodos(NodoABB<T>* a, T x) {
 }
 
 template <class T>
-void ABBImp<T>::insertar(NodoABB<T>* & a, T x) {
+bool ABBImp<T>::insertar(NodoABB<T>* & a, T x) {
 	if (a == NULL) {
+		a = new NodoABB<T>(x);
+		return true;
+	} else if (a->dato < x) {
+		return insertar(a->hDer, x);
+	} else if (a->dato > x) {
+		return insertar(a->hIzq, x);
+	} else if (a->dato == x) {
+		return false;
+	}
+	/*if (a == NULL) {
 		a = new NodoABB<T>(x);
 	} else {
 		if (a->dato < x) {
@@ -139,7 +149,7 @@ void ABBImp<T>::insertar(NodoABB<T>* & a, T x) {
 				a->hDer = aux;
 			} else insertar(a->hIzq, x);
 		}
-	}
+	}*/
 }
 
 template<class T>
