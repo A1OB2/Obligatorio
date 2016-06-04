@@ -1,0 +1,54 @@
+ERROR:	Ya	existe	una	luz	con	el	mismo	numero.	
+ERROR: El porcentaje debe ser igual o menor a 100
+Estado de la casa:
+- Alarma DESACTIVADA
+- Sensores:
+1: NORMAL
+2: NORMAL
+3: NORMAL
+4: NORMAL
+5: NORMAL
+6: NORMAL
+7: NORMAL
+8: NORMAL
+9: NORMAL
+10: NORMAL
+- Luces:
+1: Luz 1: 0%
+2: Luz 2: 0%
+3: Luz 3: 0%
+- Artefactos:
+1: Artefacto 1: OFF
+2: Artefacto 2: OFF
+ERROR: No existe un artefacto con ese numero.
+ERROR: No existe un sensor con ese numero.
+Estado de la casa:
+- Alarma ACTIVADA
+- Sensores:
+1: NORMAL
+2: ENALARMA
+3: NORMAL
+4: NORMAL
+5: NORMAL
+6: NORMAL
+7: NORMAL
+8: NORMAL
+9: NORMAL
+10: NORMAL
+- Luces:
+1: Luz 1: 0%
+2: Luz 2: 0%
+3: Luz 3: 0%
+- Artefactos:
+1: Artefacto 1: ON
+2: Artefacto 2: OFF
+
+  +------------------------------+
+    RESULTADO DE LOS RETORNOS (NO CHEQUEA SI LAS SALIDAS SON CORRECTAS O NO!)
+    PARA CHEQUEAR SI ES CORRECTO HAY REVISAR TODOS LOS LISTADOS Y VER SI IMPRIME LO QUE DEBERIA
+
+    Pruebas que retornan TipoRetorno incorrecto: 0
+    Pruebas que retornan NO_IMPLEMENTADA:        0
+    Pruebas que retornan COMENTADA:              0
+  +------------------------------+
+

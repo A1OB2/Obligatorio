@@ -38,17 +38,17 @@ Luz::~Luz() {
 }
 
 bool Luz::operator==(const Luz &l) const {
-	return this->nombre == l.nombre 
-		&& this->nroLuz == l.nroLuz 
+	return this->nombre == l.nombre
+		&& this->nroLuz == l.nroLuz
 		&& this->intensidad == l.intensidad;
 }
 
 bool Luz::operator<(const Luz & l) const {
-	return nroLuz<l.GetNro();
+	return nroLuz < l.GetNro();
 }
 
 bool Luz::operator>(const Luz & l) const {
-	return nroLuz>l.GetNro();
+	return nroLuz > l.GetNro();
 }
 
 unsigned int Luz::GetNro() const {
@@ -68,8 +68,7 @@ unsigned int Luz::GetIntensidad() const {
 }
 
 void Luz::Imprimir() const {
-	cout << nroLuz << ": " << nombre <<": "<< intensidad << "%" << endl;
-	cout << this->GetNro() << ": " << this->GetNombre() << endl;
+	cout << nroLuz << ": " << nombre << ": " << intensidad << "%" << endl;
 }
 
 void Luz::ImprimirCambio() const {

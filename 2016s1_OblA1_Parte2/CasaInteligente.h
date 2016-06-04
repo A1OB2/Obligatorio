@@ -30,7 +30,7 @@ class Condicion;
 #include "Escena.h"
 #include "Condicion.h"
 
-class CasaInteligente{
+class CasaInteligente {
 public:
 
 	// Constructor por defecto
@@ -72,7 +72,7 @@ public:
 	TipoRetorno ImprimirEscena(unsigned int nroEscena) const;
 	TipoRetorno ImprimirEscenasRaras() const;
 
-	bool enEscena() { return this->enEscena };-
+	bool isEnEscena();
 private:
 	ABB<Asociacion<int, Referencia<Luz>>> * lucesNumero;
 	ABB<Asociacion<Cadena, Referencia<Luz>>> * lucesNombre;
