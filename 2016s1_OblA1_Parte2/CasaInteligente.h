@@ -79,20 +79,14 @@ private:
 	ABB<Asociacion<int, Referencia<Artefacto>>> * artefactosNumero;
 	ABB<Asociacion<Cadena, Referencia<Artefacto>>> * artefactosNombre;
 	ABB<Asociacion<int, Referencia<Sensor>>> * sensores;
-	ABB<Asociacion<int, Referencia<Escena>>> * escenas;
+	ABB<Asociacion<int, Referencia<Escena>>> * escenasNumero;
+	ABB<Asociacion<Cadena, Referencia<Escena>>> * escenasNombre;
+
 	Referencia<Alarma> * alarma;
-	bool enEscena = false;
+	bool enEscena;
+	Referencia<Escena> * escenaActual;
 
 	//aux methods
-
-	template <class T>
-	ErrorRepetido puedoInsertar(ABB<Asociacion<int, Referencia<T>>>* a, Asociacion<int, Referencia<T>> x);
-	template <class T>
-	bool nombreRepetido(NodoABB<Asociacion<int, Referencia<T>>>* a, Asociacion<int, Referencia<T>> x);
-	template <class T>
-	bool numeroRepetido(NodoABB<Asociacion<int, Referencia<T>>>* a, Asociacion<int, Referencia<T>> x);
-	template <class T>
-	NodoABB<Asociacion<int, Referencia<T>>> * getNodoConNum(NodoABB<Asociacion<int, Referencia<T>>> * a, int num);
 };
 
 #endif

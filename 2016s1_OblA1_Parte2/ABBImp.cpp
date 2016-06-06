@@ -12,8 +12,20 @@ ABBImp<T>::ABBImp() {
 
 template <class T>
 ABBImp<T>::ABBImp(const ABBImp<T> &a) {
-	raiz = NULL;
-	*this = a;
+	this = new ABBImp<T>();
+	this->raiz = copyOf(a.raiz);
+}
+
+template<class T>
+void ABBImp<T>::copyOf(const NodoABB<T>* a){
+	NodoABB<T> * ret = NULL;
+	if (a != NULL) {
+		ret = new NodoABB<T>(a->dato);
+		ret->hDer = copyOf(a->hDer);
+		ret->hIzq = copyOf(a->hIzq);
+	}
+	
+	return ret;
 }
 
 template <class T>
@@ -129,27 +141,7 @@ bool ABBImp<T>::insertar(NodoABB<T>* & a, T x) {
 	} else if (a->dato == x) {
 		return false;
 	}
-	/*if (a == NULL) {
-		a = new NodoABB<T>(x);
-	} else {
-		if (a->dato < x) {
-			if (menorQueTodos(a->hIzq, x) && mayorQueTodos(a->hDer, x)) {
-				NodoABB<T> * aux = a;
-				a = new NodoABB<T>(x);
-				a->hDer = aux->hDer;
-				aux->hDer = NULL;
-				a->hIzq = aux;
-			} else insertar(a->hDer, x);
-		} else if (a->dato > x) {
-			if (menorQueTodos(a->hDer, x) && mayorQueTodos(a->hDer, x)) {
-				NodoABB<T> * aux = a;
-				a = new NodoABB<T>(x);
-				a->hIzq = aux->hIzq;
-				aux->hIzq = NULL;
-				a->hDer = aux;
-			} else insertar(a->hIzq, x);
-		}
-	}*/
+	return false;
 }
 
 template<class T>

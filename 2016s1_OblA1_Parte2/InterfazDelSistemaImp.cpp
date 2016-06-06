@@ -52,16 +52,15 @@ TipoRetorno InterfazDelSistemaImp::AgregarSensorACondicion(unsigned int nroCondi
 }
 
 TipoRetorno InterfazDelSistemaImp::CambiarEstadoSensor(unsigned int nroSensor, EstadoSensor estado){
-	casa->CambiarEstadoSensor(nroSensor, estado);
-	return OK;
+	return casa->CambiarEstadoSensor(nroSensor, estado);
 }
 
 TipoRetorno InterfazDelSistemaImp::InicioEscena(unsigned int nroEscena, char* nombre){
-	return NO_IMPLEMENTADA;
+	return casa->InicioEscena(nroEscena,nombre);
 }
 
 TipoRetorno InterfazDelSistemaImp::FinEscena(){
-	return NO_IMPLEMENTADA;
+	return casa->FinEscena();
 }
 
 TipoRetorno InterfazDelSistemaImp::EjecutarEscena(unsigned int nroEscena){
