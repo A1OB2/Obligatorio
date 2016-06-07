@@ -110,19 +110,25 @@ TipoRetorno CasaInteligente::AgregarArtefacto(unsigned int nroArt, Cadena nombre
 }
 
 TipoRetorno CasaInteligente::CambiarEstadoLuz(unsigned int nroLuz, unsigned int porcentaje) {
-	//unos bypass te dan error y otros como este te lo agregan a la escena
-	if (porcentaje <= 100) {
-		Asociacion<int, Referencia<Luz>> e = lucesNumero->traer(Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(Luz())));
-		if (e == Asociacion<int, Referencia<Luz>>()) {
-			cout << "ERROR: No existe una luz con ese numero." << endl;
+		//unos bypass te dan error y otros como este te lo agregan a la escena
+		if (porcentaje <= 100) {
+			if (!enEscena) {
+				Asociacion<int, Referencia<Luz>> e = lucesNumero->traer(Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(Luz())));
+				if (e == Asociacion<int, Referencia<Luz>>()) {
+					cout << "ERROR: No existe una luz con ese numero." << endl;
+					return ERROR;
+				}
+				e.GetRango().GetDato().SetIntensidad(porcentaje);
+				return OK;
+			}
+			else {
+				cout << "estoy dentro de una escena" << endl;
+			}
+		}
+		else {
+			cout << "ERROR: El porcentaje debe ser igual o menor a 100" << endl;
 			return ERROR;
 		}
-		e.GetRango().GetDato().SetIntensidad(porcentaje);
-		return OK;
-	} else {
-		cout << "ERROR: El porcentaje debe ser igual o menor a 100" << endl;
-		return ERROR;
-	}
 }
 
 TipoRetorno CasaInteligente::CambiarEstadoArtefacto(unsigned int nroArt, EstadoArtefacto nuevoEstado) {
@@ -136,9 +142,18 @@ TipoRetorno CasaInteligente::CambiarEstadoArtefacto(unsigned int nroArt, EstadoA
 }
 
 TipoRetorno CasaInteligente::CambiarEstadoAlarma(EstadoAlarma nuevoEstado) {
-	//falta error, bruno judio
-	this->alarma->GetDato().SetEstado(nuevoEstado);
-	return OK;
+	if (this->alarma->GetDato().GetEstado() == nuevoEstado) {
+		cout << "ERROR:	La	alarma	ya	se	encuentra	en	el	nuevo	estado." << endl;
+		return ERROR;
+	}
+	else if (this->puedoCambiarAlarma(sensores->getRaiz()) || nuevoEstado == DESACTIVADA) {
+		this->alarma->GetDato().SetEstado(nuevoEstado);
+		return OK;
+	}
+	else {
+		cout << "ERROR:	No	se	puede	activar,	hay	uno	o	mas	sensores	ENALARMA." << endl;
+		return ERROR;
+	}
 }
 
 TipoRetorno CasaInteligente::ImprimirEstadoCasa() const {
@@ -243,6 +258,16 @@ TipoRetorno CasaInteligente::ImprimirEscena(unsigned int nroEscena) const {
 
 TipoRetorno CasaInteligente::ImprimirEscenasRaras() const {
 	return NO_IMPLEMENTADA;
+}
+
+//aux
+
+bool CasaInteligente::puedoCambiarAlarma(NodoABB<Asociacion<int, Referencia<Sensor>>>* sens)
+{
+	if (sens == NULL) return true;
+	else if (sens->dato.GetRangoInseguro().GetDato().GetEstado() == NORMAL) 
+		return true && puedoCambiarAlarma(sens->hDer) && puedoCambiarAlarma(sens->hIzq);
+	else if (sens->dato.GetRangoInseguro().GetDato().GetEstado() == ENALARMA) return false;
 }
 
 #endif

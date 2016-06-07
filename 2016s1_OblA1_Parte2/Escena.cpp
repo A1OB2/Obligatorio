@@ -11,45 +11,21 @@ ostream &operator<<(ostream& out, const Escena &e) {
 Escena::Escena() {
 	this->numero = 0;
 	this->nombre = "";
-	lucesNumero = new ABBImp<Asociacion<int, Referencia<Luz>>>();
-	lucesNombre = new ABBImp<Asociacion<Cadena, Referencia<Luz>>>();
-	artefactosNumero = new ABBImp<Asociacion<int, Referencia<Artefacto>>>();
-	artefactosNombre = new ABBImp<Asociacion<Cadena, Referencia<Artefacto>>>();
-	alarma = new Referencia<Alarma>(Alarma());
-	sensores = new ABBImp<Asociacion<int, Referencia<Sensor>>>();
+	this->cambios = new ABBImp<Asociacion<int, Referencia<Cambio>>>();
 }
 
 Escena::Escena(unsigned int nro, Cadena nombre) {
 	this->numero = nro;
 	this->nombre = nombre;
-	lucesNumero = new ABBImp<Asociacion<int, Referencia<Luz>>>();
-	lucesNombre = new ABBImp<Asociacion<Cadena, Referencia<Luz>>>();
-	artefactosNumero = new ABBImp<Asociacion<int, Referencia<Artefacto>>>();
-	artefactosNombre = new ABBImp<Asociacion<Cadena, Referencia<Artefacto>>>();
-	alarma = new Referencia<Alarma>(Alarma());
-	sensores = new ABBImp<Asociacion<int, Referencia<Sensor>>>();
+	this->cambios = new ABBImp<Asociacion<int, Referencia<Cambio>>>();
 }
 
 Escena::Escena(const Escena &e) {
 	this->numero = e.numero;
 	this->nombre = e.nombre;
-	this->alarma = new Referencia<Alarma>(Alarma(e.alarma->GetDato()));
-	NodoLista < Asociacion < Cadena, Referencia<Luz>>> * lLuces = NULL;
-	e.lucesNombre->aNodoLista(lLuces);
-	setABB(this->lucesNombre, lLuces);
-	NodoLista < Asociacion < int, Referencia<Luz>>> * lLucesNumero = NULL;
-	e.lucesNumero->aNodoLista(lLucesNumero);
-	setABB(this->lucesNumero, lLucesNumero);
-	NodoLista < Asociacion < Cadena, Referencia<Artefacto>>> * lArtefactos = NULL;
-	e.artefactosNombre->aNodoLista(lArtefactos);
-	setABB(this->artefactosNombre, lArtefactos);
-	NodoLista < Asociacion < int, Referencia<Artefacto>>> * lArtefactosNumero = NULL;
-	e.artefactosNumero->aNodoLista(lArtefactosNumero);
-	setABB(this->artefactosNumero, lArtefactosNumero);
-	NodoLista < Asociacion <int, Referencia<Sensor>>> * lSensores = NULL;
-	e.sensores->aNodoLista(lSensores);
-	setABB(this->sensores, lSensores);
-
+	NodoLista < Asociacion < int, Referencia<Cambio>>> * lCambios = NULL;
+	e.cambios->aNodoLista(lCambios);
+	setABB(this->cambios, lCambios);
 }
 
 Escena & Escena::operator=(const Escena &e) {

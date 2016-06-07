@@ -57,12 +57,7 @@ private:
 	void setABB(ABB<Asociacion<U, Referencia<T>>> *& a, NodoLista<Asociacion<U, Referencia<T>>>* l);
 	int numero;
 	Cadena nombre;
-	ABB<Asociacion<int, Referencia<Luz>>> * lucesNumero;
-	ABB<Asociacion<Cadena, Referencia<Luz>>> * lucesNombre;
-	ABB<Asociacion<int, Referencia<Artefacto>>> * artefactosNumero;
-	ABB<Asociacion<Cadena, Referencia<Artefacto>>> * artefactosNombre;
-	ABB<Asociacion<int, Referencia<Sensor>>> * sensores;
-	Referencia<Alarma> * alarma;
+	ABB<Asociacion<int, Referencia<Cambio>>> * cambios;
 };
 
 

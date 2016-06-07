@@ -87,6 +87,8 @@ private:
 	Referencia<Escena> * escenaActual;
 
 	//aux methods
+	
+	bool puedoCambiarAlarma(NodoABB<Asociacion<int, Referencia<Sensor>>> * sens);
 };
 
 #endif
