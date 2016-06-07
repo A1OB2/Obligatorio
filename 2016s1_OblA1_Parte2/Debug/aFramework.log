@@ -1,7 +1,7 @@
 ﻿  ABBImp.cpp
-  CasaInteligente.cpp
-  Condicion.cpp
+  Escena.cpp
+  ListaImp.cpp
+  main.cpp
   Generating Code...
-c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(128): warning C4715: 'CasaInteligente::CambiarEstadoLuz': not all control paths return a value
-c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(261): warning C4715: 'CasaInteligente::puedoCambiarAlarma': not all control paths return a value
+ConductorPruebaObl2.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   aFramework.vcxproj -> C:\Users\Bruno\Documents\GitHub\Obligatorio\2016s1_OblA1_Parte2\.\Debug\aFramework.exe

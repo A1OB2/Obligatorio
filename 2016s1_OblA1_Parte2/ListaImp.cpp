@@ -13,7 +13,7 @@ ostream &operator<< <>(ostream& out, const ListaImp<T> &l) {
 
 template <class T>
 ListaImp<T>::ListaImp(){
-	lista = new NodoLista<T>();
+	lista = NULL;
 }
 
 template <class T>

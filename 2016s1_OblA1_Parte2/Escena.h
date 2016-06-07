@@ -53,11 +53,9 @@ public:
 	bool EsRara() const;
 
 private:
-	template<class T,class U>
-	void setABB(ABB<Asociacion<U, Referencia<T>>> *& a, NodoLista<Asociacion<U, Referencia<T>>>* l);
 	int numero;
 	Cadena nombre;
-	ABB<Asociacion<int, Referencia<Cambio>>> * cambios;
+	Lista<Referencia<Cambio>> * cambios;
 };
 
 

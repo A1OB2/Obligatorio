@@ -11,21 +11,25 @@ ostream &operator<<(ostream& out, const Escena &e) {
 Escena::Escena() {
 	this->numero = 0;
 	this->nombre = "";
-	this->cambios = new ABBImp<Asociacion<int, Referencia<Cambio>>>();
+	this->cambios = new ListaImp<Referencia<Cambio>>();
 }
 
 Escena::Escena(unsigned int nro, Cadena nombre) {
 	this->numero = nro;
 	this->nombre = nombre;
-	this->cambios = new ABBImp<Asociacion<int, Referencia<Cambio>>>();
+	this->cambios = new ListaImp<Referencia<Cambio>>();
 }
 
 Escena::Escena(const Escena &e) {
 	this->numero = e.numero;
 	this->nombre = e.nombre;
-	NodoLista < Asociacion < int, Referencia<Cambio>>> * lCambios = NULL;
-	e.cambios->aNodoLista(lCambios);
-	setABB(this->cambios, lCambios);
+	Iterador<Referencia<Cambio>> it = e.cambios->GetIterador();
+	cambios = new ListaImp<Referencia<Cambio>>();
+	while (!it.EsFin()) {
+		cambios->AgregarPpio(Referencia<Cambio>(it.ElementoInseguro()));
+		it.Resto();
+	}
+	it.Principio();
 }
 
 Escena & Escena::operator=(const Escena &e) {
@@ -74,15 +78,5 @@ bool Escena::EsRara() const {
 	// NO IMPLEMENTADA
 	return false;
 }
-	//aux
-
-	template<class T, class U>
-	 void Escena::setABB(ABB<Asociacion<U, Referencia<T>>>*& a, NodoLista<Asociacion<U, Referencia<T>>>* l){
-		 a = new ABBImp<Asociacion<U, Referencia<T>>>();
-		 while (l != NULL) {
-			 a->Insertar(l->dato);
-			 l = l->sig;
-		 }
-	}
 #endif
 
