@@ -40,9 +40,13 @@ public:
 	void Evaluar(CasaInteligente *casa);
 
 private:
+	template<class T, class U>
+	void setABB(ABB<Asociacion<U, Referencia<T>>> *& a, NodoLista<Asociacion<U, Referencia<T>>>* l);
 	ABB<Asociacion<int, Referencia<Sensor>>> * sensores;
 	bool cumpliendo;
 	int numero;
+	void(*pcumple) (int);
+	void(*pnocumple) (int);
 };
 
 #endif

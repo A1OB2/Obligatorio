@@ -41,7 +41,7 @@ class ABB abstract {
 		// PRE: -
 		// POS: Busca si existe un elemento que sea igual a e
 		// Usa el operador == del elemento e para encontrar uno igual
-		virtual bool Existe(const T &e) const abstract;
+		virtual bool Existe( T &e) abstract;
 
 		// PRE: Existe el elemento a recuperar
 		// POS: Retorna el primer elemento que sea igual a e

@@ -16,11 +16,17 @@ Condicion::Condicion() {
 
 Condicion::Condicion(unsigned int nro, void (*seCumpleCondicion)(int), void (*seDejaDeCumplirCondicion)(int)) {
 	this->numero = nro;
-
+	this->pcumple = seCumpleCondicion;
+	this->pnocumple = seDejaDeCumplirCondicion;
 }
 
 Condicion::Condicion(const Condicion &c) {
-	// NO IMPLEMENTADA
+	this->numero = c.numero;
+	this->pcumple = c.pcumple;
+	this->pnocumple = c.pnocumple;
+	NodoLista < Asociacion < int, Referencia<Sensor>>> * lSensores = NULL;
+	c.sensores->aNodoLista(lSensores);
+	setABB(this->sensores, lSensores);
 }
 
 Condicion & Condicion::operator=(const Condicion &c) {
@@ -54,6 +60,15 @@ void Condicion::AgregarSensor(unsigned int nroSensor, EstadoSensor estado) {
 
 void Condicion::Evaluar(CasaInteligente *casa) {
 	// NO IMPLEMENTADA
+}
+
+template<class T, class U>
+void Condicion::setABB(ABB<Asociacion<U, Referencia<T>>>*& a, NodoLista<Asociacion<U, Referencia<T>>>* l) {
+	a = new ABBImp<Asociacion<U, Referencia<T>>>();
+	while (l != NULL) {
+		a->Insertar(l->dato);
+		l = l->sig;
+	}
 }
 
 #endif

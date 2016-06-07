@@ -29,7 +29,7 @@ public:
 
 	const T& Minimo() const;
 
-	bool Existe(const T &e) const;
+	bool Existe( T &e);
 
 	const T& Recuperar(const T &e) const;
 
@@ -55,6 +55,7 @@ protected:
 
 private:
 	bool insertar(NodoABB<T>* & a, T x);
+	bool existe(NodoABB<T>* & a, T x);
 	void imprimir(NodoABB<T> *a);
 	void toNodoLista(NodoABB<T> * a,NodoLista<T> * & l);
 	void insertarOrdenado(NodoLista<T> * & l, T & e);

@@ -17,14 +17,14 @@ ABBImp<T>::ABBImp(const ABBImp<T> &a) {
 }
 
 template<class T>
-void ABBImp<T>::copyOf(const NodoABB<T>* a){
+void ABBImp<T>::copyOf(const NodoABB<T>* a) {
 	NodoABB<T> * ret = NULL;
 	if (a != NULL) {
 		ret = new NodoABB<T>(a->dato);
 		ret->hDer = copyOf(a->hDer);
 		ret->hIzq = copyOf(a->hIzq);
 	}
-	
+
 	return ret;
 }
 
@@ -72,29 +72,28 @@ template <class T>
 bool ABBImp<T>::EsVacio() const {
 	//NO IMPLEMENTADO
 	return false;
-} 
+}
 
 template <class T>
 const T& ABBImp<T>::Maximo() const {
 	//NO IMPLEMENTADO
-	return *(new T()); 
+	return *(new T());
 }
 
 template <class T>
 const T& ABBImp<T>::Minimo() const {
 	//NO IMPLEMENTADO
-	return *(new T()); 
+	return *(new T());
 }
 
 template <class T>
-bool ABBImp<T>::Existe(const T &e) const {
-	//NO IMPLEMENTADO
-	return false;
+bool ABBImp<T>::Existe( T &e) {
+	return existe(this->raiz,e);
 }
 
 template <class T>
 const T& ABBImp<T>::Recuperar(const T &e) const {
-	return *(new T()); 
+	return *(new T());
 }
 
 template <class T>
@@ -103,17 +102,17 @@ void ABBImp<T>::Borrar(const T &e) {
 }
 
 template <class T>
-void ABBImp<T>::PreOrder(void (*f)(const T&, void *), void *ptr) const {
+void ABBImp<T>::PreOrder(void(*f)(const T&, void *), void *ptr) const {
 	//NO IMPLEMENTADO
 }
 
 template <class T>
-void ABBImp<T>::InOrder(void (*f)(const T&, void *), void *ptr) const {
+void ABBImp<T>::InOrder(void(*f)(const T&, void *), void *ptr) const {
 	//NO IMPLEMENTADO
 }
 
 template <class T>
-void ABBImp<T>::PosOrder(void (*f) (const T&, void *), void *ptr) const {
+void ABBImp<T>::PosOrder(void(*f) (const T&, void *), void *ptr) const {
 	//NO IMPLEMENTADO
 }
 //own method
@@ -135,17 +134,25 @@ bool ABBImp<T>::insertar(NodoABB<T>* & a, T x) {
 }
 
 template<class T>
-NodoABB<T> * ABBImp<T>::getRaiz() const{
+bool ABBImp<T>::existe(NodoABB<T>*& a, T x) {
+	if (a == NULL)return false;
+	if (a->dato == x)return true;
+	if (a->dato < x) return existe(a->hDer, x);
+	return existe(a->hIzq, x);
+}
+
+template<class T>
+NodoABB<T> * ABBImp<T>::getRaiz() const {
 	return this->raiz;
 }
 
 template<class T>
-void ABBImp<T>::imprimir(){
+void ABBImp<T>::imprimir() {
 	imprimir(raiz);
 }
 
 template<class T>
-void ABBImp<T>::imprimir(NodoABB<T> *a){
+void ABBImp<T>::imprimir(NodoABB<T> *a) {
 	if (a != NULL) {
 		cout << a->dato << endl;
 		imprimir(a->hIzq);
