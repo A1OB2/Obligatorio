@@ -108,16 +108,6 @@ void ABBImp<T>::PosOrder(void (*f) (const T&, void *), void *ptr) const {
 
 ////Auxiliares
 template <class T>
-bool ABBImp<T>::mayorQueTodos(NodoABB<T>* a, T x) {
-	return a == NULL ? true : a->dato > x && mayorQueTodos(a->hIzq, x) && mayorQueTodos(a->hDer, x);
-}
-
-template <class T>
-bool ABBImp<T>::menorQueTodos(NodoABB<T>* a, T x) {
-	return a == NULL ? true : a->dato < x && menorQueTodos(a->hIzq, x) && menorQueTodos(a->hDer, x);
-}
-
-template <class T>
 bool ABBImp<T>::insertar(NodoABB<T>* & a, T x) {
 	if (a == NULL) {
 		a = new NodoABB<T>(x);
@@ -129,27 +119,6 @@ bool ABBImp<T>::insertar(NodoABB<T>* & a, T x) {
 	} else if (a->dato == x) {
 		return false;
 	}
-	/*if (a == NULL) {
-		a = new NodoABB<T>(x);
-	} else {
-		if (a->dato < x) {
-			if (menorQueTodos(a->hIzq, x) && mayorQueTodos(a->hDer, x)) {
-				NodoABB<T> * aux = a;
-				a = new NodoABB<T>(x);
-				a->hDer = aux->hDer;
-				aux->hDer = NULL;
-				a->hIzq = aux;
-			} else insertar(a->hDer, x);
-		} else if (a->dato > x) {
-			if (menorQueTodos(a->hDer, x) && mayorQueTodos(a->hDer, x)) {
-				NodoABB<T> * aux = a;
-				a = new NodoABB<T>(x);
-				a->hIzq = aux->hIzq;
-				aux->hIzq = NULL;
-				a->hDer = aux;
-			} else insertar(a->hIzq, x);
-		}
-	}*/
 }
 
 template<class T>
