@@ -36,8 +36,15 @@ void PruebasPropias::correrPruebaConcreta(){
 	interfaz->CambiarEstadoArtefacto(1, ON);
 	interfaz->CambiarEstadoArtefacto(5, ON);
 	interfaz->CambiarEstadoAlarma(ACTIVADA);
+	interfaz->CambiarEstadoAlarma(ACTIVADA);
 	interfaz->CambiarEstadoSensor(2, ENALARMA);
+	interfaz->CambiarEstadoAlarma(DESACTIVADA);
 	interfaz->CambiarEstadoSensor(12, ENALARMA);
+	interfaz->ImprimirEstadoCasa();
+	Cambio * cambio = new Cambio(Luz());
+	interfaz->InicioEscena(1, "pepe");
+	TipoRetorno pepe = interfaz->CambiarEstadoLuz(1, 50);
+	interfaz->FinEscena();
 	interfaz->ImprimirEstadoCasa();
 
 	delete interfaz;

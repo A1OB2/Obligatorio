@@ -1,2 +1,4 @@
-﻿  Luz.cpp
-  aFramework.vcxproj -> C:\Users\Bruno\Documents\GitHub\Obligatorio\2016s1_OblA1_Parte2\.\Debug\aFramework.exe
+﻿  CasaInteligente.cpp
+c:\users\matías\onedrive\ort\a1\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(132): warning C4715: 'CasaInteligente::CambiarEstadoLuz': not all control paths return a value
+c:\users\matías\onedrive\ort\a1\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(271): warning C4715: 'CasaInteligente::puedoCambiarAlarma': not all control paths return a value
+  aFramework.vcxproj -> C:\Users\Matías\OneDrive\ORT\A1\Obligatorio\2016s1_OblA1_Parte2\.\Debug\aFramework.exe

@@ -45,7 +45,7 @@ public:
 	void Ejecutar(CasaInteligente *casa);
 
 private:
-
+	Dispositivo * disp;
 };
 
 #endif

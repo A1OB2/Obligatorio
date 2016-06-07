@@ -9,11 +9,13 @@ ostream &operator<<(ostream& out, const Cambio &c) {
 }
 
 Cambio::Cambio() {
-	// NO IMPLEMENTADA
+	/*
+	lo dejo vacío porque no se pueden instanciar clases abstractas (Dispositivo)
+	*/
 }
 
 Cambio::Cambio(const Dispositivo &d) {
-	// NO IMPLEMENTADA
+	this->disp = d.Clon();
 }
 
 Cambio::Cambio(const Cambio &c) {

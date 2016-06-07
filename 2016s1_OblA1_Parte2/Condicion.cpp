@@ -9,11 +9,14 @@ ostream &operator<<(ostream& out, const Condicion &c) {
 }
 
 Condicion::Condicion() {
-	// NO IMPLEMENTADA
+	sensores = new ABBImp<Asociacion<int, Referencia<Sensor>>>();
+	cumpliendo = false;
+	numero = 0;
 }
 
 Condicion::Condicion(unsigned int nro, void (*seCumpleCondicion)(int), void (*seDejaDeCumplirCondicion)(int)) {
-	// NO IMPLEMENTADA
+	this->numero = nro;
+
 }
 
 Condicion::Condicion(const Condicion &c) {

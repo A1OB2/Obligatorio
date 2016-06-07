@@ -40,7 +40,8 @@ public:
 	void InOrder(void (*f)(const T&, void *), void *ptr) const;
 	
 	void PosOrder(void (*f) (const T&, void *), void *ptr) const;
-	
+
+
 	void imprimir();
 
 	NodoABB<T> * getRaiz() const;
@@ -58,6 +59,7 @@ private:
 	void toNodoLista(NodoABB<T> * a,NodoLista<T> * & l);
 	void insertarOrdenado(NodoLista<T> * & l, T & e);
 	T traer(NodoABB<T> * a,T e);
+	void copyOf(const NodoABB<T> * a);
 };
 
 #include "ABBImp.cpp"

@@ -40,7 +40,9 @@ public:
 	void Evaluar(CasaInteligente *casa);
 
 private:
-
+	ABB<Asociacion<int, Referencia<Sensor>>> * sensores;
+	bool cumpliendo;
+	int numero;
 };
 
 #endif
