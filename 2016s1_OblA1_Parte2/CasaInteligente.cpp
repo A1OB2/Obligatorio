@@ -83,6 +83,7 @@ TipoRetorno CasaInteligente::AgregarLuz(unsigned int nroLuz, Cadena nombre) {
 			return OK;
 		}
 	} else {
+		cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
 		return ERROR;
 	}
 }
@@ -103,6 +104,7 @@ TipoRetorno CasaInteligente::AgregarArtefacto(unsigned int nroArt, Cadena nombre
 			return OK;
 		}
 	} else {
+		cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
 		return ERROR;
 	}
 }
@@ -111,7 +113,7 @@ TipoRetorno CasaInteligente::CambiarEstadoLuz(unsigned int nroLuz, unsigned int 
 	//unos bypass te dan error y otros como este te lo agregan a la escena
 	if (porcentaje <= 100) {
 		if (!enEscena) {
-			Asociacion<int, Referencia<Luz>> e = lucesNumero->traer(Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(Luz())));
+			Asociacion<int, Referencia<Luz>> e = lucesNumero->fetch(Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(Luz())));
 			if (e == Asociacion<int, Referencia<Luz>>()) {
 				cout << "ERROR: No existe una luz con ese numero." << endl;
 				return ERROR;
@@ -119,21 +121,31 @@ TipoRetorno CasaInteligente::CambiarEstadoLuz(unsigned int nroLuz, unsigned int 
 			e.GetRango().GetDato().SetIntensidad(porcentaje);
 			return OK;
 		} else {
-			cout << "estoy dentro de una escena" << endl;
+			Asociacion<int, Referencia<Luz>> e = lucesNumero->fetch(Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(Luz())));
+			Luz l(e.GetRangoInseguro().GetDato());
+			l.SetIntensidad(porcentaje);
+			escenaActual->GetDato().AgregarCambio(Cambio(l));
+			return OK;
 		}
 	} else {
-		cout << "ERROR: El porcentaje debe ser igual o menor a 100" << endl;
+		cout << "ERROR: El porcentaje debe ser menor o igual a 100" << endl;
 		return ERROR;
 	}
 }
 
 TipoRetorno CasaInteligente::CambiarEstadoArtefacto(unsigned int nroArt, EstadoArtefacto nuevoEstado) {
-	Asociacion<int, Referencia<Artefacto>> e = artefactosNumero->traer(Asociacion<int, Referencia<Artefacto>>(nroArt, Referencia<Artefacto>(Artefacto())));
+	Asociacion<int, Referencia<Artefacto>> e = artefactosNumero->fetch(Asociacion<int, Referencia<Artefacto>>(nroArt, Referencia<Artefacto>(Artefacto())));
 	if (e == Asociacion<int, Referencia<Artefacto>>()) {
 		cout << "ERROR: No existe un artefacto con ese numero." << endl;
 		return ERROR;
 	}
-	e.GetRango().GetDato().SetEstado(nuevoEstado);
+	if (enEscena) {
+		Artefacto a(e.GetRangoInseguro().GetDato());
+		a.SetEstado(nuevoEstado);
+		escenaActual->GetDato().AgregarCambio(Cambio(a));
+	} else {
+		e.GetRango().GetDato().SetEstado(nuevoEstado);
+	}
 	return OK;
 }
 
@@ -142,7 +154,13 @@ TipoRetorno CasaInteligente::CambiarEstadoAlarma(EstadoAlarma nuevoEstado) {
 		cout << "ERROR:	La	alarma	ya	se	encuentra	en	el	nuevo	estado." << endl;
 		return ERROR;
 	} else if (this->puedoCambiarAlarma(sensores->getRaiz()) || nuevoEstado == DESACTIVADA) {
-		this->alarma->GetDato().SetEstado(nuevoEstado);
+		if (enEscena) {
+			Alarma a = Alarma(alarma->GetDato());
+			a.SetEstado(nuevoEstado);
+			escenaActual->GetDato().AgregarCambio(Cambio(a));
+		} else {
+			this->alarma->GetDato().SetEstado(nuevoEstado);
+		}
 		return OK;
 	} else {
 		cout << "ERROR:	No	se	puede	activar,	hay	uno	o	mas	sensores	ENALARMA." << endl;
@@ -152,6 +170,7 @@ TipoRetorno CasaInteligente::CambiarEstadoAlarma(EstadoAlarma nuevoEstado) {
 
 TipoRetorno CasaInteligente::ImprimirEstadoCasa() const {
 	if (!enEscena) {
+		cout << "Estado de la casa:" << endl;
 		cout << this->alarma->GetDato();//La referencia se interponia con la alarma. No se imprimia
 		cout << "- Sensores:" << endl;
 		NodoLista <Asociacion<int, Referencia<Sensor>>> * lSensores = NULL;
@@ -179,6 +198,7 @@ TipoRetorno CasaInteligente::ImprimirEstadoCasa() const {
 
 		return OK;
 	} else {
+		cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
 		return ERROR;
 	}
 }
@@ -193,7 +213,7 @@ TipoRetorno CasaInteligente::AgregarSensorACondicion(unsigned int nroCondicion, 
 
 TipoRetorno CasaInteligente::CambiarEstadoSensor(unsigned int nroSensor, EstadoSensor estado) {
 	if (!enEscena) {
-		Asociacion<int, Referencia<Sensor>> e = sensores->traer(Asociacion<int, Referencia<Sensor>>(nroSensor, Referencia<Sensor>(Sensor())));
+		Asociacion<int, Referencia<Sensor>> e = sensores->fetch(Asociacion<int, Referencia<Sensor>>(nroSensor, Referencia<Sensor>(Sensor())));
 		if (e == Asociacion<int, Referencia<Sensor>>()) {
 			cout << "ERROR: No existe un sensor con ese numero." << endl;
 			return ERROR;
@@ -201,17 +221,18 @@ TipoRetorno CasaInteligente::CambiarEstadoSensor(unsigned int nroSensor, EstadoS
 		e.GetRango().GetDato().SetEstado(estado);
 		return OK;
 	} else {
+		cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
 		return ERROR;
 	}
 }
 
 TipoRetorno CasaInteligente::InicioEscena(unsigned int nroEscena, Cadena nombre) {
 	if (!this->enEscena) {
-		if (escenasNombre->traer(Asociacion<Cadena, Referencia<Escena>>(nombre, Referencia<Escena>(Escena())))
+		if (escenasNombre->fetch(Asociacion<Cadena, Referencia<Escena>>(nombre, Referencia<Escena>(Escena())))
 			!= Asociacion<Cadena, Referencia<Escena>>()) {
 			cout << "ERROR:	Ya	existe	una	escena	con	el	mismo	nombre." << endl;
 			return ERROR;
-		} else if (escenasNumero->traer(Asociacion<int, Referencia<Escena>>(nroEscena, Referencia<Escena>(Escena())))
+		} else if (escenasNumero->fetch(Asociacion<int, Referencia<Escena>>(nroEscena, Referencia<Escena>(Escena())))
 			!= Asociacion<int, Referencia<Escena>>()) {
 			cout << "ERROR:	Ya	existe	una	escena	con	el	mismo	numero." << endl;
 			return ERROR;
@@ -228,6 +249,10 @@ TipoRetorno CasaInteligente::InicioEscena(unsigned int nroEscena, Cadena nombre)
 }
 
 TipoRetorno CasaInteligente::FinEscena() {
+	if (!enEscena) {
+		cout << "ERROR: No fue iniciada la grabacion de una escena" << endl;
+		return ERROR;
+	}
 	enEscena = false;
 	escenasNombre->Insertar(Asociacion<Cadena, Referencia<Escena>>(escenaActual->GetDato().GetNombre(), Referencia<Escena>(escenaActual->GetDato())));
 	escenasNumero->Insertar(Asociacion<int, Referencia<Escena>>(escenaActual->GetDato().GetNro(), Referencia<Escena>(escenaActual->GetDato())));
@@ -236,19 +261,70 @@ TipoRetorno CasaInteligente::FinEscena() {
 }
 
 TipoRetorno CasaInteligente::EjecutarEscena(unsigned int nroEscena) {
-	return NO_IMPLEMENTADA;
+	if (enEscena) {
+		cout << "ERROR: Fue iniciada la grabacion de una escena." << endl;
+		return ERROR;
+	}
+	Asociacion<int, Referencia<Escena>> escena = escenasNumero->fetch(Asociacion<int, Referencia<Escena>>(nroEscena, Referencia<Escena>()));
+	if (escena != Asociacion<int, Referencia<Escena>>()) {
+		escena.GetRango().GetDato().Ejecutar(this);
+	} else {
+		cout << "ERROR: No existe una escena con ese numero." << endl;
+		return ERROR;
+	}
+
+	return OK;
 }
 
 TipoRetorno CasaInteligente::ImprimirEscenas() const {
-	return NO_IMPLEMENTADA;
+	if (enEscena) {
+		cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
+		return ERROR;
+	} else {
+		NodoLista<Asociacion<int, Referencia<Escena>>> * lEscenas = NULL;
+		this->escenasNumero->aNodoLista(lEscenas);
+		cout << "Escenas:" << endl;
+		if (lEscenas == NULL) cout << "--No hay escenas--" << endl;
+		while (lEscenas != NULL) {
+			cout << lEscenas->dato;
+			lEscenas = lEscenas->sig;
+		}
+		return OK;
+	}
 }
 
 TipoRetorno CasaInteligente::ImprimirEscena(unsigned int nroEscena) const {
-	return NO_IMPLEMENTADA;
+	Asociacion<int, Referencia<Escena>> escena = escenasNumero->fetch(Asociacion<int, Referencia<Escena>>(nroEscena, Referencia<Escena>()));
+	if (escena != Asociacion<int, Referencia<Escena>>()) {
+		if (enEscena) {
+			cout << "ERROR: Fue iniciada la grabacion de una escena." << endl;
+			return ERROR;
+		}
+		cout << "Escena " << escena.GetDominio() << " - " << escena.GetRangoInseguro().GetDato().GetNombre() << ":" << endl;
+		escena.GetRango().GetDato().ImprimirCambios();
+		return OK;
+	} else {
+		cout << "ERROR: No existe una escena con ese numero." << endl;
+		return ERROR;
+	}
 }
 
 TipoRetorno CasaInteligente::ImprimirEscenasRaras() const {
-	return NO_IMPLEMENTADA;
+	if (enEscena) {
+		cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
+		return ERROR;
+	} else {
+		NodoLista<Asociacion<int, Referencia<Escena>>> * lEscenas = NULL;
+		this->escenasNumero->aNodoLista(lEscenas);
+		cout << "Escenas raras:" << endl;
+		if (lEscenas == NULL) cout << "--No hay escenas raras--" << endl;
+		while (lEscenas != NULL) {
+			if (lEscenas->dato.GetRangoInseguro().GetDato().EsRara())
+				cout << lEscenas->dato;
+			lEscenas = lEscenas->sig;
+		}
+		return OK;
+	}
 }
 
 //aux
@@ -257,7 +333,7 @@ bool CasaInteligente::puedoCambiarAlarma(NodoABB<Asociacion<int, Referencia<Sens
 	if (sens == NULL) return true;
 	else if (sens->dato.GetRangoInseguro().GetDato().GetEstado() == NORMAL)
 		return true && puedoCambiarAlarma(sens->hDer) && puedoCambiarAlarma(sens->hIzq);
-	else if (sens->dato.GetRangoInseguro().GetDato().GetEstado() == ENALARMA) return false;
+	else  return false;
 }
 
 #endif

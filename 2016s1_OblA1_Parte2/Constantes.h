@@ -27,9 +27,8 @@ enum _estadoSensor {
 };
 typedef enum _estadoSensor EstadoSensor;
 
-//ostream& operator<<(ostream& out, const EstadoAlarma e) {
-//	char * s = e == DESACTIVADA ? "DESACTIVADA" : "ACTIVADA";
-//	return out << s;
-//}
+enum TipoDispositivo {
+	LUZ,ARTEFACTO,ALARMA,SENSOR
+};
 
 #endif

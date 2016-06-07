@@ -15,11 +15,20 @@ Cambio::Cambio() {
 }
 
 Cambio::Cambio(const Dispositivo &d) {
+	string type = typeid(d).name();
+	if (type == "class Luz") {
+		this->tipo = LUZ;
+	} else if(type == "class Artefacto"){
+		this->tipo = ARTEFACTO;
+	} else {
+		this->tipo = ALARMA;
+	}
 	this->disp = d.Clon();
 }
 
 Cambio::Cambio(const Cambio &c) {
-	// NO IMPLEMENTADA
+	disp = c.disp->Clon();
+	tipo = c.tipo;
 }
 
 Cambio & Cambio::operator=(const Cambio &c) {
@@ -43,12 +52,30 @@ bool Cambio::operator<(const Cambio &c) const {
 	return false;
 }
 
+Dispositivo * Cambio::getDispositivo() {
+	return this->disp;
+}
+
+TipoDispositivo Cambio::getTipo() {
+	return this->tipo;
+}
+
 void Cambio::Imprimir() const {
 	// NO IMPLEMENTADA
 }
 
 void Cambio::Ejecutar(CasaInteligente *casa) {
-	// NO IMPLEMENTADA
+	auto type = this->tipo;
+	if (type == LUZ) {
+		Luz *l = dynamic_cast<Luz*>(this->disp);
+		casa->CambiarEstadoLuz(l->GetNro(), l->GetIntensidad());
+	} else if (type == ARTEFACTO) {
+		Artefacto * a = dynamic_cast<Artefacto*>(this->disp);
+		casa->CambiarEstadoArtefacto(a->GetNro(), a->GetEstado());
+	} else if(type == ALARMA){
+		Alarma *a = dynamic_cast<Alarma*>(this->disp);
+		casa->CambiarEstadoAlarma(a->GetEstado());
+	}
 }
 
 #endif

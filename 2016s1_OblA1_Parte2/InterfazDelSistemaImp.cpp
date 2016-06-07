@@ -28,19 +28,16 @@ TipoRetorno InterfazDelSistemaImp::CambiarEstadoLuz(unsigned int nroLuz, unsigne
 }
 
 TipoRetorno InterfazDelSistemaImp::CambiarEstadoArtefacto(unsigned int nroArt, EstadoArtefacto nuevoEstado){
-	casa->CambiarEstadoArtefacto(nroArt, nuevoEstado);
-	return OK;
+	return casa->CambiarEstadoArtefacto(nroArt, nuevoEstado);
 }
 
 TipoRetorno InterfazDelSistemaImp::CambiarEstadoAlarma(EstadoAlarma nuevoEstado){
-	casa->CambiarEstadoAlarma(nuevoEstado);
-	return OK;
+	return casa->CambiarEstadoAlarma(nuevoEstado);
 }
 
 TipoRetorno InterfazDelSistemaImp::ImprimirEstadoCasa() const{
-	cout << "Estado de la casa:" << endl;
-	casa->ImprimirEstadoCasa();
-	return OK;
+	
+	return casa->ImprimirEstadoCasa();
 }
 
 TipoRetorno InterfazDelSistemaImp::CrearCondicion(unsigned int nroCondicion, void (*seCumpleCondicion)(int), void (*seDejaDeCumplirCondicion)(int)){
@@ -64,27 +61,27 @@ TipoRetorno InterfazDelSistemaImp::FinEscena(){
 }
 
 TipoRetorno InterfazDelSistemaImp::EjecutarEscena(unsigned int nroEscena){
-	return NO_IMPLEMENTADA;
+	return casa->EjecutarEscena(nroEscena);
 }
 
 TipoRetorno InterfazDelSistemaImp::ImprimirEscenas() const{
-	return NO_IMPLEMENTADA;
+	return casa->ImprimirEscenas();
 }
 
 TipoRetorno InterfazDelSistemaImp::ImprimirEscena(unsigned int nroEscena) const{
-	return NO_IMPLEMENTADA;
+	return casa->ImprimirEscena(nroEscena);
 }
 
 TipoRetorno InterfazDelSistemaImp::ImprimirEscenasRaras() const{
-	return NO_IMPLEMENTADA;
+	return casa->ImprimirEscenasRaras();
 }
 
 TipoRetorno InterfazDelSistemaImp::GuardarEstadoActual(){
-	return NO_IMPLEMENTADA;
+	return ERROR;
 }
 
 TipoRetorno InterfazDelSistemaImp::VolverAlEstadoAnterior(){
-	return NO_IMPLEMENTADA;
+	return ERROR;
 }
 
 #endif

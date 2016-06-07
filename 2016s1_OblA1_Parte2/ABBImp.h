@@ -48,7 +48,7 @@ public:
 
 	void aNodoLista(NodoLista<T> * & l);
 
-	T traer(T e);
+	T fetch(T e);
 
 protected:
 	NodoABB<T> * raiz;

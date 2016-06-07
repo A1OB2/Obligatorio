@@ -54,7 +54,7 @@ bool ABBImp<T>::Insertar(T &e) {
 
 
 template<class T>
-T ABBImp<T>::traer(T e) {
+T ABBImp<T>::fetch(T e) {
 	return traer(raiz, e);
 }
 template<class T>

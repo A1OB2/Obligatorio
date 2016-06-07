@@ -40,12 +40,15 @@ public:
 
 	// Operador de comparacion <. assert(false)
 	bool operator<(const Cambio &c) const;
+	Dispositivo * getDispositivo();
+	TipoDispositivo getTipo();
 
 	void Imprimir() const;
 	void Ejecutar(CasaInteligente *casa);
 
 private:
 	Dispositivo * disp;
+	TipoDispositivo tipo;
 };
 
 #endif

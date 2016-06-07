@@ -1,4 +1,5 @@
 #include "Escena.h"
+#include <map>
 
 #ifndef ESCENA_CPP
 #define ESCENA_CPP
@@ -49,34 +50,87 @@ bool Escena::operator==(const Escena &e) const {
 }
 
 void Escena::Imprimir(ostream& out) const {
-	// NO IMPLEMENTADA
+	cout << numero << ": " << nombre << endl;
 }
 
 unsigned int Escena::GetNro() const {
 	// NO IMPLEMENTADA
-	return 0;
+	return numero;
 }
 
 Cadena Escena::GetNombre() const {
 	// NO IMPLEMENTADA
-	return "";
+	return nombre;
 }
 
 void Escena::ImprimirCambios() const {
-	// NO IMPLEMENTADA
+	Iterador<Referencia<Cambio>> it = cambios->GetIterador();
+	while (!it.EsFin()) {
+		Cambio c = it.ElementoInseguro().GetDato();
+		if (c.getTipo() == LUZ) {
+			cout << "- Luz: ";
+			dynamic_cast<Luz*>(c.getDispositivo())->Imprimir();
+		} else if (c.getTipo() == ARTEFACTO) {
+			cout << "- Artefacto: ";
+			dynamic_cast<Artefacto*>(c.getDispositivo())->Imprimir();
+		} else if (c.getTipo() == ALARMA) {
+			cout << "- Alarma: ";
+			dynamic_cast<Alarma*>(c.getDispositivo())->Imprimir();
+		}
+		it.Resto();
+	}
 }
 
 void Escena::Ejecutar(CasaInteligente *casa) const {
-	// NO IMPLEMENTADA
+	Iterador<Referencia<Cambio>> it = cambios->GetIterador();
+	while (!it.EsFin()) {
+		Referencia<Cambio> ref = it.ElementoInseguro();
+		ref.GetDato().Ejecutar(casa);
+		it.Resto();
+	}
 }
 
 void Escena::AgregarCambio(const Cambio &c) {
-	// NO IMPLEMENTADA
+	Referencia<Cambio> r(c);
+	cambios->AgregarPpio(r);
 }
 
 bool Escena::EsRara() const {
-	// NO IMPLEMENTADA
-	return false;
+	int contAlarma = 0;//ALARMA , ARTEFACTO
+	map<Cadena, int> luces;//LUZ
+	map<Cadena, int> artefactos;//LUZ
+
+	Iterador<Referencia<Cambio>> it = cambios->GetIterador();
+	while (!it.EsFin()) {
+		Referencia<Cambio> ref = it.ElementoInseguro();
+		if (ref.GetDato().getTipo() == ALARMA) {
+			contAlarma++;
+		} else if (ref.GetDato().getTipo() == LUZ) {
+			if (luces.find(dynamic_cast<Luz *>(ref.GetDato().getDispositivo())->GetNombre()) != luces.end()) {//Si existe la key
+				luces[dynamic_cast<Luz *>(ref.GetDato().getDispositivo())->GetNombre()] += 1;
+
+			} else {
+				luces[dynamic_cast<Luz *>(ref.GetDato().getDispositivo())->GetNombre()] = 1;
+			}
+		}if (ref.GetDato().getTipo() == ARTEFACTO) {
+			if (artefactos.find(dynamic_cast<Artefacto *>(ref.GetDato().getDispositivo())->GetNombre()) != artefactos.end()) {//Si existe la key
+				artefactos[dynamic_cast<Artefacto *>(ref.GetDato().getDispositivo())->GetNombre()] += 1;
+
+			} else {
+				artefactos[dynamic_cast<Artefacto *>(ref.GetDato().getDispositivo())->GetNombre()] = 1;
+			}
+		}
+		it.Resto();
+	}
+	for (auto iterator = luces.begin(); iterator != luces.end(); iterator++) {
+		if(iterator->second >= 2) return true;
+	}
+
+	for (auto iterator = artefactos.begin(); iterator != artefactos.end(); iterator++) {
+		if (iterator->second >= 2) return true;
+	}
+
+	return contAlarma >= 2;
 }
 #endif
 
