@@ -17,6 +17,7 @@ CasaInteligente::CasaInteligente() {
 	sensores = new ABBImp<Asociacion<int, Referencia<Sensor>>>();
 	enEscena = false;
 	escenaActual = new Referencia<Escena>(Escena());
+	condiciones = new ABBImp<Asociacion<int, Referencia<Condicion>>>();
 }
 
 CasaInteligente::CasaInteligente(unsigned int CANT_SENSORES) {
@@ -28,6 +29,7 @@ CasaInteligente::CasaInteligente(unsigned int CANT_SENSORES) {
 	escenasNombre = new ABBImp<Asociacion<Cadena, Referencia<Escena>>>();
 	alarma = new Referencia<Alarma>(Alarma());
 	sensores = new ABBImp<Asociacion<int, Referencia<Sensor>>>();
+	condiciones = new ABBImp<Asociacion<int, Referencia<Condicion>>>();
 	enEscena = false;
 	escenaActual = new Referencia<Escena>(Escena());
 	for (unsigned int i = 1; i <= CANT_SENSORES; i++) {
@@ -204,11 +206,48 @@ TipoRetorno CasaInteligente::ImprimirEstadoCasa() const {
 }
 
 TipoRetorno CasaInteligente::CrearCondicion(unsigned int nroCondicion, void(*seCumpleCondicion)(int), void(*seDejaDeCumplirCondicion)(int)) {
-	return NO_IMPLEMENTADA;
+	Condicion c(nroCondicion, seCumpleCondicion, seDejaDeCumplirCondicion);
+	Referencia<Condicion> r(c);
+	Asociacion<int,Referencia<Condicion>> a(nroCondicion, r);
+	if (!enEscena) {
+		if (condiciones->Existe(a)) {
+			cout << "ERROR: Ya existe una condicion con el mismo numero." << endl;
+			return ERROR;
+		}
+		else {
+			condiciones->Insertar(a);
+			return OK;
+		}
+	}
+	else {
+		cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
+		return ERROR;
+	}
+
 }
 
 TipoRetorno CasaInteligente::AgregarSensorACondicion(unsigned int nroCondicion, unsigned int nroSensor, EstadoSensor estado) {
-	return NO_IMPLEMENTADA;
+	Asociacion<int, Referencia<Sensor>> s(nroSensor, Referencia<Sensor>());
+	Asociacion<int, Referencia<Condicion>> c = condiciones->fetch(Asociacion<int, Referencia<Condicion>>(nroCondicion, Referencia<Condicion>()));
+	if (!condiciones->Existe(c)) {
+		cout << "ERROR: No existe una condicion con ese numero." << endl;
+		return ERROR;
+	}
+	if (!sensores->Existe(s)){
+		cout << "ERROR: No existe un sensor con ese numero." << endl;
+		return ERROR;
+	}
+	if (enEscena) {
+		cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
+		return ERROR;
+	}
+	else {
+		if (!(c == Asociacion<int, Referencia<Condicion>>())) {
+			c.GetRangoInseguro().GetDato().AgregarSensor(nroSensor, estado);
+			//sensores->fetch(s).GetRangoInseguro().GetDato().SetEstado(estado);
+			return OK;
+		}
+	}
 }
 
 TipoRetorno CasaInteligente::CambiarEstadoSensor(unsigned int nroSensor, EstadoSensor estado) {
@@ -219,6 +258,14 @@ TipoRetorno CasaInteligente::CambiarEstadoSensor(unsigned int nroSensor, EstadoS
 			return ERROR;
 		}
 		e.GetRango().GetDato().SetEstado(estado);
+		//si ese sensor esta en alguna condicion cxambiarle el estado
+		NodoLista<Asociacion<int, Referencia<Condicion>>> *l = NULL;
+		condiciones->aNodoLista(l);
+		while (l != NULL) {
+			Sensor s = l->dato.GetRangoInseguro().GetDato().getandexistSensor(e.GetRangoInseguro().GetDato());
+			s.SetEstado(estado);
+			l = l->sig;
+		}
 		return OK;
 	} else {
 		cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;

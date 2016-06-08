@@ -9,24 +9,29 @@ ostream &operator<<(ostream& out, const Condicion &c) {
 }
 
 Condicion::Condicion() {
-	sensores = new ABBImp<Asociacion<int, Referencia<Sensor>>>();
 	cumpliendo = false;
 	numero = 0;
+	this->sensores = new ListaImp<Asociacion<int,Referencia<Sensor>>>();
 }
 
 Condicion::Condicion(unsigned int nro, void (*seCumpleCondicion)(int), void (*seDejaDeCumplirCondicion)(int)) {
 	this->numero = nro;
 	this->pcumple = seCumpleCondicion;
 	this->pnocumple = seDejaDeCumplirCondicion;
+	this->sensores = new ListaImp<Asociacion<int, Referencia<Sensor>>>();
 }
 
 Condicion::Condicion(const Condicion &c) {
 	this->numero = c.numero;
 	this->pcumple = c.pcumple;
 	this->pnocumple = c.pnocumple;
-	NodoLista < Asociacion < int, Referencia<Sensor>>> * lSensores = NULL;
-	c.sensores->aNodoLista(lSensores);
-	setABB(this->sensores, lSensores);
+	Iterador<Asociacion<int, Referencia<Sensor>>> it = c.sensores->GetIterador();
+	sensores = new ListaImp<Asociacion<int, Referencia<Sensor>>>();
+	while (!it.EsFin()) {
+		sensores->AgregarPpio(Asociacion<int, Referencia<Sensor>>(it.ElementoInseguro()));
+		it.Resto();
+	}
+	it.Principio();
 }
 
 Condicion & Condicion::operator=(const Condicion &c) {
@@ -55,20 +60,51 @@ void Condicion::Imprimir() const {
 }
 
 void Condicion::AgregarSensor(unsigned int nroSensor, EstadoSensor estado) {
-	// NO IMPLEMENTADA
+	bool estaba = false;
+	Iterador<Asociacion<int, Referencia<Sensor>>> it = sensores->GetIterador();
+	while (!it.EsFin()) {
+		Asociacion<int, Referencia<Sensor>> e = it.ElementoInseguro();
+		if (e.GetDominio() == nroSensor) {
+			e.GetRangoInseguro().GetDato().SetEstado(estado);
+			estaba = true;
+			break;
+		}
+		it.Resto();
+	}
+	if (!estaba) {
+		Sensor s(nroSensor);
+		s.SetEstado(estado);
+		Referencia<Sensor> r(s);
+		Asociacion<int, Referencia<Sensor>> a(nroSensor,r);
+		sensores->AgregarPpio(a);
+	}
 }
 
 void Condicion::Evaluar(CasaInteligente *casa) {
 	// NO IMPLEMENTADA
 }
 
-template<class T, class U>
-void Condicion::setABB(ABB<Asociacion<U, Referencia<T>>>*& a, NodoLista<Asociacion<U, Referencia<T>>>* l) {
-	a = new ABBImp<Asociacion<U, Referencia<T>>>();
-	while (l != NULL) {
-		a->Insertar(l->dato);
-		l = l->sig;
+Sensor Condicion::getandexistSensor(Sensor s){
+	Sensor ret;
+	bool cumpleAhora = true;
+	if (s.GetEstado() == ENALARMA) cumpleAhora = false;
+	bool estaba = false;
+	Iterador<Asociacion<int, Referencia<Sensor>>> it = sensores->GetIterador();
+	while (!it.EsFin()) {
+		Asociacion<int, Referencia<Sensor>> e = it.ElementoInseguro();
+		if (e.GetRangoInseguro().GetDato().GetEstado() == ENALARMA) cumpleAhora = false;
+		if (e.GetDominio() == s.GetNro()) {
+			ret = e.GetRangoInseguro().GetDato();
+			estaba = true;
+		}
+		if (estaba && cumpleAhora) break;
+		it.Resto();
 	}
+	if (cumpleAhora && !cumpliendo) pcumple(this->numero);
+	else if (!cumpleAhora && cumpliendo) pnocumple(this->numero);
+	cumpliendo = cumpleAhora;
+	if (estaba) return ret;
+	else return NULL;
 }
 
 #endif

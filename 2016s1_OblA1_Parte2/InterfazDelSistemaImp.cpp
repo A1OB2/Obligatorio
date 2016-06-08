@@ -40,12 +40,12 @@ TipoRetorno InterfazDelSistemaImp::ImprimirEstadoCasa() const{
 	return casa->ImprimirEstadoCasa();
 }
 
-TipoRetorno InterfazDelSistemaImp::CrearCondicion(unsigned int nroCondicion, void (*seCumpleCondicion)(int), void (*seDejaDeCumplirCondicion)(int)){
-	return NO_IMPLEMENTADA;
+TipoRetorno InterfazDelSistemaImp::CrearCondicion(unsigned int nroCondicion, void(*seCumpleCondicion)(int), void(*seDejaDeCumplirCondicion)(int)) {
+	return casa->CrearCondicion(nroCondicion,seCumpleCondicion,seDejaDeCumplirCondicion);
 }
 
-TipoRetorno InterfazDelSistemaImp::AgregarSensorACondicion(unsigned int nroCondicion, unsigned int nroSensor, EstadoSensor estado){
-	return NO_IMPLEMENTADA;
+TipoRetorno InterfazDelSistemaImp::AgregarSensorACondicion(unsigned int nroCondicion, unsigned int nroSensor, EstadoSensor estado) {
+	return casa->AgregarSensorACondicion(nroCondicion,nroSensor,estado);
 }
 
 TipoRetorno InterfazDelSistemaImp::CambiarEstadoSensor(unsigned int nroSensor, EstadoSensor estado){

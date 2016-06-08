@@ -81,6 +81,7 @@ private:
 	ABB<Asociacion<int, Referencia<Sensor>>> * sensores;
 	ABB<Asociacion<int, Referencia<Escena>>> * escenasNumero;
 	ABB<Asociacion<Cadena, Referencia<Escena>>> * escenasNombre;
+	ABB<Asociacion<int, Referencia<Condicion>>> * condiciones;
 
 	Referencia<Alarma> * alarma;
 	bool enEscena;

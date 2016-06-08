@@ -16,7 +16,7 @@ class Condicion {
 public:
 	// Constructores
 	Condicion();
-	Condicion(unsigned int nro, void (*seCumpleCondicion)(int), void (*seDejaDeCumplirCondicion)(int));
+	Condicion(unsigned int nro, void(*seCumpleCondicion)(int), void(*seDejaDeCumplirCondicion)(int));
 
 	// Constructor copia
 	Condicion(const Condicion &c);
@@ -34,15 +34,15 @@ public:
 	bool operator<(const Condicion &c) const;
 
 	void Imprimir() const;
-	
+
 	void AgregarSensor(unsigned int nroSensor, EstadoSensor estado);
 
 	void Evaluar(CasaInteligente *casa);
 
+	Sensor getandexistSensor(Sensor s);
+
 private:
-	template<class T, class U>
-	void setABB(ABB<Asociacion<U, Referencia<T>>> *& a, NodoLista<Asociacion<U, Referencia<T>>>* l);
-	ABB<Asociacion<int, Referencia<Sensor>>> * sensores;
+	Lista<Asociacion<int, Referencia<Sensor>>> * sensores;
 	bool cumpliendo;
 	int numero;
 	void(*pcumple) (int);
