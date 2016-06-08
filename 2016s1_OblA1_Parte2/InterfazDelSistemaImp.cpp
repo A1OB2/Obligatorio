@@ -4,7 +4,7 @@
 #define INTERFAZ_DEL_SISTEMA_IMP_CPP
 
 // Inicialización de los atributos
-InterfazDelSistemaImp::InterfazDelSistemaImp(unsigned int CANT_SENSORES, unsigned int MAX_ESTADOS){
+InterfazDelSistemaImp::InterfazDelSistemaImp(unsigned int CANT_SENSORES, unsigned int MAX_ESTADOS) {
 	this->casa = new CasaInteligente(CANT_SENSORES);
 	this->listaCasas = new CasaInteligente*[MAX_ESTADOS];
 	this->nroEstados = MAX_ESTADOS;
@@ -13,69 +13,78 @@ InterfazDelSistemaImp::InterfazDelSistemaImp(unsigned int CANT_SENSORES, unsigne
 }
 
 // Eliminación de los objetos creados con "new"
-InterfazDelSistemaImp::~InterfazDelSistemaImp(){
-//	delete casa;
-//	delete this;
+InterfazDelSistemaImp::~InterfazDelSistemaImp() {
+	//	delete casa;
+	//	delete this;
 }
 
-TipoRetorno InterfazDelSistemaImp::AgregarLuz(unsigned int nroLuz, char* nombre){
+TipoRetorno InterfazDelSistemaImp::AgregarLuz(unsigned int nroLuz, char* nombre) {
 	return this->casa->AgregarLuz(nroLuz, nombre);
 }
 
-TipoRetorno InterfazDelSistemaImp::AgregarArtefacto(unsigned int nroArt, char* nombre){
+TipoRetorno InterfazDelSistemaImp::AgregarArtefacto(unsigned int nroArt, char* nombre) {
 	return this->casa->AgregarArtefacto(nroArt, nombre);
 }
 
-TipoRetorno InterfazDelSistemaImp::CambiarEstadoLuz(unsigned int nroLuz, unsigned int porcentaje){
-	return this->casa->CambiarEstadoLuz(nroLuz, porcentaje);;
+TipoRetorno InterfazDelSistemaImp::CambiarEstadoLuz(unsigned int nroLuz, unsigned int porcentaje) {
+	for (int i = 0; i < nroEstados; i++) {
+		auto c = listaCasas[i];
+		int algo = 0332;
+	}
+	auto retorno =this->casa->CambiarEstadoLuz(nroLuz, porcentaje);
+	for (int i = 0; i < nroEstados; i++) {
+		auto c = listaCasas[i];
+		int algo = 0332;
+	}
+	return retorno;
 }
 
-TipoRetorno InterfazDelSistemaImp::CambiarEstadoArtefacto(unsigned int nroArt, EstadoArtefacto nuevoEstado){
+TipoRetorno InterfazDelSistemaImp::CambiarEstadoArtefacto(unsigned int nroArt, EstadoArtefacto nuevoEstado) {
 	return casa->CambiarEstadoArtefacto(nroArt, nuevoEstado);
 }
 
-TipoRetorno InterfazDelSistemaImp::CambiarEstadoAlarma(EstadoAlarma nuevoEstado){
+TipoRetorno InterfazDelSistemaImp::CambiarEstadoAlarma(EstadoAlarma nuevoEstado) {
 	return casa->CambiarEstadoAlarma(nuevoEstado);
 }
 
-TipoRetorno InterfazDelSistemaImp::ImprimirEstadoCasa() const{
-	
+TipoRetorno InterfazDelSistemaImp::ImprimirEstadoCasa() const {
+
 	return casa->ImprimirEstadoCasa();
 }
 
 TipoRetorno InterfazDelSistemaImp::CrearCondicion(unsigned int nroCondicion, void(*seCumpleCondicion)(int), void(*seDejaDeCumplirCondicion)(int)) {
-	return casa->CrearCondicion(nroCondicion,seCumpleCondicion,seDejaDeCumplirCondicion);
+	return casa->CrearCondicion(nroCondicion, seCumpleCondicion, seDejaDeCumplirCondicion);
 }
 
 TipoRetorno InterfazDelSistemaImp::AgregarSensorACondicion(unsigned int nroCondicion, unsigned int nroSensor, EstadoSensor estado) {
-	return casa->AgregarSensorACondicion(nroCondicion,nroSensor,estado);
+	return casa->AgregarSensorACondicion(nroCondicion, nroSensor, estado);
 }
 
-TipoRetorno InterfazDelSistemaImp::CambiarEstadoSensor(unsigned int nroSensor, EstadoSensor estado){
+TipoRetorno InterfazDelSistemaImp::CambiarEstadoSensor(unsigned int nroSensor, EstadoSensor estado) {
 	return casa->CambiarEstadoSensor(nroSensor, estado);
 }
 
-TipoRetorno InterfazDelSistemaImp::InicioEscena(unsigned int nroEscena, char* nombre){
-	return casa->InicioEscena(nroEscena,nombre);
+TipoRetorno InterfazDelSistemaImp::InicioEscena(unsigned int nroEscena, char* nombre) {
+	return casa->InicioEscena(nroEscena, nombre);
 }
 
-TipoRetorno InterfazDelSistemaImp::FinEscena(){
+TipoRetorno InterfazDelSistemaImp::FinEscena() {
 	return casa->FinEscena();
 }
 
-TipoRetorno InterfazDelSistemaImp::EjecutarEscena(unsigned int nroEscena){
+TipoRetorno InterfazDelSistemaImp::EjecutarEscena(unsigned int nroEscena) {
 	return casa->EjecutarEscena(nroEscena);
 }
 
-TipoRetorno InterfazDelSistemaImp::ImprimirEscenas() const{
+TipoRetorno InterfazDelSistemaImp::ImprimirEscenas() const {
 	return casa->ImprimirEscenas();
 }
 
-TipoRetorno InterfazDelSistemaImp::ImprimirEscena(unsigned int nroEscena) const{
+TipoRetorno InterfazDelSistemaImp::ImprimirEscena(unsigned int nroEscena) const {
 	return casa->ImprimirEscena(nroEscena);
 }
 
-TipoRetorno InterfazDelSistemaImp::ImprimirEscenasRaras() const{
+TipoRetorno InterfazDelSistemaImp::ImprimirEscenasRaras() const {
 	return casa->ImprimirEscenasRaras();
 }
 
@@ -85,26 +94,33 @@ TipoRetorno InterfazDelSistemaImp::GuardarEstadoActual() {
 			CasaInteligente * c = new CasaInteligente(casa);
 			listaCasas[posicion] = c;
 			posicion++;
-		}
-		else {
+		} else {
 			for (int i = 1; i < posicion; i++) {
 				listaCasas[i - 1] = listaCasas[i];
 			}
-			CasaInteligente * c =new CasaInteligente(casa);
+			CasaInteligente * c = new CasaInteligente(casa);
 			listaCasas[posicion] = c;
 		}
+		for (int i = 0; i < nroEstados; i++) {
+			auto c = listaCasas[i];
+			int algo = 0332;
+		}
 		return OK;
+
 	}
 	cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
 	return ERROR;
 }
 
-TipoRetorno InterfazDelSistemaImp::VolverAlEstadoAnterior(){
+TipoRetorno InterfazDelSistemaImp::VolverAlEstadoAnterior() {
+	for (int i = 0; i < nroEstados; i++) {
+		auto c = listaCasas[i];
+		int algo = 0332;
+	}
 	if (posicion != 0) {
 		casa = listaCasas[--posicion];
 		return OK;
-	}
-	else {
+	} else {
 		cout << "ERROR: No quedan estados guardados" << endl;
 		return ERROR;
 	}

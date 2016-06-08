@@ -254,18 +254,16 @@ TipoRetorno CasaInteligente::ImprimirEstadoCasa() const {
 TipoRetorno CasaInteligente::CrearCondicion(unsigned int nroCondicion, void(*seCumpleCondicion)(int), void(*seDejaDeCumplirCondicion)(int)) {
 	Condicion c(nroCondicion, seCumpleCondicion, seDejaDeCumplirCondicion);
 	Referencia<Condicion> r(c);
-	Asociacion<int,Referencia<Condicion>> a(nroCondicion, r);
+	Asociacion<int, Referencia<Condicion>> a(nroCondicion, r);
 	if (!enEscena) {
 		if (condiciones->Existe(a)) {
 			cout << "ERROR: Ya existe una condicion con el mismo numero." << endl;
 			return ERROR;
-		}
-		else {
+		} else {
 			condiciones->Insertar(a);
 			return OK;
 		}
-	}
-	else {
+	} else {
 		cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
 		return ERROR;
 	}
@@ -279,14 +277,14 @@ TipoRetorno CasaInteligente::AgregarSensorACondicion(unsigned int nroCondicion, 
 		cout << "ERROR: No existe una condicion con ese numero." << endl;
 		return ERROR;
 	}
-	if (!sensores->Existe(s)){
+	if (!sensores->Existe(s)) {
 		cout << "ERROR: No existe un sensor con ese numero." << endl;
 		return ERROR;
 	}
 	if (enEscena) {
 		cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
 		return ERROR;
-	}else {
+	} else {
 		if (!(c == Asociacion<int, Referencia<Condicion>>())) {
 			c.GetRangoInseguro().GetDato().AgregarSensor(nroSensor, estado);
 			//sensores->fetch(s).GetRangoInseguro().GetDato().SetEstado(estado);
@@ -428,12 +426,13 @@ bool CasaInteligente::puedoCambiarAlarma(NodoABB<Asociacion<int, Referencia<Sens
 	else  return false;
 }
 
-template<class T>
-void CasaInteligente::llenarArbol(ABB<T>* & llenar, ABB<T>* sacar) {
-	NodoLista<T> *l = NULL;
+template<class T, class U>
+void CasaInteligente::llenarArbol(ABB<Asociacion<U, Referencia<T>>>* & llenar, ABB<Asociacion<U, Referencia<T>>>* sacar) {
+	NodoLista<Asociacion<U, Referencia<T>>> *l = NULL;
 	sacar->aNodoLista(l);
 	while (l != NULL) {
-		llenar->Insertar(l->dato);
+		Asociacion<U, Referencia<T>> d(l->dato.GetDominio(), Referencia<T>(T(l->dato.GetRangoInseguro().GetDato())));
+		llenar->Insertar(d);
 		l = l->sig;
 	}
 }
