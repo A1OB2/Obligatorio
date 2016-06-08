@@ -15,6 +15,7 @@ Condicion::Condicion() {
 }
 
 Condicion::Condicion(unsigned int nro, void (*seCumpleCondicion)(int), void (*seDejaDeCumplirCondicion)(int)) {
+	cumpliendo = false;
 	this->numero = nro;
 	this->pcumple = seCumpleCondicion;
 	this->pnocumple = seDejaDeCumplirCondicion;
@@ -25,6 +26,7 @@ Condicion::Condicion(const Condicion &c) {
 	this->numero = c.numero;
 	this->pcumple = c.pcumple;
 	this->pnocumple = c.pnocumple;
+	this->cumpliendo = c.cumpliendo;
 	Iterador<Asociacion<int, Referencia<Sensor>>> it = c.sensores->GetIterador();
 	sensores = new ListaImp<Asociacion<int, Referencia<Sensor>>>();
 	while (!it.EsFin()) {
@@ -61,16 +63,30 @@ void Condicion::Imprimir() const {
 
 void Condicion::AgregarSensor(unsigned int nroSensor, EstadoSensor estado) {
 	bool estaba = false;
+	EstadoSensor valorCorrecto;
+	bool cumpleAhora = true;
+	if (estado == ENALARMA) 
+		cumpleAhora = false;
 	Iterador<Asociacion<int, Referencia<Sensor>>> it = sensores->GetIterador();
 	while (!it.EsFin()) {
 		Asociacion<int, Referencia<Sensor>> e = it.ElementoInseguro();
+		if (e.GetRangoInseguro().GetDato().GetEstado() == ENALARMA) cumpleAhora = false;
 		if (e.GetDominio() == nroSensor) {
 			e.GetRangoInseguro().GetDato().SetEstado(estado);
 			estaba = true;
-			break;
 		}
+		if (estaba && cumpleAhora) break;
 		it.Resto();
 	}
+	if (cumpleAhora && !cumpliendo && !sensores->EsVacia()) {
+		cumpliendo = cumpleAhora;
+		pcumple(this->numero);
+	}
+	else if (!cumpleAhora && cumpliendo) {
+		pnocumple(this->numero);
+		cumpliendo = cumpleAhora;
+	}
+	//bool estabaVacia = sensores->EsVacia();
 	if (!estaba) {
 		Sensor s(nroSensor);
 		s.SetEstado(estado);
@@ -78,6 +94,8 @@ void Condicion::AgregarSensor(unsigned int nroSensor, EstadoSensor estado) {
 		Asociacion<int, Referencia<Sensor>> a(nroSensor,r);
 		sensores->AgregarPpio(a);
 	}
+	/*if(!estabaVacia)
+		trigger();*/
 }
 
 void Condicion::Evaluar(CasaInteligente *casa) {
@@ -103,8 +121,28 @@ Sensor Condicion::getandexistSensor(Sensor s){
 	if (cumpleAhora && !cumpliendo) pcumple(this->numero);
 	else if (!cumpleAhora && cumpliendo) pnocumple(this->numero);
 	cumpliendo = cumpleAhora;
+	//trigger();
 	if (estaba) return ret;
 	else return NULL;
+}
+
+void Condicion::trigger() {
+	bool cumpleAhora = true;
+	Iterador<Asociacion<int, Referencia<Sensor>>> it = sensores->GetIterador();
+	EstadoSensor valorCorrecto = it.ElementoInseguro().GetRangoInseguro().GetDato().GetEstado();
+	while (!it.EsFin()) {
+		if (it.ElementoInseguro().GetRangoInseguro().GetDato().GetEstado() != valorCorrecto) {
+			cumpleAhora = false;
+		}
+		it.Resto();
+	}
+
+	if (cumpleAhora && !cumpliendo) 
+		pcumple(this->numero);
+	else if (!cumpleAhora && cumpliendo) 
+		pnocumple(this->numero);
+	cumpliendo = cumpleAhora;
+
 }
 
 #endif

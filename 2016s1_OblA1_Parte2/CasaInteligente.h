@@ -39,7 +39,7 @@ public:
 	CasaInteligente(unsigned int CANT_SENSORES);
 
 	// Constructor copia
-	CasaInteligente(const CasaInteligente &casa);
+	CasaInteligente(const CasaInteligente *casa);
 
 	// Destructor
 	virtual ~CasaInteligente();
@@ -73,6 +73,8 @@ public:
 	TipoRetorno ImprimirEscenasRaras() const;
 
 	bool isEnEscena();
+
+	CasaInteligente* copyOf();
 private:
 	ABB<Asociacion<int, Referencia<Luz>>> * lucesNumero;
 	ABB<Asociacion<Cadena, Referencia<Luz>>> * lucesNombre;
@@ -82,13 +84,13 @@ private:
 	ABB<Asociacion<int, Referencia<Escena>>> * escenasNumero;
 	ABB<Asociacion<Cadena, Referencia<Escena>>> * escenasNombre;
 	ABB<Asociacion<int, Referencia<Condicion>>> * condiciones;
-
 	Referencia<Alarma> * alarma;
 	bool enEscena;
 	Referencia<Escena> * escenaActual;
 
 	//aux methods
-	
+	template<class T>
+	void llenarArbol(ABB<T>*& llenar, ABB<T>*sacar );
 	bool puedoCambiarAlarma(NodoABB<Asociacion<int, Referencia<Sensor>>> * sens);
 };
 

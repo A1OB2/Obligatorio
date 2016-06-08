@@ -1,4 +1,7 @@
+-esta mal usar tantos arboles?
 -Orden de impresion de escenas
 -Arbol de sensores, necesitamos dos?
 -getRaiz
 -cuando agrega sensor a condicion vemos si esa condicion se cumple o no?
+-Destructores
+--arreglar las pruebas coso

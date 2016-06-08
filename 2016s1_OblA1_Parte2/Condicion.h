@@ -42,6 +42,7 @@ public:
 	Sensor getandexistSensor(Sensor s);
 
 private:
+	void trigger();
 	Lista<Asociacion<int, Referencia<Sensor>>> * sensores;
 	bool cumpliendo;
 	int numero;

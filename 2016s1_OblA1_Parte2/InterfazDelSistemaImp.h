@@ -34,7 +34,9 @@ private:
 		InterfazDelSistemaImp() { assert(false); } // Constructor por defecto.
 
 		CasaInteligente * casa;
-
+		CasaInteligente ** listaCasas;
+		int nroEstados;
+		int posicion;
 };
 
 #endif

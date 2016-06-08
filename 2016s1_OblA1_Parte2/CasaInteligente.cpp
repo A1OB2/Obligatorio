@@ -40,8 +40,54 @@ CasaInteligente::CasaInteligente(unsigned int CANT_SENSORES) {
 	}
 }
 
-CasaInteligente::CasaInteligente(const CasaInteligente &casa) {
-	assert(false);
+CasaInteligente::CasaInteligente(const CasaInteligente *casa) {
+	lucesNumero = new ABBImp<Asociacion<int, Referencia<Luz>>>();
+	lucesNombre = new ABBImp<Asociacion<Cadena, Referencia<Luz>>>();
+	artefactosNumero = new ABBImp<Asociacion<int, Referencia<Artefacto>>>();
+	artefactosNombre = new ABBImp<Asociacion<Cadena, Referencia<Artefacto>>>();
+	escenasNumero = new ABBImp<Asociacion<int, Referencia<Escena>>>();
+	escenasNombre = new ABBImp<Asociacion<Cadena, Referencia<Escena>>>();
+	alarma = new Referencia<Alarma>(Alarma());
+	sensores = new ABBImp<Asociacion<int, Referencia<Sensor>>>();
+
+
+	llenarArbol(lucesNumero, casa->lucesNumero);
+	llenarArbol(lucesNombre, casa->lucesNombre);
+
+	llenarArbol(artefactosNombre, casa->artefactosNombre);
+	llenarArbol(artefactosNumero, casa->artefactosNumero);
+
+	llenarArbol(sensores, casa->sensores);
+
+	llenarArbol(condiciones, casa->condiciones);
+
+	llenarArbol(escenasNumero, casa->escenasNumero);
+	llenarArbol(escenasNombre, casa->escenasNombre);
+
+	enEscena = casa->enEscena;
+	escenaActual = new Referencia<Escena>(Escena(casa->escenaActual->GetDato()));
+	alarma = new Referencia<Alarma>(Alarma(alarma->GetDato()));
+}
+
+CasaInteligente * CasaInteligente::copyOf() {
+	CasaInteligente * c = new CasaInteligente();
+	/*llenarArbol(c->lucesNumero, lucesNumero);
+	llenarArbolc->lucesNombre, casa.lucesNombre);
+
+	llenarArbol(artefactosNombre, casa.artefactosNombre);
+	llenarArbol(artefactosNumero, casa.artefactosNumero);
+
+	llenarArbol(sensores, casa.sensores);
+
+	llenarArbol(condiciones, casa.condiciones);
+
+	llenarArbol(escenasNumero, casa.escenasNumero);
+	llenarArbol(escenasNombre, casa.escenasNombre);*/
+
+	/*enEscena = casa.enEscena;
+	escenaActual = new Referencia<Escena>(Escena(casa.escenaActual->GetDato()));
+	alarma = new Referencia<Alarma>(Alarma(alarma->GetDato()));*/
+	return nullptr;
 }
 
 CasaInteligente::~CasaInteligente() {
@@ -240,8 +286,7 @@ TipoRetorno CasaInteligente::AgregarSensorACondicion(unsigned int nroCondicion, 
 	if (enEscena) {
 		cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
 		return ERROR;
-	}
-	else {
+	}else {
 		if (!(c == Asociacion<int, Referencia<Condicion>>())) {
 			c.GetRangoInseguro().GetDato().AgregarSensor(nroSensor, estado);
 			//sensores->fetch(s).GetRangoInseguro().GetDato().SetEstado(estado);
@@ -258,10 +303,10 @@ TipoRetorno CasaInteligente::CambiarEstadoSensor(unsigned int nroSensor, EstadoS
 			return ERROR;
 		}
 		e.GetRango().GetDato().SetEstado(estado);
-		//si ese sensor esta en alguna condicion cxambiarle el estado
 		NodoLista<Asociacion<int, Referencia<Condicion>>> *l = NULL;
 		condiciones->aNodoLista(l);
 		while (l != NULL) {
+			//l->dato.GetRangoInseguro().GetDato().AgregarSensor(nroSensor,estado);
 			Sensor s = l->dato.GetRangoInseguro().GetDato().getandexistSensor(e.GetRangoInseguro().GetDato());
 			s.SetEstado(estado);
 			l = l->sig;
@@ -381,6 +426,16 @@ bool CasaInteligente::puedoCambiarAlarma(NodoABB<Asociacion<int, Referencia<Sens
 	else if (sens->dato.GetRangoInseguro().GetDato().GetEstado() == NORMAL)
 		return true && puedoCambiarAlarma(sens->hDer) && puedoCambiarAlarma(sens->hIzq);
 	else  return false;
+}
+
+template<class T>
+void CasaInteligente::llenarArbol(ABB<T>* & llenar, ABB<T>* sacar) {
+	NodoLista<T> *l = NULL;
+	sacar->aNodoLista(l);
+	while (l != NULL) {
+		llenar->Insertar(l->dato);
+		l = l->sig;
+	}
 }
 
 #endif

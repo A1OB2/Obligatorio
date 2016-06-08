@@ -1,5 +1,2 @@
-﻿  CasaInteligente.cpp
-  Condicion.cpp
-  Generating Code...
-c:\users\matías\onedrive\ort\a1\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(251): warning C4715: 'CasaInteligente::AgregarSensorACondicion': not all control paths return a value
+﻿  InterfazDelSistemaImp.cpp
   aFramework.vcxproj -> C:\Users\Matías\OneDrive\ORT\A1\Obligatorio\2016s1_OblA1_Parte2\.\Debug\aFramework.exe

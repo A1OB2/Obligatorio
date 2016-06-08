@@ -6,6 +6,9 @@
 // Inicialización de los atributos
 InterfazDelSistemaImp::InterfazDelSistemaImp(unsigned int CANT_SENSORES, unsigned int MAX_ESTADOS){
 	this->casa = new CasaInteligente(CANT_SENSORES);
+	this->listaCasas = new CasaInteligente*[MAX_ESTADOS];
+	this->nroEstados = MAX_ESTADOS;
+	this->posicion = 0;
 	//MAX_ESTADOS es la cantidad maxima de estados que peude tener la casa, implementar LIFO
 }
 
@@ -76,12 +79,35 @@ TipoRetorno InterfazDelSistemaImp::ImprimirEscenasRaras() const{
 	return casa->ImprimirEscenasRaras();
 }
 
-TipoRetorno InterfazDelSistemaImp::GuardarEstadoActual(){
+TipoRetorno InterfazDelSistemaImp::GuardarEstadoActual() {
+	if (!casa->isEnEscena()) {
+		if (posicion != nroEstados) {
+			CasaInteligente * c = new CasaInteligente(casa);
+			listaCasas[posicion] = c;
+			posicion++;
+		}
+		else {
+			for (int i = 1; i < posicion; i++) {
+				listaCasas[i - 1] = listaCasas[i];
+			}
+			CasaInteligente * c =new CasaInteligente(casa);
+			listaCasas[posicion] = c;
+		}
+		return OK;
+	}
+	cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
 	return ERROR;
 }
 
 TipoRetorno InterfazDelSistemaImp::VolverAlEstadoAnterior(){
-	return ERROR;
+	if (posicion != 0) {
+		casa = listaCasas[--posicion];
+		return OK;
+	}
+	else {
+		cout << "ERROR: No quedan estados guardados" << endl;
+		return ERROR;
+	}
 }
 
 #endif

@@ -128,8 +128,7 @@ unsigned int ListaImp<T>::Largo()const {
 
 template <class T>
 bool ListaImp<T>::EsVacia()const { 
-	//NO IMPLEMENTADO	
-	return false; 
+	return lista == NULL; 
 }
 
 template <class T>
