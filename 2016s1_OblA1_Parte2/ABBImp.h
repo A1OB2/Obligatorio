@@ -45,8 +45,6 @@ public:
 
 	bool allOr(bool(*f)(T));
 
-	NodoABB<T> * getRaiz() const;
-
 	void aNodoLista(NodoLista<T> * & l);
 
 	T fetch(T e);

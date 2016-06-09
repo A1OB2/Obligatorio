@@ -153,11 +153,6 @@ bool ABBImp<T>::existe(NodoABB<T>*& a, T x) {
 }
 
 template<class T>
-NodoABB<T> * ABBImp<T>::getRaiz() const {
-	return this->raiz;
-}
-
-template<class T>
 bool ABBImp<T>::allAnd(bool(*f)(T)) {
 	return allAnd(raiz, f);
 }

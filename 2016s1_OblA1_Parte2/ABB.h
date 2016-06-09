@@ -68,8 +68,6 @@ class ABB abstract {
 		// POS: Aplica el procedimiento f a los elementos del arbol en Post-Order
 		// Recibe un puntero que permite pasarle parametros adicionales a la funcion. Si no se usa pasar NULL.
 		virtual void PosOrder(void (*f) (const T&, void *), void *ptr) const abstract;
-
-		virtual NodoABB<T>* getRaiz() const abstract;
 		
 		virtual bool allAnd(bool(*f)(T)) abstract;
 

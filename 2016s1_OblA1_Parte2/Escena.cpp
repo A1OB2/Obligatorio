@@ -64,6 +64,7 @@ Cadena Escena::GetNombre() const {
 }
 
 void Escena::ImprimirCambios() const {
+	if (cambios->EsVacia()) cout << "--No hay cambios--" << endl;
 	Iterador<Referencia<Cambio>> it = cambios->GetIterador();
 	while (!it.EsFin()) {
 		Cambio c = it.ElementoInseguro().GetDato();
