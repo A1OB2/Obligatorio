@@ -37,13 +37,10 @@ public:
 
 	void AgregarSensor(unsigned int nroSensor, EstadoSensor estado);
 
-	void Evaluar(CasaInteligente *casa);
-
-	Sensor getandexistSensor(Sensor s);
+	void Evaluar(NodoLista<Asociacion<int, Referencia<Sensor>>> *l);
 
 private:
-	void trigger();
-	Lista<Asociacion<int, Referencia<Sensor>>> * sensores;
+	Lista< Asociacion<int, Referencia<Sensor>>> * sensores;
 	bool cumpliendo;
 	int numero;
 	void(*pcumple) (int);
