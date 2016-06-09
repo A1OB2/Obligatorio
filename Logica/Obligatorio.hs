@@ -1,6 +1,6 @@
 module VerificdorTableaux where 
---{Nombre1:NumeroEstudiante1}
---{Nombre2:NumeroEstudiante2}
+--{Bruno Vezoli:201150}
+--{Matías Gutierrez:200244}
 
 data Form = A Simbolo [Term] | Neg Form | Bc BinCon Form Form | All Var Form | Ex Var Form 
 		deriving (Eq, Show)
@@ -56,22 +56,58 @@ verificarContradiccion ls = filter (\m -> not (hayContradiccion m)) ls
 --Ejercicio 3:
 
 appConjuntiva ::Form  -> [Form]
-appConjuntiva = undefined
+appConjuntiva = \f -> case f of{
+	Neg a -> case a of{
+		Neg b -> [b];
+		Bc bc b c -> case bc of{
+			Impl-> [b,Neg(c)];
+			Or-> [Neg(b),Neg(c)]
+		}
+	};
+	Bc bc a b -> case bc of{
+		And -> [a,b];
+	};
+	_ -> error "No hay regla conjuntiva para eso!!!!"
+
+}
 
 appDisyuntiva :: Form  -> (Form, Form)
-appDisyuntiva = undefined
+appDisyuntiva = \f -> case f of{
+	Neg a -> case a of{
+		Bc bc b c -> case bc of{
+			And-> (Neg(b),Neg(c))
+		}
+	};
+	Bc bc a b -> case bc of{
+		Impl-> (Neg(a),b);
+		Or -> (a,b);
+	};
+	_ -> error "No hay regla disyuntiva para eso!!!!"
+
+}
 
 appExist::Simbolo -> Form -> Form 
-appExist = undefined
+appExist = \ s f -> case f of{
+	Ex v f -> sustAll f v s;
+	Neg(All v f) ->Neg(sustAll f v s);
+	_ -> error "No hay regla existencial para eso!!!!"
+}
 
 appUniversal::Simbolo -> Form -> (Form, Form)
-appUniversal = undefined
+appUniversal = \ s f -> case f of{
+	Neg(Ex v f) ->(Neg(Ex v f), Neg(sustAll f v s));--Ver si hay que cambiar de lado
+	All v f -> (All v f,sustAll f v s);
+	_ -> error "No hay regla universal para eso!!!!"
+}
 
 esNuevaConst:: Simbolo -> Rama -> Bool
-esNuevaConst = undefined
+esNuevaConst s rama=not (or (map (estaEnForm s) rama))
 
 hayContradiccion::Rama -> Bool
-hayContradiccion = undefined
+hayContradiccion = \r -> case r of{
+	[]->False;
+	x:xs-> (contradice x xs) || hayContradiccion(xs)
+}
 
 --Ejercicio 5:
 
@@ -123,3 +159,58 @@ arbol_g = undefined
 
 demostracion_g::Demostracion
 demostracion_g = undefined
+
+--Auxiliares
+sustAll::Form -> Var -> Simbolo -> Form
+sustAll = \ f v s -> case f of{
+	A sim zs -> A sim (map (sustEnTerm s v)  zs);
+	Neg f1-> Neg (sustAll f1 v s); 
+	Bc bc f1 f2 -> Bc bc (sustAll f1 v s) (sustAll f2 v s)
+}
+
+
+sustEnTerm::Simbolo -> Var-> Term-> Term
+sustEnTerm= \s v t -> case t of{
+	V var -> case  v == var of{
+		True-> V s;
+		False-> V var
+	};
+	C simbolo -> C simbolo;
+	F simbolo ts ->F simbolo (map (sustEnTerm s v) ts)
+}
+
+estaEnForm:: Simbolo -> Form -> Bool
+estaEnForm= \ s f -> case f of{
+	A sim zs -> or (map (estaEnTerm s)  zs);
+	Neg f1-> (estaEnForm s f1); 
+	Bc bc f1 f2 -> (estaEnForm  s f1) || (estaEnForm s f2);
+	All v1 f1-> (estaEnForm  s f1);
+	Ex v1 f1 -> (estaEnForm  s f1)
+}
+
+estaEnTerm::Simbolo -> Term -> Bool
+estaEnTerm= \ s t -> case t of{
+	V var -> False;
+	C simbolo -> simbolo == s;
+	F simbolo ts ->or (map (estaEnTerm s) ts);
+}
+
+contradice::Form->[Form]->Bool
+contradice= \ f fs -> case fs of{
+	[]->False;
+	x:xs -> x==Neg(f) || Neg(x)==f || (contradice f xs)
+}
+
+--DATOS DE PRUEBA
+f1::Form
+f1=Bc (And) (Neg(Neg(A "S" [V "a",V "b"]))) (Bc And (A "S2" [V "a",V "b"]) (A "S2" [V "a",V "c"]))
+f2::Form
+f2 = Ex "x" (Bc And (A "P" [V "x"]) (A "Q" [V "x"]) )
+f3::Form
+f3 = All "x" (Bc And (A "P" [V "x"]) (A "Q" [V "x"]) )
+f4::Form
+f4= All "x" (Bc And (A "P" [C "c"]) (A "Q" [C "a"]) )
+f5::Form
+f5= Neg(Neg(Neg(A "P" [V "x"])))
+f6::Form
+f6= Neg(Neg(A "P" [V "x"]))
