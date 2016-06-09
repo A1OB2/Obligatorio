@@ -5,3 +5,4 @@
 -cuando agrega sensor a condicion vemos si esa condicion se cumple o no?
 -Destructores
 --arreglar las pruebas coso
+Documentacion
