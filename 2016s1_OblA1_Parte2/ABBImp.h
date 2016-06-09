@@ -41,8 +41,9 @@ public:
 	
 	void PosOrder(void (*f) (const T&, void *), void *ptr) const;
 
+	bool allAnd(bool(*f)(T));
 
-	void imprimir();
+	bool allOr(bool(*f)(T));
 
 	NodoABB<T> * getRaiz() const;
 
@@ -56,9 +57,11 @@ protected:
 private:
 	bool insertar(NodoABB<T>* & a, T x);
 	bool existe(NodoABB<T>* & a, T x);
-	void imprimir(NodoABB<T> *a);
+	bool allAnd(NodoABB<T> *a, bool(*f)(T));
+	bool allOr(NodoABB<T>* a, bool(*f)(T));
 	void toNodoLista(NodoABB<T> * a,NodoLista<T> * & l);
 	void insertarOrdenado(NodoLista<T> * & l, T & e);
+	void vaciar(NodoABB<T> * a);
 	T traer(NodoABB<T> * a,T e);
 	void copyOf(const NodoABB<T> * a);
 };

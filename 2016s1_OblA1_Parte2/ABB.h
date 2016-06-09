@@ -70,8 +70,10 @@ class ABB abstract {
 		virtual void PosOrder(void (*f) (const T&, void *), void *ptr) const abstract;
 
 		virtual NodoABB<T>* getRaiz() const abstract;
+		
+		virtual bool allAnd(bool(*f)(T)) abstract;
 
-		virtual void imprimir() abstract;
+		virtual bool allOr(bool (*f)(T)) abstract;
 
 		virtual void aNodoLista(NodoLista<T> * & l) abstract;
 		virtual T fetch(T e) abstract;

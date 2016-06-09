@@ -44,7 +44,18 @@ ABBImp<T>::~ABBImp() {
 
 template <class T>
 void ABBImp<T>::Vaciar() {
-	//NO IMPLEMENTADO
+		vaciar(raiz);
+}
+
+template<class T>
+void ABBImp<T>::vaciar(NodoABB<T>* a) {
+	if (a != NULL) {
+		vaciar(a->hIzq);
+		vaciar(a->hDer);
+		//delete a->hIzq;
+		//delete a->hDer;
+		delete a;
+	}
 }
 
 template <class T>
@@ -147,18 +158,28 @@ NodoABB<T> * ABBImp<T>::getRaiz() const {
 }
 
 template<class T>
-void ABBImp<T>::imprimir() {
-	imprimir(raiz);
+bool ABBImp<T>::allAnd(bool(*f)(T)) {
+	return allAnd(raiz, f);
 }
 
 template<class T>
-void ABBImp<T>::imprimir(NodoABB<T> *a) {
-	if (a != NULL) {
-		cout << a->dato << endl;
-		imprimir(a->hIzq);
-		imprimir(a->hDer);
-	}
+bool ABBImp<T>::allAnd(NodoABB<T> *a, bool (*f)(T)) {
+	if (a == NULL) return true;
+	return f(a->dato) && allAnd(a->hIzq,f) && allAnd(a->hDer,f);
 }
+
+template<class T>
+bool ABBImp<T>::allOr(bool(*f)(T)) {
+	return allOr(raiz, f);
+}
+
+template<class T>
+bool ABBImp<T>::allOr(NodoABB<T> *a, bool(*f)(T)) {
+	if (a == NULL) return false;
+	return f(a->dato) || allAnd(a->hIzq,f) || allAnd(a->hDer,f);
+}
+
+
 
 template <class T>
 void ABBImp<T>::aNodoLista(NodoLista<T> * & l) {

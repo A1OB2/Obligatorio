@@ -70,6 +70,7 @@ CasaInteligente::CasaInteligente(const CasaInteligente *casa) {
 }
 
 CasaInteligente * CasaInteligente::copyOf() {
+	assert(false);
 	CasaInteligente * c = new CasaInteligente();
 	/*llenarArbol(c->lucesNumero, lucesNumero);
 	llenarArbolc->lucesNombre, casa.lucesNombre);
@@ -91,7 +92,16 @@ CasaInteligente * CasaInteligente::copyOf() {
 }
 
 CasaInteligente::~CasaInteligente() {
-	// NO IMPLEMENTADA->>>HACER
+	delete lucesNumero;
+	delete lucesNombre;
+	delete artefactosNumero;
+	delete artefactosNombre;
+	delete sensores;
+	delete escenasNumero;
+	delete escenasNombre;
+	delete condiciones;
+	delete alarma;
+	delete escenaActual;
 }
 
 CasaInteligente &CasaInteligente::operator=(const CasaInteligente &casa) {
@@ -197,11 +207,13 @@ TipoRetorno CasaInteligente::CambiarEstadoArtefacto(unsigned int nroArt, EstadoA
 	return OK;
 }
 
+bool checkSensores(Asociacion<int, Referencia<Sensor>> s) { return s.GetRangoInseguro().GetDato().GetEstado() == NORMAL; }
+
 TipoRetorno CasaInteligente::CambiarEstadoAlarma(EstadoAlarma nuevoEstado) {
 	if (this->alarma->GetDato().GetEstado() == nuevoEstado) {
 		cout << "ERROR:	La	alarma	ya	se	encuentra	en	el	nuevo	estado." << endl;
 		return ERROR;
-	} else if (this->puedoCambiarAlarma(sensores->getRaiz()) || nuevoEstado == DESACTIVADA) {
+	} else if (sensores->allAnd(checkSensores) || nuevoEstado == DESACTIVADA) {
 		if (enEscena) {
 			Alarma a = Alarma(alarma->GetDato());
 			a.SetEstado(nuevoEstado);
