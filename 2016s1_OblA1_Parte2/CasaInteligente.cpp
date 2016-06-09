@@ -71,22 +71,6 @@ CasaInteligente::CasaInteligente(const CasaInteligente *casa) {
 
 CasaInteligente * CasaInteligente::copyOf() {
 	CasaInteligente * c = new CasaInteligente();
-	/*llenarArbol(c->lucesNumero, lucesNumero);
-	llenarArbolc->lucesNombre, casa.lucesNombre);
-
-	llenarArbol(artefactosNombre, casa.artefactosNombre);
-	llenarArbol(artefactosNumero, casa.artefactosNumero);
-
-	llenarArbol(sensores, casa.sensores);
-
-	llenarArbol(condiciones, casa.condiciones);
-
-	llenarArbol(escenasNumero, casa.escenasNumero);
-	llenarArbol(escenasNombre, casa.escenasNombre);*/
-
-	/*enEscena = casa.enEscena;
-	escenaActual = new Referencia<Escena>(Escena(casa.escenaActual->GetDato()));
-	alarma = new Referencia<Alarma>(Alarma(alarma->GetDato()));*/
 	return nullptr;
 }
 
@@ -158,7 +142,6 @@ TipoRetorno CasaInteligente::AgregarArtefacto(unsigned int nroArt, Cadena nombre
 }
 
 TipoRetorno CasaInteligente::CambiarEstadoLuz(unsigned int nroLuz, unsigned int porcentaje) {
-	//unos bypass te dan error y otros como este te lo agregan a la escena
 	if (porcentaje <= 100) {
 		if (!enEscena) {
 			Asociacion<int, Referencia<Luz>> e = lucesNumero->fetch(Asociacion<int, Referencia<Luz>>(nroLuz, Referencia<Luz>(Luz())));
@@ -219,7 +202,7 @@ TipoRetorno CasaInteligente::CambiarEstadoAlarma(EstadoAlarma nuevoEstado) {
 TipoRetorno CasaInteligente::ImprimirEstadoCasa() const {
 	if (!enEscena) {
 		cout << "Estado de la casa:" << endl;
-		cout << this->alarma->GetDato();//La referencia se interponia con la alarma. No se imprimia
+		cout << this->alarma->GetDato();
 		cout << "- Sensores:" << endl;
 		NodoLista <Asociacion<int, Referencia<Sensor>>> * lSensores = NULL;
 		sensores->aNodoLista(lSensores);
@@ -287,7 +270,6 @@ TipoRetorno CasaInteligente::AgregarSensorACondicion(unsigned int nroCondicion, 
 	} else {
 		if (!(c == Asociacion<int, Referencia<Condicion>>())) {
 			c.GetRangoInseguro().GetDato().AgregarSensor(nroSensor, estado);
-			//sensores->fetch(s).GetRangoInseguro().GetDato().SetEstado(estado);
 			return OK;
 		}
 	}
@@ -303,10 +285,10 @@ TipoRetorno CasaInteligente::CambiarEstadoSensor(unsigned int nroSensor, EstadoS
 		e.GetRango().GetDato().SetEstado(estado);
 		NodoLista<Asociacion<int, Referencia<Condicion>>> *l = NULL;
 		condiciones->aNodoLista(l);
+		NodoLista <Asociacion<int, Referencia<Sensor>>> * lSensores = NULL;
+		sensores->aNodoLista(lSensores);
 		while (l != NULL) {
-			//l->dato.GetRangoInseguro().GetDato().AgregarSensor(nroSensor,estado);
-			Sensor s = l->dato.GetRangoInseguro().GetDato().getandexistSensor(e.GetRangoInseguro().GetDato());
-			s.SetEstado(estado);
+			l->dato.GetRangoInseguro().GetDato().Evaluar(lSensores);
 			l = l->sig;
 		}
 		return OK;
