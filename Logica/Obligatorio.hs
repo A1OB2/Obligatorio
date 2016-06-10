@@ -172,7 +172,7 @@ sustAll = \ f v s -> case f of{
 sustEnTerm::Simbolo -> Var-> Term-> Term
 sustEnTerm= \s v t -> case t of{
 	V var -> case  v == var of{
-		True-> V s;
+		True-> C s;
 		False-> V var
 	};
 	C simbolo -> C simbolo;
@@ -214,3 +214,7 @@ f5::Form
 f5= Neg(Neg(Neg(A "P" [V "x"])))
 f6::Form
 f6= Neg(Neg(A "P" [V "x"]))
+f7::Form
+f7=All "x" (Bc And (A "P" [V "x"])(A "Q" [V "x"]) )
+f8::Form
+f8=Ex "x" (Bc And (A "P" [V "x"])(A "Q" [V "x"]) )

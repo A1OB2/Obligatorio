@@ -58,7 +58,7 @@ private:
 	void imprimir(NodoLista<T> *l);
 
 protected:
-	NodoLista<T> * lista;
+	NodoLista<T> * ppio;
 };
 
 #include "ListaImp.cpp"

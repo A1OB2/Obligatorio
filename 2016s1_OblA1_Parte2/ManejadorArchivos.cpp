@@ -12,11 +12,9 @@ vector<string> split(string str, char delimiter) {
 	return vec;
 }
 
-bool replace(string& source, string const& find, string const& replace)
-{
+bool replace(string& source, string const& find, string const& replace) {
 	bool found = false;
-	for (string::size_type i = 0; (i = source.find(find, i)) != string::npos;)
-	{
+	for (string::size_type i = 0; (i = source.find(find, i)) != string::npos;) {
 		found = true;
 		source.replace(i, find.length(), replace);
 		i += replace.length();
@@ -24,8 +22,7 @@ bool replace(string& source, string const& find, string const& replace)
 	return found;
 }
 
-bool isInteger(const std::string & s)
-{
+bool isInteger(const std::string & s) {
 	if (s.empty() || ((!isdigit(s[0])) && (s[0] != '-') && (s[0] != '+'))) return false;
 
 	char * p;
@@ -36,8 +33,7 @@ bool isInteger(const std::string & s)
 
 
 
-ManejadorArchivos::ManejadorArchivos(char* rutaL, char* rutaC, char* rutaS)
-{
+ManejadorArchivos::ManejadorArchivos(char* rutaL, char* rutaC, char* rutaS) {
 	this->rutaL = rutaL;
 	this->rutaC = rutaC;
 	this->rutaS = rutaS;
@@ -48,79 +44,68 @@ ManejadorArchivos::ManejadorArchivos(char* rutaL, char* rutaC, char* rutaS)
 	pIncorrectas = 0;
 }
 
-bool ManejadorArchivos::esIniSeccion(string & linea) const
-{
+bool ManejadorArchivos::esIniSeccion(string & linea) const {
 	if (!Prefijo(linea, "-!-"))
 		return false;
 
-	Asociacion<string, string> palabras = ObtenerPalabraReservada(linea);		
+	Asociacion<string, string> palabras = ObtenerPalabraReservada(linea);
 	string tipoComando = palabras.GetDominio(); //Puede ser Ini, Fin o un número de prueba.
 
-	if (tipoComando == "Ini") 
+	if (tipoComando == "Ini")
 		return true;
-	
+
 	return false;
 }
 
-bool ManejadorArchivos::esFinSeccion(string & linea) const
-{
+bool ManejadorArchivos::esFinSeccion(string & linea) const {
 	if (!Prefijo(linea, "-!-"))
 		return false;
 
-	Asociacion<string, string> palabras = ObtenerPalabraReservada(linea);		
+	Asociacion<string, string> palabras = ObtenerPalabraReservada(linea);
 	string tipoComando = palabras.GetDominio(); //Puede ser Ini, Fin o un número de prueba.
 
-	if (tipoComando == "Fin") 
+	if (tipoComando == "Fin")
 		return true;
-	
+
 	return false;
 }
 
-bool ManejadorArchivos::esFinDePrueba(string & linea) const
-{
+bool ManejadorArchivos::esFinDePrueba(string & linea) const {
 	if (!Prefijo(linea, "-!-"))
 		return false;
 
-	Asociacion<string, string> palabras = ObtenerPalabraReservada(linea);		
+	Asociacion<string, string> palabras = ObtenerPalabraReservada(linea);
 	string tipoComando = palabras.GetDominio(); //Puede ser Ini, Fin o un número de prueba.
 
-	if (tipoComando == "Ini" || tipoComando == "Fin") 
+	if (tipoComando == "Ini" || tipoComando == "Fin")
 		return false;
-	
+
 	return true;
 }
 
-int ManejadorArchivos::obtenerNumeroDePrueba(string & linea) const
-{
-	Asociacion<string, string> palabras = ObtenerPalabraReservada(linea);		
+int ManejadorArchivos::obtenerNumeroDePrueba(string & linea) const {
+	Asociacion<string, string> palabras = ObtenerPalabraReservada(linea);
 	string tipoComando = palabras.GetDominio(); //Puede ser Ini, Fin o un número de prueba.
 	return atoi(palabras.GetDominio().c_str());
 }
 
-bool ManejadorArchivos::AvanzarHastaProximaPrueba(ifstream &archivo, int &nroPrueba, string &textoRes, string &contenidoFin, bool imprimirIniFin, ofstream &salida) const
-{
+bool ManejadorArchivos::AvanzarHastaProximaPrueba(ifstream &archivo, int &nroPrueba, string &textoRes, string &contenidoFin, bool imprimirIniFin, ofstream &salida) const {
 	string linea;
 	textoRes = "";
 
-	while (getline(archivo, linea))
-	{
-		if (esIniSeccion(linea) || esFinSeccion(linea))
-		{
-			if (imprimirIniFin)
-			{
+	while (getline(archivo, linea)) {
+		if (esIniSeccion(linea) || esFinSeccion(linea)) {
+			if (imprimirIniFin) {
 				Asociacion<string, string> palabras = ObtenerPalabraReservada(linea);
 				string contenido = palabras.GetRango();
 				if (esIniSeccion(linea))
-					ImprimirInicio(salida, contenido); 
-				else 
-					ImprimirFin(salida, contenido); 
+					ImprimirInicio(salida, contenido);
+				else
+					ImprimirFin(salida, contenido);
 			}
-		}
-		else if (!esFinDePrueba(linea))
-		{
+		} else if (!esFinDePrueba(linea)) {
 			textoRes += linea + "\n";
-		}
-		else // llego al fin de la prueba
+		} else // llego al fin de la prueba
 		{
 			nroPrueba = obtenerNumeroDePrueba(linea);
 			Asociacion<string, string> palabras = ObtenerPalabraReservada(linea);
@@ -136,8 +121,7 @@ bool ManejadorArchivos::AvanzarHastaProximaPrueba(ifstream &archivo, int &nroPru
 	return false;
 }
 
-void ManejadorArchivos::Comparar(bool mostrarSalidas, bool soloMostrarErrores)
-{
+void ManejadorArchivos::Comparar(bool mostrarSalidas, bool soloMostrarErrores) {
 	string lineaL, lineaC, textoL, textoC, contenidoFinL, comentarioL;
 	int pruebaActualC, pruebaActualL = 0;
 
@@ -158,22 +142,17 @@ void ManejadorArchivos::Comparar(bool mostrarSalidas, bool soloMostrarErrores)
 	vector<string> resultados = split(contenidoFinL, '-');
 	comentarioL = resultados[2];
 
-	while (getline(archivoCorreccion, lineaC))
-	{
-		if (esIniSeccion(lineaC) || esFinSeccion(lineaC))
-		{
+	while (getline(archivoCorreccion, lineaC)) {
+		if (esIniSeccion(lineaC) || esFinSeccion(lineaC)) {
 			Asociacion<string, string> palabras = this->ObtenerPalabraReservada(lineaC);
 			if (esIniSeccion(lineaC))
-				ImprimirInicio(salida, palabras.GetRango()); 
-			else 
-				ImprimirFin(salida, palabras.GetRango()); 
-		}
-		else {
-			if (!esFinDePrueba(lineaC))
-			{
+				ImprimirInicio(salida, palabras.GetRango());
+			else
+				ImprimirFin(salida, palabras.GetRango());
+		} else {
+			if (!esFinDePrueba(lineaC)) {
 				textoC += lineaC + "\n";
-			}
-			else // llego al fin de la prueba
+			} else // llego al fin de la prueba
 			{
 				pruebaActualC = obtenerNumeroDePrueba(lineaC);
 				Asociacion<string, string> palabras = ObtenerPalabraReservada(lineaC);
@@ -189,12 +168,10 @@ void ManejadorArchivos::Comparar(bool mostrarSalidas, bool soloMostrarErrores)
 				if (pruebaActualC < pruebaActualL || comentarioL != comentarioC) // la prueba no existe en el generado por alumno. no me muevo en el archivo de lectura
 				{
 					salida << "!!!!!! HAY QUE COMENTAR PRUEBAS UTILIZANDO EL COMANDO interfaz->Comentar(); y interfaz->Descomentar(); para DESCOMENTAR" << endl;
-				}
-				else if (pruebaActualC > pruebaActualL) // la prueba no existe en el archivo de correccion
+				} else if (pruebaActualC > pruebaActualL) // la prueba no existe en el archivo de correccion
 				{
 					salida << "!!!!!! HAY QUE COMENTAR PRUEBAS UTILIZANDO EL COMANDO interfaz->Comentar(); y interfaz->Descomentar(); para DESCOMENTAR" << endl;
-				}
-				else // comparo las pruebas y avanzo en el archivo de lectura
+				} else // comparo las pruebas y avanzo en el archivo de lectura
 				{
 					resultados = split(contenidoFinL, '-');
 					comentarioL = resultados[2];
@@ -218,36 +195,30 @@ void ManejadorArchivos::Comparar(bool mostrarSalidas, bool soloMostrarErrores)
 }
 
 
-bool ManejadorArchivos::Prefijo(string linea, string pref) const
-{
+bool ManejadorArchivos::Prefijo(string linea, string pref) const {
 	return linea.compare(0, pref.length(), pref) == 0;
 }
 
 //PRE: Prefijo(linea, "-!-")
-Asociacion<string, string> ManejadorArchivos::ObtenerPalabraReservada(string linea) const
-{
+Asociacion<string, string> ManejadorArchivos::ObtenerPalabraReservada(string linea) const {
 	int pos = linea.find("::");
-	string izq = linea.substr(3, pos-3); //Desde 2 para sacar el "-!-"
-	string der = linea.substr(pos+2);
+	string izq = linea.substr(3, pos - 3); //Desde 2 para sacar el "-!-"
+	string der = linea.substr(pos + 2);
 
 	return Asociacion<string, string>(izq, der);
 }
 
-void ManejadorArchivos::ImprimirInicio(ofstream &salida, string titulo) const
-{
+void ManejadorArchivos::ImprimirInicio(ofstream &salida, string titulo) const {
 	salida << "********* INICIO " << titulo << "*******" << endl;
 }
 
-void ManejadorArchivos::ImprimirFin(ofstream &salida, string titulo) const
-{
+void ManejadorArchivos::ImprimirFin(ofstream &salida, string titulo) const {
 	salida << "********* FIN " << titulo << "*******" << endl << endl;
 }
 
 // Compara la salida esperada contra la obtenida.
-void ManejadorArchivos::ImprimirComparacion(ofstream &salida, int nroPrueba, string obt, string esp, string retE, string retO, string com, bool mostrarSalidas, bool soloMostrarErrores) 
-{
-	if (MismaImpresion(esp, obt) && retO == retE)
-	{
+void ManejadorArchivos::ImprimirComparacion(ofstream &salida, int nroPrueba, string obt, string esp, string retE, string retO, string com, bool mostrarSalidas, bool soloMostrarErrores) {
+	if (MismaImpresion(esp, obt) && retO == retE) {
 		this->pCorrectas++;
 		if (soloMostrarErrores) return;
 		salida << "-----------------------------------" << endl;
@@ -255,25 +226,20 @@ void ManejadorArchivos::ImprimirComparacion(ofstream &salida, int nroPrueba, str
 		salida << " -> OK" << endl;
 		if (mostrarSalidas && obt != "")
 			salida << endl << "Se imprimió: " << endl << obt << endl;
-	}
-	else if (retO == "COMENTADA")
-	{
+	} else if (retO == "COMENTADA") {
 		salida << "-----------------------------------" << endl;
 		salida << "Prueba " << nroPrueba << ": " << com;
 		salida << endl << " -> ERROR PRUEBA COMENTADA" << endl;
 		this->pComentadas++;
-	}else if (retO == "NO_IMPLEMENTADA")
-	{
+	} else if (retO == "NO_IMPLEMENTADA") {
 		salida << "-----------------------------------" << endl;
 		salida << "Prueba " << nroPrueba << ": " << com;
 		salida << endl << " -> ERROR PRUEBA NO_IMPLEMENTADA" << endl;
 		this->pNI++;
-	}
-	else {
+	} else {
 		salida << "-----------------------------------" << endl;
 		salida << "Prueba " << nroPrueba << ": " << com;
-		if (retO != retE)
-		{
+		if (retO != retE) {
 			salida << endl << " -> ERROR retorno incorrecto" << endl;
 			salida << "\t Se esperaba: " << retE << endl;
 			salida << "\t Se obtuvo: " << retO << endl;
@@ -290,39 +256,34 @@ void ManejadorArchivos::ImprimirComparacion(ofstream &salida, int nroPrueba, str
 // Imprimo el resultado esperado vs el recibido
 // Mostrar la linea (y posicion) en la que hay diferencia
 // Marcar la linea con la diferencia
-void ManejadorArchivos::ImprimirEsperadoVsRecibido(ofstream &salida, string &esp, string &obt) const
-{
+void ManejadorArchivos::ImprimirEsperadoVsRecibido(ofstream &salida, string &esp, string &obt) const {
 	vector<string> vecEsp = split(esp, '\n');
 	vector<string> vecObt = split(obt, '\n');
 	unsigned int iEsp = 1, iObt = 1;
 
 	salida << "Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): " << endl;
-	for(vector<string>::const_iterator i = vecEsp.begin(); i != vecEsp.end(); ++i) {
-		salida << setw(2) << iEsp++ << setw(0) << ": " << *i << endl; 
+	for (vector<string>::const_iterator i = vecEsp.begin(); i != vecEsp.end(); ++i) {
+		salida << setw(2) << iEsp++ << setw(0) << ": " << *i << endl;
 		salida << setw(0);
 	}
 
 	salida << endl;
 	salida << "Se imprimio (el numero de linea fue agregado, no se debe imprimir): " << endl;
 	salida << "(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)" << endl;
-	for(vector<string>::const_iterator i = vecObt.begin(); i != vecObt.end(); ++i) {
+	for (vector<string>::const_iterator i = vecObt.begin(); i != vecObt.end(); ++i) {
 		salida << setw(2) << iObt++ << setw(0);
-		if (iObt <= iEsp && vecObt[iObt-2] == vecEsp[iObt-2])
-		{
+		if (iObt <= iEsp && vecObt[iObt - 2] == vecEsp[iObt - 2]) {
 			salida << ": ";
-		}
-		else
-		{
+		} else {
 			salida << "! ";
 		}
-		salida << *i << endl; 
+		salida << *i << endl;
 		salida << setw(0);
 	}
 
 }
 
-void ManejadorArchivos::ImprimirEstadisticas(ofstream &salida) const
-{
+void ManejadorArchivos::ImprimirEstadisticas(ofstream &salida) const {
 	salida << endl << endl << "----------------" << endl;
 	salida << "PRUEBAS CORRECTAS: " << this->pCorrectas << endl;
 	salida << "PRUEBAS INCORRECTAS: " << this->pIncorrectas << endl;
@@ -330,22 +291,18 @@ void ManejadorArchivos::ImprimirEstadisticas(ofstream &salida) const
 	salida << "PRUEBAS COMENTADAS: " << this->pComentadas << endl;
 }
 
-bool removeFromStart(string& source, string const& find)
-{
+bool removeFromStart(string& source, string const& find) {
 	std::string::size_type i = source.find(find);
-	if (i != std::string::npos && i == 0)
-	{
+	if (i != std::string::npos && i == 0) {
 		source.erase(i, find.length());
 		return true;
 	}
 	return false;
 }
 
-bool removeFromEnd(string& source, string const& find)
-{
+bool removeFromEnd(string& source, string const& find) {
 	std::string::size_type i = source.find_last_of(find);
-	if (i != std::string::npos && i == source.length() - 1)
-	{
+	if (i != std::string::npos && i == source.length() - 1) {
 		source.erase(i, 1);
 		return true;
 	}
@@ -356,21 +313,18 @@ bool removeFromEnd(string& source, string const& find)
 bool trimFromEnd(std::string &s) {
 	// trim trailing spaces
 	std::string::size_type i = s.find_last_of(" \t");
-	if(i != std::string::npos && i == s.length()-1)
-	{
+	if (i != std::string::npos && i == s.length() - 1) {
 		s = s.erase(i, 1);
 		return true;
 	}
 	return false;
 }
 
-bool ManejadorArchivos::MismaImpresion(string &esp, string &obt) const
-{
+bool ManejadorArchivos::MismaImpresion(string &esp, string &obt) const {
 	if (esp == "" && obt == "")
 		return true;
-	
-	while (true)
-	{
+
+	while (true) {
 		bool b = false;
 		b = b || removeFromStart(esp, "\n");	// quito lineas en blanco al inicio	
 		b = b || removeFromEnd(esp, "\n");		// quito lineas en blanco al final
@@ -384,8 +338,7 @@ bool ManejadorArchivos::MismaImpresion(string &esp, string &obt) const
 		b = b || replace(esp, "\t", " ");		// reemplazo tabuladores por espacios
 		if (!b) break;
 	}
-	while (true)
-	{
+	while (true) {
 		bool b = false;
 		b = b || removeFromStart(obt, "\n");	// quito lineas en blanco al inicio	
 		b = b || removeFromEnd(obt, "\n");		// quito lineas en blanco al final

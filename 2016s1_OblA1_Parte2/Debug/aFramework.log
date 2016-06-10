@@ -1,35 +1,8 @@
-﻿  ConductorPruebaObl2.cpp
-  InterfazDelSistemaProxy.cpp
-  IteradorListaOrdImp.cpp
-  ListaOrdImp.cpp
-  main.cpp
-  ManejadorArchivos.cpp
-  PruebasCorreccion.cpp
-  PruebasEjemploDeUso.cpp
-  PruebasPropias.cpp
-  EstadisticaPrueba.cpp
-  ConductorPrueba.cpp
-  Prueba.cpp
-  ManejadorImpresionPrueba.cpp
-  ManejadorSalidaPrueba.cpp
+﻿  Asociacion.cpp
+  Condicion.cpp
+  Escena.cpp
   IteradorListaImp.cpp
   ListaImp.cpp
-  InterfazDelSistemaImp.cpp
-  ABBImp.cpp
-  Asociacion.cpp
-  Cadena.cpp
+  ManejadorArchivos.cpp
   Generating Code...
-  Compiling...
-  Referencia.cpp
-  CasaInteligente.cpp
-  Condicion.cpp
-  Alarma.cpp
-  Artefacto.cpp
-  Luz.cpp
-  Sensor.cpp
-  Cambio.cpp
-  Escena.cpp
-  Generating Code...
-c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(288): warning C4715: 'CasaInteligente::AgregarSensorACondicion': not all control paths return a value
-ConductorPruebaObl2.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
   aFramework.vcxproj -> C:\Users\Bruno\Documents\GitHub\Obligatorio\2016s1_OblA1_Parte2\.\Debug\aFramework.exe
