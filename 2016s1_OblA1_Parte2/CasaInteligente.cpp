@@ -214,31 +214,20 @@ TipoRetorno CasaInteligente::CambiarEstadoAlarma(EstadoAlarma nuevoEstado) {
 TipoRetorno CasaInteligente::ImprimirEstadoCasa() const {
 	if (!enEscena) {
 		cout << "Estado de la casa:" << endl;
-		cout << this->alarma->GetDato();
-		cout << "- Sensores:" << endl;
-		NodoLista <Asociacion<int, Referencia<Sensor>>> * lSensores = NULL;
-		sensores->aNodoLista(lSensores);
-		while (lSensores != NULL) {
-			cout << lSensores->dato;
-			lSensores = lSensores->sig;
-		}
-		cout << "- Luces:" << endl;
-		NodoLista<Asociacion<int, Referencia<Luz>>> * lLuces = NULL;
-		lucesNumero->aNodoLista(lLuces);
-		if (lLuces == NULL) cout << "--No hay luces--" << endl;
-		while (lLuces != NULL) {
-			cout << lLuces->dato;
-			lLuces = lLuces->sig;
-		}
-		cout << "- Artefactos:" << endl;
-		NodoLista<Asociacion<int, Referencia<Artefacto>>> * lArtefactos = NULL;
-		artefactosNumero->aNodoLista(lArtefactos);
-		if (lArtefactos == NULL) cout << "--No hay artefactos--" << endl;
-		while (lArtefactos != NULL) {
-			cout << lArtefactos->dato;
-			lArtefactos = lArtefactos->sig;
-		}
 
+		cout << this->alarma->GetDato();
+
+		cout << "- Sensores:" << endl;
+		if (sensores->EsVacio()) cout << "--No hay sensores--" << endl;
+		else sensores->Imprimir();
+
+		cout << "- Luces:" << endl;
+		if(lucesNombre->EsVacio()) cout << "--No hay luces--" << endl;
+		else lucesNumero->Imprimir();
+
+		cout << "- Artefactos:" << endl;
+		if(artefactosNumero->EsVacio()) cout << "--No hay artefactos--" << endl;
+		else artefactosNumero->Imprimir();
 		return OK;
 	} else {
 		cout << "ERROR: Fue iniciada la grabacion de una escena" << endl;
@@ -407,6 +396,7 @@ TipoRetorno CasaInteligente::ImprimirEscenasRaras() const {
 				cout << lEscenas->dato;
 			lEscenas = lEscenas->sig;
 		}
+		delete lEscenas;
 		return OK;
 	}
 }

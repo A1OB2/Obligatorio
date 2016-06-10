@@ -47,6 +47,8 @@ public:
 
 	void aNodoLista(NodoLista<T> * & l);
 
+	void Imprimir();
+
 	T fetch(T e);
 
 protected:
@@ -62,6 +64,7 @@ private:
 	void vaciar(NodoABB<T> * a);
 	T traer(NodoABB<T> * a,T e);
 	void copyOf(const NodoABB<T> * a);
+	void imprimirNodo(NodoABB<T> * a);
 };
 
 #include "ABBImp.cpp"

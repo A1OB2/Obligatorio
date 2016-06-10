@@ -81,8 +81,7 @@ T ABBImp<T>::traer(NodoABB<T>* a, T e) {
 
 template <class T>
 bool ABBImp<T>::EsVacio() const {
-	//NO IMPLEMENTADO
-	return false;
+	return raiz == NULL;
 }
 
 template <class T>
@@ -126,6 +125,12 @@ template <class T>
 void ABBImp<T>::PosOrder(void(*f) (const T&, void *), void *ptr) const {
 	//NO IMPLEMENTADO
 }
+
+template <class T>
+void ABBImp<T>::Imprimir() {
+	imprimirNodo(raiz);
+}
+
 //own method
 
 ////Auxiliares
@@ -201,6 +206,15 @@ void ABBImp<T>::insertarOrdenado(NodoLista<T>*& l, T & e) {
 		l->sig = aux;
 	} else {
 		insertarOrdenado(l->sig, e);
+	}
+}
+
+template<class T>
+void ABBImp<T>::imprimirNodo(NodoABB<T>* a) {
+	if (a != NULL) {
+		imprimirNodo(a->hIzq);
+		cout << a->dato;
+		imprimirNodo(a->hDer);
 	}
 }
 #endif
