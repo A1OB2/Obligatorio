@@ -40,7 +40,7 @@ public:
 	void Evaluar(NodoLista<Asociacion<int, Referencia<Sensor>>> *l);
 
 private:
-	Lista< Asociacion<int, Referencia<Sensor>>> * sensores;
+	Lista<Asociacion<int, Referencia<Sensor>>> * sensores;
 	bool cumpliendo;
 	int numero;
 	void(*pcumple) (int);

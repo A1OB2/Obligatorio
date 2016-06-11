@@ -1,3 +1,6 @@
-﻿  CasaInteligente.cpp
-c:\users\bruno\documents\github\obligatorio\2016s1_obla1_parte2\casainteligente.cpp(294): warning C4715: 'CasaInteligente::AgregarSensorACondicion': not all control paths return a value
+﻿  ABBImp.cpp
+  Cambio.cpp
+  Escena.cpp
+  ListaImp.cpp
+  Generating Code...
   aFramework.vcxproj -> C:\Users\Bruno\Documents\GitHub\Obligatorio\2016s1_OblA1_Parte2\.\Debug\aFramework.exe

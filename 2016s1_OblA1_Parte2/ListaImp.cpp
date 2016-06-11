@@ -44,7 +44,11 @@ Lista<T> &ListaImp<T>::operator=(const ListaImp<T> &l) {
 
 template <class T>
 ListaImp<T>::~ListaImp(){
-	//NO IMPLEMENTADO
+	/*while (ppio) {
+		delete ppio->dato;
+		ppio = ppio->sig;
+	}*/
+	delete ppio;
 }
 
 template <class T>

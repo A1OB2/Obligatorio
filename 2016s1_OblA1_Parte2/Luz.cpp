@@ -34,7 +34,6 @@ Luz & Luz::operator=(const Luz &l) {
 }
 
 Luz::~Luz() {
-	//delete this->nombre;
 }
 
 bool Luz::operator==(const Luz &l) const {

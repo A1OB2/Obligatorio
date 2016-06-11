@@ -39,7 +39,7 @@ Cambio & Cambio::operator=(const Cambio &c) {
 }
 
 Cambio::~Cambio() {
-	// NO IMPLEMENTADA
+	delete disp;
 }
 
 bool Cambio::operator==(const Cambio &c) const {

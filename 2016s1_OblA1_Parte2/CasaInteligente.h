@@ -91,7 +91,6 @@ private:
 	//aux methods
 	template<class T, class U>
 	void llenarArbol(ABB<Asociacion<U, Referencia<T>>>* & llenar, ABB<Asociacion<U, Referencia<T>>>* sacar);
-	bool puedoCambiarAlarma(NodoABB<Asociacion<int, Referencia<Sensor>>> * sens);
 };
 
 #endif

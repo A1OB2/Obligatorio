@@ -9,13 +9,11 @@ InterfazDelSistemaImp::InterfazDelSistemaImp(unsigned int CANT_SENSORES, unsigne
 	this->listaCasas = new CasaInteligente*[MAX_ESTADOS];
 	this->nroEstados = MAX_ESTADOS;
 	this->posicion = 0;
-	//MAX_ESTADOS es la cantidad maxima de estados que peude tener la casa, implementar LIFO
 }
 
-// Eliminación de los objetos creados con "new"
 InterfazDelSistemaImp::~InterfazDelSistemaImp() {
-	//	delete casa;
-	//	delete this;
+	delete casa;
+	//delete this;
 }
 
 TipoRetorno InterfazDelSistemaImp::AgregarLuz(unsigned int nroLuz, char* nombre) {
@@ -27,16 +25,7 @@ TipoRetorno InterfazDelSistemaImp::AgregarArtefacto(unsigned int nroArt, char* n
 }
 
 TipoRetorno InterfazDelSistemaImp::CambiarEstadoLuz(unsigned int nroLuz, unsigned int porcentaje) {
-	for (int i = 0; i < nroEstados; i++) {
-		auto c = listaCasas[i];
-		int algo = 0332;
-	}
-	auto retorno =this->casa->CambiarEstadoLuz(nroLuz, porcentaje);
-	for (int i = 0; i < nroEstados; i++) {
-		auto c = listaCasas[i];
-		int algo = 0332;
-	}
-	return retorno;
+	return this->casa->CambiarEstadoLuz(nroLuz, porcentaje);;
 }
 
 TipoRetorno InterfazDelSistemaImp::CambiarEstadoArtefacto(unsigned int nroArt, EstadoArtefacto nuevoEstado) {
@@ -95,15 +84,13 @@ TipoRetorno InterfazDelSistemaImp::GuardarEstadoActual() {
 			listaCasas[posicion] = c;
 			posicion++;
 		} else {
+			//Nunca lo probaron, no hay ninguna prueba de esto
+			delete listaCasas[0];//Borro el primero para recuperar memoria
 			for (int i = 1; i < posicion; i++) {
 				listaCasas[i - 1] = listaCasas[i];
 			}
 			CasaInteligente * c = new CasaInteligente(casa);
-			listaCasas[posicion] = c;
-		}
-		for (int i = 0; i < nroEstados; i++) {
-			auto c = listaCasas[i];
-			int algo = 0332;
+			listaCasas[posicion - 1] = c;
 		}
 		return OK;
 
@@ -113,11 +100,9 @@ TipoRetorno InterfazDelSistemaImp::GuardarEstadoActual() {
 }
 
 TipoRetorno InterfazDelSistemaImp::VolverAlEstadoAnterior() {
-	for (int i = 0; i < nroEstados; i++) {
-		auto c = listaCasas[i];
-		int algo = 0332;
-	}
 	if (posicion != 0) {
+		if (posicion < nroEstados)
+			delete listaCasas[posicion];
 		casa = listaCasas[--posicion];
 		return OK;
 	} else {

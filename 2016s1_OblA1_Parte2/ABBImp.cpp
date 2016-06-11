@@ -39,7 +39,8 @@ ABB<T> &ABBImp<T>::operator=(const ABBImp<T> &a) {
 
 template <class T>
 ABBImp<T>::~ABBImp() {
-	//NO IMPLEMENTADO
+	Vaciar();
+	delete raiz;
 }
 
 template <class T>
@@ -52,9 +53,8 @@ void ABBImp<T>::vaciar(NodoABB<T>* a) {
 	if (a != NULL) {
 		vaciar(a->hIzq);
 		vaciar(a->hDer);
-		//delete a->hIzq;
-		//delete a->hDer;
 		delete a;
+		a = NULL;
 	}
 }
 

@@ -49,6 +49,7 @@ CasaInteligente::CasaInteligente(const CasaInteligente *casa) {
 	escenasNombre = new ABBImp<Asociacion<Cadena, Referencia<Escena>>>();
 	alarma = new Referencia<Alarma>(Alarma());
 	sensores = new ABBImp<Asociacion<int, Referencia<Sensor>>>();
+	condiciones = new ABBImp<Asociacion<int, Referencia<Condicion>>>();
 
 
 	llenarArbol(lucesNumero, casa->lucesNumero);
@@ -403,13 +404,6 @@ TipoRetorno CasaInteligente::ImprimirEscenasRaras() const {
 
 //aux
 
-bool CasaInteligente::puedoCambiarAlarma(NodoABB<Asociacion<int, Referencia<Sensor>>>* sens) {
-	if (sens == NULL) return true;
-	else if (sens->dato.GetRangoInseguro().GetDato().GetEstado() == NORMAL)
-		return true && puedoCambiarAlarma(sens->hDer) && puedoCambiarAlarma(sens->hIzq);
-	else  return false;
-}
-
 template<class T, class U>
 void CasaInteligente::llenarArbol(ABB<Asociacion<U, Referencia<T>>>* & llenar, ABB<Asociacion<U, Referencia<T>>>* sacar) {
 	NodoLista<Asociacion<U, Referencia<T>>> *l = NULL;
@@ -419,6 +413,7 @@ void CasaInteligente::llenarArbol(ABB<Asociacion<U, Referencia<T>>>* & llenar, A
 		llenar->Insertar(d);
 		l = l->sig;
 	}
+	delete l;
 }
 
 #endif

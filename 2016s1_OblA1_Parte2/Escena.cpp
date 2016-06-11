@@ -41,7 +41,7 @@ Escena & Escena::operator=(const Escena &e) {
 }
 
 Escena::~Escena() {
-	// NO IMPLEMENTADA
+	delete cambios;
 }
 
 bool Escena::operator==(const Escena &e) const {

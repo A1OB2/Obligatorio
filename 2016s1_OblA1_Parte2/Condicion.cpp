@@ -44,7 +44,7 @@ Condicion & Condicion::operator=(const Condicion &c) {
 }
 
 Condicion::~Condicion() {
-	// NO IMPLEMENTADA
+	delete sensores;
 }
 
 bool Condicion::operator==(const Condicion &c) const {
@@ -62,17 +62,17 @@ void Condicion::Imprimir() const {
 }
 
 void Condicion::AgregarSensor(unsigned int nroSensor, EstadoSensor estado) {
-	bool encontro = false;
+	bool estaba = false;
 	Iterador<Asociacion<int, Referencia<Sensor>>> it = sensores->GetIterador();
 	while (!it.EsFin()) {
 		Asociacion<int, Referencia<Sensor>> e = it.ElementoInseguro();
 		if (e.GetDominio() == nroSensor) {
 			e.GetRangoInseguro().GetDato().SetEstado(estado);
-			encontro = true;
+			estaba = true;
 		}
 		it.Resto();
 	}
-	if (!encontro) {
+	if (!estaba) {
 		Sensor s = Sensor(nroSensor);
 		s.SetEstado(estado);
 		Referencia<Sensor> r = Referencia<Sensor>(s);
