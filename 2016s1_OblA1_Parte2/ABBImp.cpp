@@ -39,8 +39,8 @@ ABB<T> &ABBImp<T>::operator=(const ABBImp<T> &a) {
 
 template <class T>
 ABBImp<T>::~ABBImp() {
-	Vaciar();
-	delete raiz;
+	if(!EsVacio()) Vaciar();
+	else delete raiz;
 }
 
 template <class T>
@@ -189,10 +189,16 @@ void ABBImp<T>::aNodoLista(NodoLista<T> * & l) {
 template<class T>
 void ABBImp<T>::toNodoLista(NodoABB<T>* a, NodoLista<T>*& l) {
 	if (a != NULL) {
-		insertarOrdenado(l, a->dato);
+		//NodoLista<T> *aux = l;
 		toNodoLista(a->hDer, l);
+		l = new NodoLista<T>(a->dato, l, NULL);//Insertar de orden 1 vs el otro de orden n, el metodo baja de n^2 a n
 		toNodoLista(a->hIzq, l);
 	}
+	//if (a != NULL) {
+	//	insertarOrdenado(l, a->dato);
+	//	toNodoLista(a->hDer, l);
+	//	toNodoLista(a->hIzq, l);
+	//}
 }
 
 template<class T>

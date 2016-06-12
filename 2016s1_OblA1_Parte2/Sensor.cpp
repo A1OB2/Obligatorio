@@ -64,11 +64,12 @@ void Sensor::Imprimir(ostream& out) const  {
 }
 
 void Sensor::ImprimirCambio() const {
-	//Falta hacer
 }
 
 void Sensor::Ejecutar(CasaInteligente * casa) {
-	//Faltahacer
+	assert(false);
+	//No hay cambios con sensor, esto no deberia pasar
+	casa->CambiarEstadoSensor(this->nro, this->estado);
 }
 
 Dispositivo * Sensor::Clon() const {

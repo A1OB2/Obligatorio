@@ -84,12 +84,16 @@ void Condicion::AgregarSensor(unsigned int nroSensor, EstadoSensor estado) {
 void Condicion::Evaluar(NodoLista<Asociacion<int, Referencia<Sensor>>> *l) {
 	Iterador<Asociacion<int, Referencia<Sensor>>> it = sensores->GetIterador();
 	bool cumpleAhora = true;
+	//Recorro la lista de sensores
 	while (l != NULL) {
+		//busco el sensor dentro de los cambios
 		while (!it.EsFin()) {
 			Sensor d = l->dato.GetRangoInseguro().GetDato();
 			Asociacion<int, Referencia<Sensor>> e = it.ElementoInseguro();
 			if (e.GetDominio() == d.GetNro()) {
+				//Si lo encuentro me fijo el estado
 				if (d.GetEstado() != e.GetRangoInseguro().GetDato().GetEstado()) {
+					//si es diferente ya se que ahora no cumple
 					cumpleAhora = false;
 					break;
 				}

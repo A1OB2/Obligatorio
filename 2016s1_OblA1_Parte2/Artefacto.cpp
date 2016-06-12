@@ -67,7 +67,7 @@ void Artefacto::ImprimirCambio() const  {
 }
 
 void Artefacto::Ejecutar(CasaInteligente *casa) {
-	// NO IMPLEMENTADA
+	casa->CambiarEstadoArtefacto(this->numero, this->estado);
 }
 
 Dispositivo* Artefacto::Clon() const {

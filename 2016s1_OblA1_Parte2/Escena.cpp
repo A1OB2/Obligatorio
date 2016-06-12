@@ -86,6 +86,7 @@ void Escena::Ejecutar(CasaInteligente *casa) const {
 	Iterador<Referencia<Cambio>> it = cambios->GetIterador();
 	while (!it.EsFin()) {
 		Referencia<Cambio> ref = it.ElementoInseguro();
+		//Delego al ejecutar de cambio, %%No delega al de cada dispositivo, lo hace todo el%%
 		ref.GetDato().Ejecutar(casa);
 		it.Resto();
 	}
@@ -97,9 +98,12 @@ void Escena::AgregarCambio(const Cambio &c) {
 }
 
 bool Escena::EsRara() const {
-	int contAlarma = 0;//ALARMA , ARTEFACTO
-	map<Cadena, int> luces;//LUZ
-	map<Cadena, int> artefactos;//LUZ
+	/*Paso a hash donde la key es el numero y el valor es la cantidad de elementos que encontro,
+	recorro cada hash y si hay una key con valor mayor o igual a 2 quiere decir que habian dos 
+	cambios con el mismo dispositivo, devuelvo true*/
+	int contAlarma = 0;
+	map<Cadena, int> luces;
+	map<Cadena, int> artefactos;
 
 	Iterador<Referencia<Cambio>> it = cambios->GetIterador();
 	while (!it.EsFin()) {
@@ -109,7 +113,6 @@ bool Escena::EsRara() const {
 		} else if (ref.GetDato().getTipo() == LUZ) {
 			if (luces.find(dynamic_cast<Luz *>(ref.GetDato().getDispositivo())->GetNombre()) != luces.end()) {//Si existe la key
 				luces[dynamic_cast<Luz *>(ref.GetDato().getDispositivo())->GetNombre()] += 1;
-
 			} else {
 				luces[dynamic_cast<Luz *>(ref.GetDato().getDispositivo())->GetNombre()] = 1;
 			}

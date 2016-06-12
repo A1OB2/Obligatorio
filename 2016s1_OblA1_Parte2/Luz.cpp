@@ -75,7 +75,7 @@ void Luz::ImprimirCambio() const {
 }
 
 void Luz::Ejecutar(CasaInteligente *casa) {
-	// NO IMPLEMENTADA
+	casa->CambiarEstadoLuz(this->nroLuz, this->intensidad);
 }
 
 Dispositivo* Luz::Clon() const {

@@ -59,7 +59,8 @@ void Alarma::ImprimirCambio() const  {
 }
 
 void Alarma::Ejecutar(CasaInteligente *casa) {
-	// NO IMPLEMENTADA
+	//No habia ejecutar?
+	casa->CambiarEstadoAlarma(this->estado);
 }
 
 Dispositivo* Alarma::Clon() const {
