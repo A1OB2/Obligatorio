@@ -391,12 +391,15 @@ TipoRetorno CasaInteligente::ImprimirEscenasRaras() const {
 		NodoLista<Asociacion<int, Referencia<Escena>>> * lEscenas = NULL;
 		this->escenasNumero->aNodoLista(lEscenas);
 		cout << "Escenas raras:" << endl;
-		if (lEscenas == NULL) cout << "--No hay escenas raras--" << endl;
+		int cont = 0;
 		while (lEscenas != NULL) {
-			if (lEscenas->dato.GetRangoInseguro().GetDato().EsRara())
+			if (lEscenas->dato.GetRangoInseguro().GetDato().EsRara()) {
 				cout << lEscenas->dato;
+				cont++;
+			}
 			lEscenas = lEscenas->sig;
 		}
+		if(cont == 0) cout << "--No hay escenas raras--" << endl;
 		delete lEscenas;
 		return OK;
 	}
