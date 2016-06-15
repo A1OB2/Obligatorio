@@ -95,8 +95,8 @@ appExist = \ s f -> case f of{
 
 appUniversal::Simbolo -> Form -> (Form, Form)
 appUniversal = \ s f -> case f of{
-	Neg(Ex v f) ->(Neg(Ex v f), Neg(sustAll f v s));--Ver si hay que cambiar de lado
-	All v f -> (All v f,sustAll f v s);
+	Neg(Ex v f) ->(Neg(sustAll f v s),Neg(Ex v f));--Ver si hay que cambiar de lado
+	All v f -> (sustAll f v s,All v f);
 	_ -> error "No hay regla universal para eso!!!!"
 }
 
@@ -141,10 +141,10 @@ demostracion_d = undefined
 
 --e)
 arbol_e::ArbolTableaux
-arbol_e = undefined
+arbol_e = [[(All "x"(All "y"(Bc Impl (A "R" [V "x",V "y"])(Neg (A "R" [V "y",V "x"]))))),(Neg(All "x"(Neg (A "R" [V "x",V "x"]))))]]
 
 demostracion_e::Demostracion
-demostracion_e = undefined
+demostracion_e = [(Exis "a",1),(Conj,1),(Univer "a",0),(Univer "a",0),(Disy,0)]
 
 --f)
 arbol_f::ArbolTableaux
@@ -165,7 +165,9 @@ sustAll::Form -> Var -> Simbolo -> Form
 sustAll = \ f v s -> case f of{
 	A sim zs -> A sim (map (sustEnTerm s v)  zs);
 	Neg f1-> Neg (sustAll f1 v s); 
-	Bc bc f1 f2 -> Bc bc (sustAll f1 v s) (sustAll f2 v s)
+	Bc bc f1 f2 -> Bc bc (sustAll f1 v s) (sustAll f2 v s);
+	All v1 f1-> All v1 (sustAll f1 v s);
+	Ex v1 f1 -> Ex v1 (sustAll f1 v s)
 }
 
 

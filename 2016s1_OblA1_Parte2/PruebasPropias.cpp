@@ -33,13 +33,17 @@ void PruebasPropias::correrPruebaConcreta(){
 	interfaz->AgregarArtefacto(1, "Artefacto 1");
 	interfaz->AgregarArtefacto(2, "Artefacto 2");
 	interfaz->ImprimirEstadoCasa();
+	interfaz->InicioEscena(1, "Prueba 1");
 	interfaz->CambiarEstadoArtefacto(1, ON);
-	interfaz->CambiarEstadoArtefacto(5, ON);
+	//interfaz->CambiarEstadoArtefacto(5, ON);
 	interfaz->CambiarEstadoAlarma(ACTIVADA);
 	interfaz->CambiarEstadoAlarma(ACTIVADA);
 	interfaz->CambiarEstadoSensor(2, ENALARMA);
 	interfaz->CambiarEstadoAlarma(DESACTIVADA);
 	interfaz->CambiarEstadoSensor(12, ENALARMA);
+	interfaz->FinEscena();
+	interfaz->ImprimirEscena(1);
+
 	interfaz->ImprimirEstadoCasa();
 	Cambio * cambio = new Cambio(Luz());
 	interfaz->InicioEscena(1, "pepe");
