@@ -61,11 +61,14 @@ appConjuntiva = \f -> case f of{
 		Neg b -> [b];
 		Bc bc b c -> case bc of{
 			Impl-> [b,Neg(c)];
-			Or-> [Neg(b),Neg(c)]
-		}
+			Or-> [Neg(b),Neg(c)];
+			_ -> error "No hay regla conjuntiva para eso!!!!"
+		};
+		_ -> error "No hay regla conjuntiva para eso!!!!";
 	};
 	Bc bc a b -> case bc of{
 		And -> [a,b];
+		_ -> error "No hay regla conjuntiva para eso!!!!"
 	};
 	_ -> error "No hay regla conjuntiva para eso!!!!"
 
@@ -75,12 +78,14 @@ appDisyuntiva :: Form  -> (Form, Form)
 appDisyuntiva = \f -> case f of{
 	Neg a -> case a of{
 		Bc bc b c -> case bc of{
-			And-> (Neg(b),Neg(c))
+			And-> (Neg(b),Neg(c));
+			_ -> error "No hay regla disyuntiva para eso!!!!"
 		}
 	};
 	Bc bc a b -> case bc of{
 		Impl-> (Neg(a),b);
 		Or -> (a,b);
+		_ -> error "No hay regla disyuntiva para eso!!!!"
 	};
 	_ -> error "No hay regla disyuntiva para eso!!!!"
 
@@ -127,10 +132,14 @@ demostracion_b = [(Exis "a", 0), (Conj, 0), (Disy, 2), (Univer "a", 2), (Univer 
 
 --c)
 arbol_c::ArbolTableaux
-arbol_c = undefined
+arbol_c = [[(Bc Impl (All "x"(A "P"[V "x"])) (All "x" (A "Q" [V "x"]))),(Ex "x" (Neg (A "Q" [V "x"]))),(Neg (Ex "x" (Neg(A "P"[V "x"]))))]]
 
 demostracion_c::Demostracion
-demostracion_c = undefined
+demostracion_c = []
+--[(Disy, 0), (Exis "a", 0), (Univer "a", 2), (Conj, 2), (Exis "a", 1), (Univer "a", 0)]
+--[(Exis "a",1),(Univer "a",2),(Disy,0),(Conj, 2),(Exis "a",0),(Univer "a",0)]
+--[(Disy,0),(Exis "a",0),(Exis "b",1),(Univer "a",2),(Conj,2),(Exis "a",1),(Univer "a",1)]
+--[(Exis "a",1),(Univer "a", 2),(Conj,2),(Disy,0),(Exis "a",0)]--Por que no puedo instanciar a !All x P(x) en a???
 
 --d)
 arbol_d::ArbolTableaux
@@ -200,6 +209,12 @@ contradice= \ f fs -> case fs of{
 	[]->False;
 	x:xs -> x==Neg(f) || Neg(x)==f || (contradice f xs)
 }
+
+aplicarReglas::Rama->Demostracion->Rama
+aplicarReglas = \ r rs -> case rs of {
+		[] -> r;
+	    x:xs ->aplicarReglas ((aplicarRegla r x)!!0) xs
+	   }
 
 --DATOS DE PRUEBA
 f1::Form

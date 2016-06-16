@@ -95,8 +95,8 @@ appExist = \ s f -> case f of{
 
 appUniversal::Simbolo -> Form -> (Form, Form)
 appUniversal = \ s f -> case f of{
-	Neg(Ex v f) ->(Neg(Ex v f), Neg(sustAll f v s));--Ver si hay que cambiar de lado
-	All v f -> (All v f,sustAll f v s);
+	Neg(Ex v f) ->( Neg(sustAll f v s),Neg(Ex v f));--Ver si hay que cambiar de lado
+	All v f -> (sustAll f v s,All v f);
 	_ -> error "No hay regla universal para eso!!!!"
 }
 
