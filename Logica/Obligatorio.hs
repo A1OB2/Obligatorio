@@ -120,10 +120,10 @@ demostracion_a = undefined
 
 --b)
 arbol_b::ArbolTableaux
-arbol_b = undefined
+arbol_b = [[(Ex "x" (Bc And (A "P" [V "x"]) (A "Q" [V "x"]))), (Neg(Bc And (Ex "x" (A "P" [V "x"])) (Ex "x" (A "Q" [V "x"])) ))]]
 
 demostracion_b::Demostracion
-demostracion_b = undefined
+demostracion_b = [(Exis "a", 0), (Conj, 0), (Disy, 2), (Univer "a", 2), (Univer "a", 2)]
 
 --c)
 arbol_c::ArbolTableaux
@@ -148,10 +148,10 @@ demostracion_e = undefined
 
 --f)
 arbol_f::ArbolTableaux
-arbol_f = undefined
+arbol_f = [[(Ex "x" (Bc And (Neg (A "Q" [V "x"])) (A "P" [V "x"]) )),(A "Q" [V "b"]),(Neg (Ex "x" (Neg (Bc Impl (A "P" [V "x"]) (A "Q" [V "x"])))))]]
 
 demostracion_f::Demostracion
-demostracion_f = undefined
+demostracion_f = [(Exis "a", 0), (Conj, 0), (Univer "a", 3), (Conj, 3), (Disy, 3)]
 
 --g)
 arbol_g::ArbolTableaux
@@ -218,3 +218,7 @@ f7::Form
 f7=All "x" (Bc And (A "P" [V "x"])(A "Q" [V "x"]) )
 f8::Form
 f8=Ex "x" (Bc And (A "P" [V "x"])(A "Q" [V "x"]) )
+a :: ArbolTableaux
+a = [[( All "x" (Bc And (A "P" [V "x"]) (A "Q" [V "x"]))),(Neg (Bc And (All "x" (A "P" [V "x"])) (All "x" (A "Q" [V "x"]))))]]
+d :: Demostracion
+d = [(Disy, 1), (Exis "a", 1), (Univer "a", 0), (Conj, 0), (Exis "a", 1), (Univer "a", 0), (Conj, 0)]
