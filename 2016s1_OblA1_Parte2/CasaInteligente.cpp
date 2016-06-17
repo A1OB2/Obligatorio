@@ -328,8 +328,8 @@ TipoRetorno CasaInteligente::FinEscena() {
 		return ERROR;
 	}
 	enEscena = false;
-	escenasNombre->Insertar(Asociacion<Cadena, Referencia<Escena>>(escenaActual->GetDato().GetNombre(), Referencia<Escena>(escenaActual->GetDato())));
-	escenasNumero->Insertar(Asociacion<int, Referencia<Escena>>(escenaActual->GetDato().GetNro(), Referencia<Escena>(escenaActual->GetDato())));
+	escenasNombre->Insertar(Asociacion<Cadena, Referencia<Escena>>(escenaActual->GetDato().GetNombre(), *escenaActual));
+	escenasNumero->Insertar(Asociacion<int, Referencia<Escena>>(escenaActual->GetDato().GetNro(), *escenaActual));
 	escenaActual = NULL;
 	return OK;
 }

@@ -27,7 +27,7 @@ Escena::Escena(const Escena &e) {
 	Iterador<Referencia<Cambio>> it = e.cambios->GetIterador();
 	cambios = new ListaImp<Referencia<Cambio>>();
 	while (!it.EsFin()) {
-		cambios->AgregarPpio(Referencia<Cambio>(it.ElementoInseguro()));
+		cambios->AgregarFin(Referencia<Cambio>(it.ElementoInseguro()));
 		it.Resto();
 	}
 	it.Principio();
@@ -94,7 +94,7 @@ void Escena::Ejecutar(CasaInteligente *casa) const {
 
 void Escena::AgregarCambio(const Cambio &c) {
 	Referencia<Cambio> r(c);
-	cambios->AgregarPpio(r);
+	cambios->AgregarFin(r);
 }
 
 bool Escena::EsRara() const {

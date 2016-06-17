@@ -191,7 +191,7 @@ void ABBImp<T>::toNodoLista(NodoABB<T>* a, NodoLista<T>*& l) {
 	if (a != NULL) {
 		//NodoLista<T> *aux = l;
 		toNodoLista(a->hDer, l);
-		l = new NodoLista<T>(a->dato, l, NULL);//Insertar de orden 1 vs el otro de orden n, el metodo baja de n^2 a n
+		l = new NodoLista<T>(a->dato, NULL, l);//Insertar de orden 1 vs el otro de orden n, el metodo baja de n^2 a n
 		toNodoLista(a->hIzq, l);
 	}
 	//if (a != NULL) {

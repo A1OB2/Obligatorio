@@ -61,7 +61,14 @@ void ListaImp<T>::AgregarPpio(const T &e) {
 
 template <class T>
 void ListaImp<T>::AgregarFin(const T &e) {
-	//NO IMPLEMENTADO
+	if (ppio == NULL) {
+		ppio = new NodoLista<T>(e, NULL, NULL);
+	} else {
+		NodoLista<T> * l = ppio;
+		while (l->sig != NULL) l  = l->sig;
+		l->sig = new NodoLista<T>(e, NULL, NULL);
+	}
+	
 }
 
 template <class T>

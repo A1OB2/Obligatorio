@@ -16,7 +16,8 @@ type Rama = [Form]
 
 type ArbolTableaux = [Rama]
 
-data Regla = Conj | Disy | Exis Simbolo | Univer Simbolo
+data Regla = Conj | Disy | Exis Simbolo | Univer Simbolo 
+		deriving (Show)
 
 type Demostracion = [(Regla, Int)]
 
@@ -61,11 +62,14 @@ appConjuntiva = \f -> case f of{
 		Neg b -> [b];
 		Bc bc b c -> case bc of{
 			Impl-> [b,Neg(c)];
-			Or-> [Neg(b),Neg(c)]
-		}
+			Or-> [Neg(b),Neg(c)];
+			_ -> error "No hay regla conjuntiva para eso!!!!"
+		};
+		_ -> error "No hay regla conjuntiva para eso!!!!";
 	};
 	Bc bc a b -> case bc of{
 		And -> [a,b];
+		_ -> error "No hay regla conjuntiva para eso!!!!"
 	};
 	_ -> error "No hay regla conjuntiva para eso!!!!"
 
@@ -75,12 +79,14 @@ appDisyuntiva :: Form  -> (Form, Form)
 appDisyuntiva = \f -> case f of{
 	Neg a -> case a of{
 		Bc bc b c -> case bc of{
-			And-> (Neg(b),Neg(c))
+			And-> (Neg(b),Neg(c));
+			_ -> error "No hay regla disyuntiva para eso!!!!"
 		}
 	};
 	Bc bc a b -> case bc of{
 		Impl-> (Neg(a),b);
 		Or -> (a,b);
+		_ -> error "No hay regla disyuntiva para eso!!!!"
 	};
 	_ -> error "No hay regla disyuntiva para eso!!!!"
 
@@ -95,7 +101,7 @@ appExist = \ s f -> case f of{
 
 appUniversal::Simbolo -> Form -> (Form, Form)
 appUniversal = \ s f -> case f of{
-	Neg(Ex v f) ->(Neg(sustAll f v s),Neg(Ex v f));--Ver si hay que cambiar de lado
+	Neg(Ex v f) ->(Neg(sustAll f v s),Neg(Ex v f));
 	All v f -> (sustAll f v s,All v f);
 	_ -> error "No hay regla universal para eso!!!!"
 }
@@ -113,10 +119,10 @@ hayContradiccion = \r -> case r of{
 
 --a)
 arbol_a::ArbolTableaux
-arbol_a = undefined
+arbol_a = [[(Ex "x" (Bc Impl (A "P" [V "x"]) (A "Q" [V "x"]) ) ),Neg( Bc Impl (All "x"( A "P" [V "x"] )) (Ex "x" (A "Q" [V "x"] ) ) )]]
 
 demostracion_a::Demostracion
-demostracion_a = undefined
+demostracion_a =  [(Conj,1), (Exis "a",0),(Univer "a",1),(Univer "a",2),(Disy,0)]
 
 --b)
 arbol_b::ArbolTableaux
@@ -127,10 +133,10 @@ demostracion_b = undefined
 
 --c)
 arbol_c::ArbolTableaux
-arbol_c = undefined
+arbol_c = [[(Bc Impl (All "x"(A "P"[V "x"])) (All "x" (A "Q" [V "x"]))),(Ex "x" (Neg (A "Q" [V "x"]))),(Neg (Ex "x" (Neg(A "P"[V "x"]))))]]
 
 demostracion_c::Demostracion
-demostracion_c = undefined
+demostracion_c = [(Disy,0),(Exis "a",0),(Exis "b",1),(Univer "a",2),(Conj,2),(Exis "a",1),(Univer "a",1)]--[(Exis "a",1),(Univer "a", 2),(Conj,2),(Disy,0),(Exis "a",0)]--Por que no puedo instanciar a !All x P(x) en a???
 
 --d)
 arbol_d::ArbolTableaux
@@ -202,6 +208,12 @@ contradice= \ f fs -> case fs of{
 	[]->False;
 	x:xs -> x==Neg(f) || Neg(x)==f || (contradice f xs)
 }
+
+aplicarReglas::Rama->Demostracion->Rama
+aplicarReglas = \ r rs -> case rs of {
+		[] -> r;
+	    x:xs ->aplicarReglas ((aplicarRegla r x)!!0) xs
+	   }
 
 --DATOS DE PRUEBA
 f1::Form

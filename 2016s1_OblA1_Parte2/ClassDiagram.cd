@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ConductorPruebaObl2">
+    <Position X="15.5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAACAAAAAAAgAAAAAAIAQAAAAQAEAAAAAA=</HashCode>
+      <FileName>ConductorPruebaObl2.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PruebasCorreccion">
+    <Position X="0.75" Y="11" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAEAAAAAAgAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>PruebasCorreccion.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PruebasEjemploDeUso">
+    <Position X="3.5" Y="11" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAkAAQJ4AKAAAgUAAQAAAAAAgSEAIMAAAEAA=</HashCode>
+      <FileName>PruebasEjemploDeUso.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PruebasPropias">
+    <Position X="6.75" Y="11" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAgAgAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>PruebasPropias.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InterfazDelSistemaProxy">
+    <Position X="10.25" Y="20.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACQAAAIAgEAAMIAAAABAAAAQAAEBAKBAAAISAAAICA=</HashCode>
+      <FileName>InterfazDelSistemaProxy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EstadisticaPrueba" Collapsed="true">
+    <Position X="28.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAACAAAABAAAAIAwIAAAABIAAAAAAAAAAAEAAIAAQ=</HashCode>
+      <FileName>EstadisticaPrueba.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConductorPrueba">
+    <Position X="15.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AggBEAAAAIAAAAAgACAAgAAAAAIAAABAAAAAEAEAEAA=</HashCode>
+      <FileName>ConductorPrueba.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Prueba" Collapsed="true">
+    <Position X="4" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAgAkAAAAKAAAAAAACAAgAAAEAIAAAAAAQAAEAAAAAA=</HashCode>
+      <FileName>Prueba.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManejadorArchivos" Collapsed="true">
+    <Position X="23.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAIAKwAAAAAAACgAxAEAEAgAAACAkABQCEAI=</HashCode>
+      <FileName>ManejadorArchivos.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManejadorImpresionPrueba" Collapsed="true">
+    <Position X="25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAgAAAAAAAAEAAAIAAAAAAiBAgEAAAgAAAIAAA=</HashCode>
+      <FileName>ManejadorImpresionPrueba.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ManejadorSalidaPrueba" Collapsed="true">
+    <Position X="26.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAABAAAAAAIgAAAAAAEAAAAADAAEAAAgAAAAAIA=</HashCode>
+      <FileName>ManejadorSalidaPrueba.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InterfazDelSistema">
+    <Position X="9.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACQAAAIAAEAAEIAAAABAAAAQAAABAOBAAAIQAAAACA=</HashCode>
+      <FileName>InterfazDelSistema.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InterfazDelSistemaImp">
+    <Position X="7.5" Y="20.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACQIAAIAAkAAEIIABABAAAAQAAABAKBAAAIQAAEADA=</HashCode>
+      <FileName>InterfazDelSistemaImp.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NodoAG&lt;U&gt;" Collapsed="true">
+    <Position X="23.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAEMAIAAAgAAQAAAA=</HashCode>
+      <FileName>NodoAG.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Asociacion&lt;Dominio, Rango&gt;" Collapsed="true">
+    <Position X="23.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAIAAAAAIAIAAAAAAAQAAAAAAAAAEAAEhAAAAEAA=</HashCode>
+      <FileName>Asociacion.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cadena" Collapsed="true">
+    <Position X="25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAEAAAAAQBAAAEACAAAAIAgAAEQAAA=</HashCode>
+      <FileName>Cadena.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iterable&lt;T&gt;">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Iterable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Iterador&lt;T&gt;">
+    <Position X="15" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAABAAgAQAQAMAAAAAAIAAAAABAAAgAAAIAAA=</HashCode>
+      <FileName>Iterador.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Referencia&lt;T&gt;" Collapsed="true">
+    <Position X="28.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAEAgAEAAAAAQAAgAAAAAQAAAAgAAAAAAA=</HashCode>
+      <FileName>Referencia.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CasaInteligente" Collapsed="true">
+    <Position X="28.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IACYAAAAAAEAA0IAAAABAQQCQQSABFqBAAAsQAAAACA=</HashCode>
+      <FileName>CasaInteligente.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Condicion" Collapsed="true">
+    <Position X="25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACABAAAAQAAAQAIAgAABBAAAAEgABABAAA=</HashCode>
+      <FileName>Condicion.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alarma">
+    <Position X="0.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAICAAABAAQAAAEBABAAAAABwCIAIAAA=</HashCode>
+      <FileName>Alarma.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Artefacto">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAACAAABAAQAAIABABAAIAAEwCIAIAAA=</HashCode>
+      <FileName>Artefacto.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dispositivo">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAwBAAIAAE=</HashCode>
+      <FileName>Dispositivo.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Luz">
+    <Position X="5.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIgAAAACAAAAAACAAABAAQAAAABABAAAAAA0AAAIgAA=</HashCode>
+      <FileName>Luz.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sensor">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAQABAAAAAABAAQAAAEBABAAAAAAwCIAIAAA=</HashCode>
+      <FileName>Sensor.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cambio" Collapsed="true">
+    <Position X="26.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAABAAAAAAAAAAEAABACQAAAAAABAAAACAgBAAAAAA=</HashCode>
+      <FileName>Cambio.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Escena" Collapsed="true">
+    <Position X="26.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAACAIABgAQAAAABIBAQAAAEwAAAAAAA=</HashCode>
+      <FileName>Escena.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cola&lt;T&gt;" Collapsed="true">
+    <Position X="23.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAIAAAAgAAgAAABAAAAAEoBAEAAAA=</HashCode>
+      <FileName>Cola.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IteradorListaOrdImp&lt;T&gt;">
+    <Position X="16" Y="19" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAARAAAEAAAUAAIAAEAAAAAAgAAAIAAA=</HashCode>
+      <FileName>IteradorListaOrdImp.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ListaOrd&lt;T&gt;">
+    <Position X="12.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAAQCABAAACAAAIAIAAAAUAAggAAABAAAAAoABEAgAA=</HashCode>
+      <FileName>ListaOrd.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ListaOrdImp&lt;T&gt;">
+    <Position X="12.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KBAQCAAAAACAAAJAIAAAAEAAggAAABAAAAAoAAMBgAI=</HashCode>
+      <FileName>ListaOrdImp.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NodoLista&lt;U&gt;" Collapsed="true">
+    <Position X="25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACCAAAAABAQAAAAAAAAAAAAAAAAAAAAgAAQAAAA=</HashCode>
+      <FileName>NodoLista.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IteradorListaImp&lt;T&gt;">
+    <Position X="13.5" Y="19" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAABAAAASAAAEAEAAAAIAAEAABAAAgAAAIAAA=</HashCode>
+      <FileName>IteradorListaImp.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Lista&lt;T&gt;">
+    <Position X="10.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAAQCAAAAECAEAIAsAAAAUAAggAAAJAAAAQoAAEAAAA=</HashCode>
+      <FileName>Lista.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ListaImp&lt;T&gt;">
+    <Position X="10.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAAQCAgAAgCAEAIAMAAAAEAAggAAAJAAAAQoAAEAAII=</HashCode>
+      <FileName>ListaImp.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pila&lt;T&gt;" Collapsed="true">
+    <Position X="26.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAABAAAAgACIBAAAAAAoAAAACAA=</HashCode>
+      <FileName>Pila.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NodoABB&lt;U&gt;" Collapsed="true">
+    <Position X="28.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAgAAAAAAAAAIAAAAAAAAAAAAAEgAAQAAAA=</HashCode>
+      <FileName>NodoABB.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABB&lt;T&gt;">
+    <Position X="0.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAQAAACBAAAAAAAAEACBAADCIAARAABAAAoCAEAAAI=</HashCode>
+      <FileName>ABB.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABBImp&lt;T&gt;">
+    <Position X="0.5" Y="19" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAgQAAICBBEAIAAAAEAChAADAIAARAABAwAoiAEACAA=</HashCode>
+      <FileName>ABBImp.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Typedef Name="EstadoArtefacto" Collapsed="true">
+    <Position X="19.75" Y="15.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Constantes.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="EstadoAlarma" Collapsed="true">
+    <Position X="19.75" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Constantes.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="EstadoSensor" Collapsed="true">
+    <Position X="19.75" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Constantes.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="TipoRetorno" Collapsed="true">
+    <Position X="16.75" Y="10.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TipoRetorno.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="_estadoArtefacto">
+    <Position X="19.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Constantes.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="_estadoAlarma">
+    <Position X="19.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Constantes.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="_estadoSensor">
+    <Position X="19.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Constantes.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TipoDispositivo" Collapsed="true">
+    <Position X="23.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAIAAAAAAAAAAIAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Constantes.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="_retorno">
+    <Position X="16.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQBAAAAAAAAAAAAAAAABAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>TipoRetorno.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
