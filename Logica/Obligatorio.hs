@@ -101,11 +101,7 @@ appExist = \ s f -> case f of{
 
 appUniversal::Simbolo -> Form -> (Form, Form)
 appUniversal = \ s f -> case f of{
-<<<<<<< HEAD
 	Neg(Ex v f) ->(Neg(sustAll f v s),Neg(Ex v f));
-=======
-	Neg(Ex v f) ->( Neg(sustAll f v s),Neg(Ex v f));--Ver si hay que cambiar de lado
->>>>>>> d11220441664d33a31be8b77d839f41de24de169
 	All v f -> (sustAll f v s,All v f);
 	_ -> error "No hay regla universal para eso!!!!"
 }
@@ -140,11 +136,7 @@ arbol_c::ArbolTableaux
 arbol_c = [[(Bc Impl (All "x"(A "P"[V "x"])) (All "x" (A "Q" [V "x"]))),(Ex "x" (Neg (A "Q" [V "x"]))),(Neg (Ex "x" (Neg(A "P"[V "x"]))))]]
 
 demostracion_c::Demostracion
-demostracion_c = []
---[(Disy, 0), (Exis "a", 0), (Univer "a", 2), (Conj, 2), (Exis "a", 1), (Univer "a", 0)]
---[(Exis "a",1),(Univer "a",2),(Disy,0),(Conj, 2),(Exis "a",0),(Univer "a",0)]
---[(Disy,0),(Exis "a",0),(Exis "b",1),(Univer "a",2),(Conj,2),(Exis "a",1),(Univer "a",1)]
---[(Exis "a",1),(Univer "a", 2),(Conj,2),(Disy,0),(Exis "a",0)]--Por que no puedo instanciar a !All x P(x) en a???
+demostracion_c = [(Exis "a",1),(Univer "a", 2),(Conj,2),(Disy,0),(Exis "b",0),(Univer "b",3),(Univer "a",0)]
 
 --d)
 arbol_d::ArbolTableaux
