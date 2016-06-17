@@ -101,7 +101,11 @@ appExist = \ s f -> case f of{
 
 appUniversal::Simbolo -> Form -> (Form, Form)
 appUniversal = \ s f -> case f of{
+<<<<<<< HEAD
 	Neg(Ex v f) ->(Neg(sustAll f v s),Neg(Ex v f));
+=======
+	Neg(Ex v f) ->( Neg(sustAll f v s),Neg(Ex v f));--Ver si hay que cambiar de lado
+>>>>>>> d11220441664d33a31be8b77d839f41de24de169
 	All v f -> (sustAll f v s,All v f);
 	_ -> error "No hay regla universal para eso!!!!"
 }
@@ -126,17 +130,21 @@ demostracion_a =  [(Conj,1), (Exis "a",0),(Univer "a",1),(Univer "a",2),(Disy,0)
 
 --b)
 arbol_b::ArbolTableaux
-arbol_b = undefined
+arbol_b = [[(Ex "x" (Bc And (A "P" [V "x"]) (A "Q" [V "x"]))), (Neg(Bc And (Ex "x" (A "P" [V "x"])) (Ex "x" (A "Q" [V "x"])) ))]]
 
 demostracion_b::Demostracion
-demostracion_b = undefined
+demostracion_b = [(Exis "a", 0), (Conj, 0), (Disy, 2), (Univer "a", 2), (Univer "a", 2)]
 
 --c)
 arbol_c::ArbolTableaux
 arbol_c = [[(Bc Impl (All "x"(A "P"[V "x"])) (All "x" (A "Q" [V "x"]))),(Ex "x" (Neg (A "Q" [V "x"]))),(Neg (Ex "x" (Neg(A "P"[V "x"]))))]]
 
 demostracion_c::Demostracion
-demostracion_c = [(Disy,0),(Exis "a",0),(Exis "b",1),(Univer "a",2),(Conj,2),(Exis "a",1),(Univer "a",1)]--[(Exis "a",1),(Univer "a", 2),(Conj,2),(Disy,0),(Exis "a",0)]--Por que no puedo instanciar a !All x P(x) en a???
+demostracion_c = []
+--[(Disy, 0), (Exis "a", 0), (Univer "a", 2), (Conj, 2), (Exis "a", 1), (Univer "a", 0)]
+--[(Exis "a",1),(Univer "a",2),(Disy,0),(Conj, 2),(Exis "a",0),(Univer "a",0)]
+--[(Disy,0),(Exis "a",0),(Exis "b",1),(Univer "a",2),(Conj,2),(Exis "a",1),(Univer "a",1)]
+--[(Exis "a",1),(Univer "a", 2),(Conj,2),(Disy,0),(Exis "a",0)]--Por que no puedo instanciar a !All x P(x) en a???
 
 --d)
 arbol_d::ArbolTableaux
@@ -154,10 +162,10 @@ demostracion_e = [(Exis "a",1),(Conj,1),(Univer "a",0),(Univer "a",0),(Disy,0)]
 
 --f)
 arbol_f::ArbolTableaux
-arbol_f = undefined
+arbol_f = [[(Ex "x" (Bc And (Neg (A "Q" [V "x"])) (A "P" [V "x"]) )),(A "Q" [V "b"]),(Neg (Ex "x" (Neg (Bc Impl (A "P" [V "x"]) (A "Q" [V "x"])))))]]
 
 demostracion_f::Demostracion
-demostracion_f = undefined
+demostracion_f = [(Exis "a", 0), (Conj, 0), (Univer "a", 3), (Conj, 3), (Disy, 3)]
 
 --g)
 arbol_g::ArbolTableaux
@@ -232,3 +240,7 @@ f7::Form
 f7=All "x" (Bc And (A "P" [V "x"])(A "Q" [V "x"]) )
 f8::Form
 f8=Ex "x" (Bc And (A "P" [V "x"])(A "Q" [V "x"]) )
+a :: ArbolTableaux
+a = [[( All "x" (Bc And (A "P" [V "x"]) (A "Q" [V "x"]))),(Neg (Bc And (All "x" (A "P" [V "x"])) (All "x" (A "Q" [V "x"]))))]]
+d :: Demostracion
+d = [(Disy, 1), (Exis "a", 1), (Univer "a", 0), (Conj, 0), (Exis "a", 1), (Univer "a", 0), (Conj, 0)]
