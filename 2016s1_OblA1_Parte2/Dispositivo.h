@@ -15,8 +15,16 @@ public:
 	// Destructor
 	virtual ~Dispositivo() {}
 
+	// PRE: -
+	// POS: Imprime el dispositivo como un cambio
 	virtual void ImprimirCambio() const abstract;
+
+	// PRE: -
+	// POS: Ejecuta el cambio del dispositivo en casa
 	virtual void Ejecutar(CasaInteligente *casa) abstract;
+
+	// PRE: -
+	// POS: Devuelve un puntero a un dispositivo que no comparte memoria con this
 	virtual Dispositivo* Clon() const abstract;
 
 	// PRE: -

@@ -40,10 +40,22 @@ public:
 
 	// Operador de comparacion <. assert(false)
 	bool operator<(const Cambio &c) const;
+
+	// PRE: -
+	// POS: Retorna el dispositivo del cambio
 	Dispositivo * getDispositivo();
+
+	// PRE: -
+	// POS: Retorna el tipo de dispositivo del cambio
 	TipoDispositivo getTipo();
 
+
+	// PRE: -
+	// POS: Muestra el cambio en pantalla
 	void Imprimir() const;
+
+	// PRE: -
+	// POS: Ejecuta el cambio en la casa
 	void Ejecutar(CasaInteligente *casa);
 
 private:

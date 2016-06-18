@@ -41,17 +41,36 @@ public:
 	bool operator<(const Luz &l) const;
 	bool operator>(const Luz &l) const;
 
-
+	// PRE: -
+	// POS: Retorna el numero de la luz
 	unsigned int GetNro() const;
+
+	// PRE: -
+	// POS: Retorna el nombre de la luz
 	Cadena GetNombre() const;
 
+	// PRE: -
+	// POS: Cambia la intensidad de la luz por intensidad
 	void SetIntensidad(unsigned int intensidad);
+
+	// PRE: -
+	// POS: Retorna la intensidad actual de la luz
 	unsigned int GetIntensidad() const; 
 
+	// PRE: -
+	// POS: Muestra la luz en pantalla
 	void Imprimir() const;
 
+	// PRE: -
+	// POS: Muestra la luz en pantalla como un cambio
 	void ImprimirCambio() const;
+
+	// PRE: -
+	// POS: Ejecuta el cambio con esta luz en casa
 	void Ejecutar(CasaInteligente *casa);
+
+	// PRE: -
+	// POS: Devuelve un puntero a un dispositivo de tipo luz que no comparte memoria
 	Dispositivo* Clon() const;
 
 private:

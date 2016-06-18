@@ -70,12 +70,6 @@ CasaInteligente::CasaInteligente(const CasaInteligente *casa) {
 	alarma = new Referencia<Alarma>(Alarma(alarma->GetDato()));
 }
 
-CasaInteligente * CasaInteligente::copyOf() {
-	assert(false);
-	CasaInteligente * c = new CasaInteligente();
-	return nullptr;
-}
-
 CasaInteligente::~CasaInteligente() {
 	delete lucesNumero;
 	delete lucesNombre;

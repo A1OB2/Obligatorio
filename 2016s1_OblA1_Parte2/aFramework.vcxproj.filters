@@ -43,9 +43,6 @@
     <Filter Include="Colecciones\Lista">
       <UniqueIdentifier>{70276ed9-703b-4132-ad2d-6c3ffe4c9a0c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Colecciones\Pila">
-      <UniqueIdentifier>{c632c470-0361-4ea8-b5ac-3a82d27339a5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Colecciones\ABB">
       <UniqueIdentifier>{53060556-e0ba-4734-a144-88a614781942}</UniqueIdentifier>
     </Filter>
@@ -122,12 +119,6 @@
     </ClCompile>
     <ClCompile Include="ConductorPruebaObl2.cpp">
       <Filter>Pruebas Unitarias</Filter>
-    </ClCompile>
-    <ClCompile Include="ListaOrdImp.cpp">
-      <Filter>Colecciones\Lista</Filter>
-    </ClCompile>
-    <ClCompile Include="IteradorListaOrdImp.cpp">
-      <Filter>Colecciones\Lista</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Framework</Filter>
@@ -227,22 +218,10 @@
     <ClInclude Include="Escena.h">
       <Filter>CasaInteligente\Escenas</Filter>
     </ClInclude>
-    <ClInclude Include="Pila.h">
-      <Filter>Colecciones\Pila</Filter>
-    </ClInclude>
     <ClInclude Include="ConductorPruebaObl2.h">
       <Filter>Pruebas Unitarias</Filter>
     </ClInclude>
-    <ClInclude Include="ListaOrd.h">
-      <Filter>Colecciones\Lista</Filter>
-    </ClInclude>
-    <ClInclude Include="ListaOrdImp.h">
-      <Filter>Colecciones\Lista</Filter>
-    </ClInclude>
     <ClInclude Include="NodoLista.h">
-      <Filter>Colecciones\Lista</Filter>
-    </ClInclude>
-    <ClInclude Include="IteradorListaOrdImp.h">
       <Filter>Colecciones\Lista</Filter>
     </ClInclude>
     <ClInclude Include="Cola.h">
@@ -266,8 +245,5 @@
     <ClInclude Include="InterfazDelSistemaProxy.h">
       <Filter>Framework</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

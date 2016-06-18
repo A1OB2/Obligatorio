@@ -125,8 +125,6 @@
   <ItemGroup>
     <ClCompile Include="ConductorPruebaObl2.cpp" />
     <ClCompile Include="InterfazDelSistemaProxy.cpp" />
-    <ClCompile Include="IteradorListaOrdImp.cpp" />
-    <ClCompile Include="ListaOrdImp.cpp" />
     <ClCompile Include="main.cpp">
       <Optimization Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Disabled</Optimization>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -199,9 +197,6 @@
     <ClInclude Include="Cola.h" />
     <ClInclude Include="ConductorPruebaObl2.h" />
     <ClInclude Include="InterfazDelSistemaProxy.h" />
-    <ClInclude Include="IteradorListaOrdImp.h" />
-    <ClInclude Include="ListaOrd.h" />
-    <ClInclude Include="ListaOrdImp.h" />
     <ClInclude Include="ManejadorArchivos.h" />
     <ClInclude Include="NodoABB.h" />
     <ClInclude Include="NodoAG.h" />
@@ -235,12 +230,8 @@
     <ClInclude Include="Sensor.h" />
     <ClInclude Include="Cambio.h" />
     <ClInclude Include="Escena.h" />
-    <ClInclude Include="Pila.h" />
     <ClInclude Include="Constantes.h" />
     <ClInclude Include="TipoRetorno.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

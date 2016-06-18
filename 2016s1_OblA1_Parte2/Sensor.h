@@ -43,15 +43,32 @@ public:
 
 	bool operator>(const Sensor &s) const;
 
+	// PRE: -
+	// POS: Devuelve el numero del sensor
 	unsigned int GetNro() const;
 
+	// PRE: -
+	// POS: Cambia el estado de sensor por estado
 	void SetEstado(EstadoSensor estado);
+
+	// PRE: -
+	// POS: Devuelve el estado actual del sensor
 	EstadoSensor GetEstado() const;
 
+	// PRE: -
+	// POS: Muestra el sensor en la pantalla
 	void Imprimir(ostream& out) const;
 
+	// PRE: -
+	// POS: Muestra el sensor en la pantalla como un cambio
 	void ImprimirCambio() const;
+
+	// PRE: -
+	// POS: Ejecuta el cambio con el sensor en la casa
 	void Ejecutar(CasaInteligente *casa);
+
+	// PRE: -
+	// POS: Devuelve un puntero a un dispositivo de tipo sensor que no comparte memoria con this
 	Dispositivo* Clon() const;
 
 private:

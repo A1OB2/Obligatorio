@@ -69,13 +69,21 @@ class ABB abstract {
 		// Recibe un puntero que permite pasarle parametros adicionales a la funcion. Si no se usa pasar NULL.
 		virtual void PosOrder(void (*f) (const T&, void *), void *ptr) const abstract;
 		
+		// PRE: -
+		// POS: Retorna True si todos los elementos cumplen con el predicado que recibe por parametro
 		virtual bool allAnd(bool(*f)(T)) abstract;
 
-		virtual bool allOr(bool (*f)(T)) abstract;
-
+		// PRE: -
+		// POS: Carga la lista con todos los elementos del arbol en orden
 		virtual void aNodoLista(NodoLista<T> * & l) abstract;
+
+		// PRE: -
+		// POS: retorna el elemento e si esta en el arbol o un objeto de tipo T vacio si no
 		virtual T fetch(T e) abstract;
 
+
+		// PRE: -
+		// POS: Muestra el arbol en pantalla en orden
 		virtual void Imprimir() abstract;
 
 	protected:

@@ -33,10 +33,18 @@ public:
 	// Operador de comparacion <. assert(false)
 	bool operator<(const Condicion &c) const;
 
+
+	// PRE: -
+	// POS: Muestra la condicion en pantalla
 	void Imprimir() const;
 
+
+	// PRE: -
+	// POS: Agrega un sensor a la condicion
 	void AgregarSensor(unsigned int nroSensor, EstadoSensor estado);
 
+	// PRE: -
+	// POS: Dada una lista de sensores evalua si se cumple la condicion y actua acorde
 	void Evaluar(NodoLista<Asociacion<int, Referencia<Sensor>>> *l);
 
 private:
